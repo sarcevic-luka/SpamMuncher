@@ -11,6 +11,7 @@
 		F1DD6ED62AD2037800E04728 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* ContentView.swift */; };
 		F1DD6ED82AD2037B00E04728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DD6ED72AD2037B00E04728 /* Assets.xcassets */; };
 		F1DD6EDB2AD2037B00E04728 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DD6EDA2AD2037B00E04728 /* Preview Assets.xcassets */; };
+		F1DD6EE22AD2040100E04728 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6EE12AD2040100E04728 /* Call.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 			children = (
 				F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */,
 				F1DD6ED52AD2037800E04728 /* ContentView.swift */,
+				F1DD6EE12AD2040100E04728 /* Call.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
 				F1DD6ED92AD2037B00E04728 /* Preview Content */,
 			);
@@ -139,6 +141,7 @@
 			files = (
 				F1DD6ED62AD2037800E04728 /* ContentView.swift in Sources */,
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
+				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
