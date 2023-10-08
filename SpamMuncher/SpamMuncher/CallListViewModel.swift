@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 final class CallListViewModel: ObservableObject {
-    enum FilterType {
-        case none
-        case normal
-        case suspicious
-        case scam
+    enum FilterType: String, Segmentable, CaseIterable {
+        case none = "ALL"
+        case normal = "Normal"
+        case suspicious = "Suspicious"
+        case scam = "Scam"
         
         var callType: Call.CallType? {
             switch self {
@@ -38,6 +38,7 @@ final class CallListViewModel: ObservableObject {
 
     private var callListModel: CallListModel = createCallListModel()
 
+    // TODO: create Dependency Injection for CallListModel
     private static func createCallListModel() -> CallListModel {
         let incomingCalls = [
             Call(callerName: "Mika", callerNumber: "098889898", callType: .normal, timestamp: Date()),

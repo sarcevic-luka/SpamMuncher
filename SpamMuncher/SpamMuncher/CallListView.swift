@@ -15,24 +15,14 @@ struct CallListView: View {
     var body: some View {
         VStack {
             SearchBar(searchText: $viewModel.searchText)
-            FilterPicker
+            CustomSegmentedControl(selectedValue: $viewModel.selectedFilterType)
+                .padding(.horizontal, 0)
             List(viewModel.filteredCalls) { call in
                 NavigationLink(destination: CallRowView(call: call)) {
                     CallRowView(call: call)
                 }
             }
         }
-    }
-    
-    var FilterPicker: some View {
-        Picker("Filter by type", selection: $viewModel.selectedFilterType) {
-            Text("None").tag(FilterType.none)
-            Text("Normal").tag(FilterType.normal)
-            Text("Suspicious").tag(FilterType.suspicious)
-            Text("Scam").tag(FilterType.scam)
-        }
-        .pickerStyle(SegmentedPickerStyle())
-        .padding(.horizontal)
     }
 }
 
@@ -68,4 +58,11 @@ struct CallListView_Previews: PreviewProvider {
     static var previews: some View {
         CallListView(viewModel: CallListViewModel())
     }
+}
+
+
+extension Color {
+    static let primaryColor = Color.gray
+    static let lightGray = Color(red: 0.95, green: 0.95, blue: 0.95)
+
 }
