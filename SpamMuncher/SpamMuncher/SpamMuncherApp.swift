@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SpamMuncherApp: App {
+    @StateObject var callListViewModel = CallListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CallListView(viewModel: callListViewModel)
         }
     }
 }
