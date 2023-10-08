@@ -13,15 +13,25 @@ struct CallListView: View {
     @ObservedObject var viewModel: CallListViewModel
     
     var body: some View {
-        VStack {
-            SearchBar(searchText: $viewModel.searchText)
-            CustomSegmentedControl(selectedValue: $viewModel.selectedFilterType)
-                .padding(.horizontal, 0)
-            List(viewModel.filteredCalls) { call in
-                NavigationLink(destination: CallRowView(call: call)) {
+        ZStack {
+            Rectangle()
+                .fill(Gradient(colors: [.gray, .lightPrimary]))
+                .ignoresSafeArea()
+                .zIndex(0)
+            VStack {
+                SearchBar(searchText: $viewModel.searchText)
+                CustomSegmentedControl(selectedValue: $viewModel.selectedFilterType)
+                    .padding(.horizontal, 0)
+                    .zIndex(1)
+                List(viewModel.filteredCalls) { call in
                     CallRowView(call: call)
                 }
+                .scrollContentBackground(.hidden)
+                .listRowBackground(Color.clear)
+                .listStyle(PlainListStyle())
+                .background(Color.clear)
             }
+            .scrollContentBackground(.hidden)
         }
     }
 }
@@ -40,6 +50,9 @@ struct CallRowView: View {
                 .foregroundColor(call.callType.textColor)
             Text(call.callTime)
         }
+        .listRowBackground(Color.clear)
+        .padding([.leading, .trailing], 8)
+        .padding([.top, .bottom], 4)
     }
 }
 
@@ -58,11 +71,4 @@ struct CallListView_Previews: PreviewProvider {
     static var previews: some View {
         CallListView(viewModel: CallListViewModel())
     }
-}
-
-
-extension Color {
-    static let primaryColor = Color.gray
-    static let lightGray = Color(red: 0.95, green: 0.95, blue: 0.95)
-
 }

@@ -21,26 +21,21 @@ struct CustomSegmentedControl<T: Segmentable>: View {
             LazyHGrid(rows: columns, alignment: .center, spacing: 5) {
                 ForEach(Array(T.allCases.enumerated()), id: \.offset) { index, value in
                     let isSelected = selectedValue == value
-
                     ZStack {
                         Rectangle()
-                            .fill(Color.lightGray)
+                            .fill(isSelected ? Color.baseColor : Color.primaryColor)
                             .cornerRadius(20)
-                        Rectangle()
-                            .fill(isSelected ? Color.primaryColor : Color.lightGray)
-                            .cornerRadius(20)
-                            .padding(2)
                             .onTapGesture {
-                                withAnimation(.interactiveSpring(response: 0.3, dampingFraction: 2, blendDuration: 0.5)) {
+                                withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 2, blendDuration: 0.5)) {
                                     selectedValue = value
                                 }
                             }
                         Text(value.rawValue.capitalized)
                             .font(isSelected ? .headline : .subheadline)
-                            .foregroundColor(isSelected ? .white : .primary)
+                            .foregroundColor(isSelected ? .highlightColor : .lowLightColor)
                             .lineLimit(1)
                             .fixedSize(horizontal: false, vertical: true)
-                            .padding(12)
+                            .padding(.horizontal, 8)
                             .frame(minWidth: 100)
                     }
                 }
@@ -56,7 +51,7 @@ struct CustomSegmentedControl_Previews: PreviewProvider {
         case one, two, three
     }
 
-    @State private static var selectedExample: Example = .one
+    @State private static var selectedExample: Example = .two
 
     static var previews: some View {
         CustomSegmentedControl(selectedValue: $selectedExample)

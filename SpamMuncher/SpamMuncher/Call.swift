@@ -17,11 +17,11 @@ struct Call: Identifiable {
         var textColor: Color {
             switch self {
             case .normal:
-                return Color.black
+                return Color.primary
             case .suspicious:
-                return Color.orange
+                return Color.warningColor
             case .scam:
-                return Color.red
+                return Color.alertColor
             }
         }
         
