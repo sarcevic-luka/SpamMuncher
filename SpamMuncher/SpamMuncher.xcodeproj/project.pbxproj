@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* CallListView.swift */; };
 		F1DD6ED82AD2037B00E04728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DD6ED72AD2037B00E04728 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListModel.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
 		F1DD6ED52AD2037800E04728 /* CallListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				F1DD6EE32AD2084A00E04728 /* CallProcessor.swift */,
 				F1DD6ED52AD2037800E04728 /* CallListView.swift */,
 				F1DD6EE52AD211C700E04728 /* CallListViewModel.swift */,
+				F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
 				F1DD6ED92AD2037B00E04728 /* Preview Content */,
 			);
@@ -151,6 +154,7 @@
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
 				F1DD6EE42AD2084A00E04728 /* CallProcessor.swift in Sources */,
 				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
+				F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

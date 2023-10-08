@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct CallListView: View {
+    typealias FilterType = CallListViewModel.FilterType
+    
     @ObservedObject var viewModel: CallListViewModel
     
     var body: some View {
         VStack {
             SearchBar(searchText: $viewModel.searchText)
-            picker
+            FilterPicker
             List(viewModel.filteredCalls) { call in
                 NavigationLink(destination: CallRowView(call: call)) {
                     CallRowView(call: call)
@@ -22,12 +24,12 @@ struct CallListView: View {
         }
     }
     
-    var picker: some View {
-        Picker("Filter by type", selection: $viewModel.selectedCallType) {
-            Text("None").tag(nil as Call.CallType?)
-            Text("Normal").tag(Call.CallType.normal)
-            Text("Suspicious").tag(Call.CallType.suspicious)
-            Text("Scam").tag(Call.CallType.scam)
+    var FilterPicker: some View {
+        Picker("Filter by type", selection: $viewModel.selectedFilterType) {
+            Text("None").tag(FilterType.none)
+            Text("Normal").tag(FilterType.normal)
+            Text("Suspicious").tag(FilterType.suspicious)
+            Text("Scam").tag(FilterType.scam)
         }
         .pickerStyle(SegmentedPickerStyle())
         .padding(.horizontal)
