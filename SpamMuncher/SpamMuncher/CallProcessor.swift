@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CallProcessor {
+final class CallProcessor {
     static let shared = CallProcessor()
     
     // TODO: Move those to a database

@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-public protocol Segmentable: CaseIterable, RawRepresentable where RawValue == String {}
+public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable, T: RawRepresentable, T.RawValue == String  {
+    @Binding var selectedValue: T
 
-public struct AdaptiveTextSegmentedScrollControl <T: Segmentable>: View {
-    @Binding var selectedValue: T    
-    
     private let columns: [GridItem] = [
-        GridItem(.adaptive(minimum: 40))
-    ]
+            GridItem(.adaptive(minimum: 40))
+        ]
 
     public init(selectedValue: Binding<T>) {
         self._selectedValue = selectedValue
@@ -51,7 +49,7 @@ public struct AdaptiveTextSegmentedScrollControl <T: Segmentable>: View {
 }
 
 struct AdaptiveTextSegmentedScrollControl_Previews: PreviewProvider {
-    private enum Example: String, Segmentable {
+    private enum Example: String, CaseIterable {
         case one, two, three
     }
 
@@ -61,5 +59,3 @@ struct AdaptiveTextSegmentedScrollControl_Previews: PreviewProvider {
         AdaptiveTextSegmentedScrollControl(selectedValue: $selectedExample)
     }
 }
-
-

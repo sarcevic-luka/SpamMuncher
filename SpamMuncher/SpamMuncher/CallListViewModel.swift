@@ -10,7 +10,7 @@ import SwiftUI
 import MunchUI
 
 final class CallListViewModel: ObservableObject {
-    enum FilterType: String, Segmentable, CaseIterable {
+    enum FilterType: String, CaseIterable {
         case none = "ALL"
         case normal = "Normal"
         case suspicious = "Suspicious"

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */; };
-		F14A4CA72AD3361F002D46AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CA62AD3361F002D46AE /* Color.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
 		F14A4CB42AD3BEF2002D46AE /* MunchUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListModel.swift; sourceTree = "<group>"; };
-		F14A4CA62AD3361F002D46AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
 		F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveTextSegmentedScrollControl.swift; sourceTree = "<group>"; };
@@ -83,30 +81,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F14A4CA32AD335EF002D46AE /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				F14A4CA42AD335F4002D46AE /* Extensions */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		F14A4CA42AD335F4002D46AE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				F14A4CA52AD33614002D46AE /* SwiftUI */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F14A4CA52AD33614002D46AE /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				F14A4CA62AD3361F002D46AE /* Color.swift */,
-			);
-			path = SwiftUI;
-			sourceTree = "<group>";
-		};
 		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXGroup;
 			children = (
