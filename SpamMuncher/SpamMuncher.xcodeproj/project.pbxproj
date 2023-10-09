@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */; };
-		F14A4CA22AD31D7E002D46AE /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CA12AD31D7E002D46AE /* CustomSegmentedControl.swift */; };
 		F14A4CA72AD3361F002D46AE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CA62AD3361F002D46AE /* Color.swift */; };
+		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
+		F14A4CB42AD3BEF2002D46AE /* MunchUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F14A4CF72AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */; };
+		F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CF92AD3C236002D46AE /* Color_extension.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* CallListView.swift */; };
 		F1DD6ED82AD2037B00E04728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DD6ED72AD2037B00E04728 /* Assets.xcassets */; };
@@ -19,10 +23,37 @@
 		F1DD6EE62AD211C700E04728 /* CallListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6EE52AD211C700E04728 /* CallListViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F14A4CB12AD3BEF2002D46AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1DD6EC82AD2037800E04728 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F14A4CAC2AD3BEF2002D46AE;
+			remoteInfo = MunchUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F14A4CB82AD3BEF2002D46AE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F14A4CB42AD3BEF2002D46AE /* MunchUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListModel.swift; sourceTree = "<group>"; };
-		F14A4CA12AD31D7E002D46AE /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		F14A4CA62AD3361F002D46AE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
+		F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveTextSegmentedScrollControl.swift; sourceTree = "<group>"; };
+		F14A4CF92AD3C236002D46AE /* Color_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
 		F1DD6ED52AD2037800E04728 /* CallListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListView.swift; sourceTree = "<group>"; };
@@ -34,10 +65,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F14A4CAA2AD3BEF2002D46AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1DD6ECD2AD2037800E04728 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,10 +107,45 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
+			isa = PBXGroup;
+			children = (
+				F14A4CF82AD3C1F9002D46AE /* Colors */,
+				F14A4CF32AD3C063002D46AE /* Components */,
+				F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */,
+			);
+			path = MunchUI;
+			sourceTree = "<group>";
+		};
+		F14A4CF32AD3C063002D46AE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F14A4CF42AD3C06E002D46AE /* Views */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F14A4CF42AD3C06E002D46AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F14A4CF82AD3C1F9002D46AE /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				F14A4CF92AD3C236002D46AE /* Color_extension.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		F1DD6EC72AD2037800E04728 = {
 			isa = PBXGroup;
 			children = (
 				F1DD6ED22AD2037800E04728 /* SpamMuncher */,
+				F14A4CAE2AD3BEF2002D46AE /* MunchUI */,
 				F1DD6ED12AD2037800E04728 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				F1DD6ED02AD2037800E04728 /* SpamMuncher.app */,
+				F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +171,6 @@
 				F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
 				F1DD6ED92AD2037B00E04728 /* Preview Content */,
-				F14A4CA12AD31D7E002D46AE /* CustomSegmentedControl.swift */,
 			);
 			path = SpamMuncher;
 			sourceTree = "<group>";
@@ -111,7 +185,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		F14A4CA82AD3BEF2002D46AE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		F14A4CAC2AD3BEF2002D46AE /* MunchUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F14A4CB52AD3BEF2002D46AE /* Build configuration list for PBXNativeTarget "MunchUI" */;
+			buildPhases = (
+				F14A4CA82AD3BEF2002D46AE /* Headers */,
+				F14A4CA92AD3BEF2002D46AE /* Sources */,
+				F14A4CAA2AD3BEF2002D46AE /* Frameworks */,
+				F14A4CAB2AD3BEF2002D46AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MunchUI;
+			productName = MunchUI;
+			productReference = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		F1DD6ECF2AD2037800E04728 /* SpamMuncher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1DD6EDE2AD2037B00E04728 /* Build configuration list for PBXNativeTarget "SpamMuncher" */;
@@ -119,10 +222,12 @@
 				F1DD6ECC2AD2037800E04728 /* Sources */,
 				F1DD6ECD2AD2037800E04728 /* Frameworks */,
 				F1DD6ECE2AD2037800E04728 /* Resources */,
+				F14A4CB82AD3BEF2002D46AE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F14A4CB22AD3BEF2002D46AE /* PBXTargetDependency */,
 			);
 			name = SpamMuncher;
 			productName = SpamMuncher;
@@ -139,6 +244,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					F14A4CAC2AD3BEF2002D46AE = {
+						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
+					};
 					F1DD6ECF2AD2037800E04728 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -158,11 +267,19 @@
 			projectRoot = "";
 			targets = (
 				F1DD6ECF2AD2037800E04728 /* SpamMuncher */,
+				F14A4CAC2AD3BEF2002D46AE /* MunchUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F14A4CAB2AD3BEF2002D46AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1DD6ECE2AD2037800E04728 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,11 +292,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F14A4CA92AD3BEF2002D46AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F14A4CF72AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift in Sources */,
+				F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1DD6ECC2AD2037800E04728 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14A4CA22AD31D7E002D46AE /* CustomSegmentedControl.swift in Sources */,
 				F1DD6EE62AD211C700E04728 /* CallListViewModel.swift in Sources */,
 				F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */,
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
@@ -192,7 +317,84 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F14A4CB22AD3BEF2002D46AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F14A4CAC2AD3BEF2002D46AE /* MunchUI */;
+			targetProxy = F14A4CB12AD3BEF2002D46AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F14A4CB62AD3BEF2002D46AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JUPH6D63HP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = luka.sarcevic.MunchUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F14A4CB72AD3BEF2002D46AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = JUPH6D63HP;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = luka.sarcevic.MunchUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F1DD6EDC2AD2037B00E04728 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -310,6 +512,7 @@
 		F1DD6EDF2AD2037B00E04728 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -339,6 +542,7 @@
 		F1DD6EE02AD2037B00E04728 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -368,6 +572,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F14A4CB52AD3BEF2002D46AE /* Build configuration list for PBXNativeTarget "MunchUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F14A4CB62AD3BEF2002D46AE /* Debug */,
+				F14A4CB72AD3BEF2002D46AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F1DD6ECB2AD2037800E04728 /* Build configuration list for PBXProject "SpamMuncher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

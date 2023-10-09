@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MunchUI
 
 struct CallListView: View {
     typealias FilterType = CallListViewModel.FilterType
@@ -20,7 +21,7 @@ struct CallListView: View {
                 .zIndex(0)
             VStack {
                 SearchBar(searchText: $viewModel.searchText)
-                CustomSegmentedControl(selectedValue: $viewModel.selectedFilterType)
+                AdaptiveTextSegmentedScrollControl(selectedValue: $viewModel.selectedFilterType)
                     .padding(.horizontal, 0)
                     .zIndex(1)
                 List(viewModel.filteredCalls) { call in

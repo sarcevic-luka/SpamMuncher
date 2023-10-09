@@ -1,22 +1,26 @@
 //
-//  CustomSegmentedControl.swift
-//  SpamMuncher
+//  AdaptiveTextSegmentedScrollControl.swift
+//  MunchUI
 //
-//  Created by Code Forge on 08.10.2023..
+//  Created by Code Forge on 09.10.2023..
 //
 
 import SwiftUI
 
-protocol Segmentable: CaseIterable, RawRepresentable where RawValue == String {}
+public protocol Segmentable: CaseIterable, RawRepresentable where RawValue == String {}
 
-struct CustomSegmentedControl<T: Segmentable>: View {
-    @Binding var selectedValue: T
-
+public struct AdaptiveTextSegmentedScrollControl <T: Segmentable>: View {
+    @Binding var selectedValue: T    
+    
     private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 40))
     ]
 
-    var body: some View {
+    public init(selectedValue: Binding<T>) {
+        self._selectedValue = selectedValue
+    }
+
+    public var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: columns, alignment: .center, spacing: 5) {
                 ForEach(Array(T.allCases.enumerated()), id: \.offset) { index, value in
@@ -46,7 +50,7 @@ struct CustomSegmentedControl<T: Segmentable>: View {
     }
 }
 
-struct CustomSegmentedControl_Previews: PreviewProvider {
+struct AdaptiveTextSegmentedScrollControl_Previews: PreviewProvider {
     private enum Example: String, Segmentable {
         case one, two, three
     }
@@ -54,6 +58,8 @@ struct CustomSegmentedControl_Previews: PreviewProvider {
     @State private static var selectedExample: Example = .two
 
     static var previews: some View {
-        CustomSegmentedControl(selectedValue: $selectedExample)
+        AdaptiveTextSegmentedScrollControl(selectedValue: $selectedExample)
     }
 }
+
+
