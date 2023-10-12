@@ -13,7 +13,12 @@ struct SpamMuncherApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CallListView(viewModel: callListViewModel)
+            NavigationView {
+                CallListView(viewModel: CallListViewModel())
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+            .preferredColorScheme(.dark)
         }
     }
 }
+
