@@ -27,12 +27,10 @@ struct CallListView: View {
                 List(viewModel.filteredCalls) { call in
                     CallRowView(call: call)
                 }
-                .scrollContentBackground(.hidden)
                 .listRowBackground(Color.clear)
                 .listStyle(PlainListStyle())
                 .background(Color.clear)
             }
-            .scrollContentBackground(.hidden)
         }
     }
 }
