@@ -13,6 +13,8 @@
 		F14A4CB42AD3BEF2002D46AE /* MunchUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F14A4CF72AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */; };
 		F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CF92AD3C236002D46AE /* Color_extension.swift */; };
+		F14A4DC52AD47EE5002D46AE /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */; };
+		F14A4DC92AD47EE5002D46AE /* MunchCallDirectory.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* CallListView.swift */; };
 		F1DD6ED82AD2037B00E04728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DD6ED72AD2037B00E04728 /* Assets.xcassets */; };
@@ -30,6 +32,13 @@
 			remoteGlobalIDString = F14A4CAC2AD3BEF2002D46AE;
 			remoteInfo = MunchUI;
 		};
+		F14A4DC72AD47EE5002D46AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1DD6EC82AD2037800E04728 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F14A4DC12AD47EE5002D46AE;
+			remoteInfo = MunchCallDirectory;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,14 +53,31 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F14A4DCA2AD47EE5002D46AE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F14A4DC92AD47EE5002D46AE /* MunchCallDirectory.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F11182D02AD87056000DBB4F /* SpamMuncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpamMuncher.entitlements; sourceTree = "<group>"; };
+		F11182D12AD870AF000DBB4F /* MunchCallDirectory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MunchCallDirectory.entitlements; sourceTree = "<group>"; };
+		F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberManager.swift; sourceTree = "<group>"; };
 		F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListModel.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
 		F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveTextSegmentedScrollControl.swift; sourceTree = "<group>"; };
 		F14A4CF92AD3C236002D46AE /* Color_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color_extension.swift; sourceTree = "<group>"; };
+		F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MunchCallDirectory.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
+		F14A4DC62AD47EE5002D46AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
 		F1DD6ED52AD2037800E04728 /* CallListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListView.swift; sourceTree = "<group>"; };
@@ -64,6 +90,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		F14A4CAA2AD3BEF2002D46AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F14A4DBF2AD47EE5002D46AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,11 +148,22 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		F14A4DC32AD47EE5002D46AE /* MunchCallDirectory */ = {
+			isa = PBXGroup;
+			children = (
+				F11182D12AD870AF000DBB4F /* MunchCallDirectory.entitlements */,
+				F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */,
+				F14A4DC62AD47EE5002D46AE /* Info.plist */,
+			);
+			path = MunchCallDirectory;
+			sourceTree = "<group>";
+		};
 		F1DD6EC72AD2037800E04728 = {
 			isa = PBXGroup;
 			children = (
 				F1DD6ED22AD2037800E04728 /* SpamMuncher */,
 				F14A4CAE2AD3BEF2002D46AE /* MunchUI */,
+				F14A4DC32AD47EE5002D46AE /* MunchCallDirectory */,
 				F1DD6ED12AD2037800E04728 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +173,7 @@
 			children = (
 				F1DD6ED02AD2037800E04728 /* SpamMuncher.app */,
 				F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */,
+				F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,7 +181,9 @@
 		F1DD6ED22AD2037800E04728 /* SpamMuncher */ = {
 			isa = PBXGroup;
 			children = (
+				F11182D02AD87056000DBB4F /* SpamMuncher.entitlements */,
 				F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */,
+				F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */,
 				F1DD6EE12AD2040100E04728 /* Call.swift */,
 				F1DD6EE32AD2084A00E04728 /* CallProcessor.swift */,
 				F1DD6ED52AD2037800E04728 /* CallListView.swift */,
@@ -188,6 +235,23 @@
 			productReference = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		F14A4DC12AD47EE5002D46AE /* MunchCallDirectory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F14A4DCD2AD47EE5002D46AE /* Build configuration list for PBXNativeTarget "MunchCallDirectory" */;
+			buildPhases = (
+				F14A4DBE2AD47EE5002D46AE /* Sources */,
+				F14A4DBF2AD47EE5002D46AE /* Frameworks */,
+				F14A4DC02AD47EE5002D46AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MunchCallDirectory;
+			productName = MunchCallDirectory;
+			productReference = F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F1DD6ECF2AD2037800E04728 /* SpamMuncher */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1DD6EDE2AD2037B00E04728 /* Build configuration list for PBXNativeTarget "SpamMuncher" */;
@@ -196,11 +260,13 @@
 				F1DD6ECD2AD2037800E04728 /* Frameworks */,
 				F1DD6ECE2AD2037800E04728 /* Resources */,
 				F14A4CB82AD3BEF2002D46AE /* Embed Frameworks */,
+				F14A4DCA2AD47EE5002D46AE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				F14A4CB22AD3BEF2002D46AE /* PBXTargetDependency */,
+				F14A4DC82AD47EE5002D46AE /* PBXTargetDependency */,
 			);
 			name = SpamMuncher;
 			productName = SpamMuncher;
@@ -244,12 +310,20 @@
 			targets = (
 				F1DD6ECF2AD2037800E04728 /* SpamMuncher */,
 				F14A4CAC2AD3BEF2002D46AE /* MunchUI */,
+				F14A4DC12AD47EE5002D46AE /* MunchCallDirectory */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		F14A4CAB2AD3BEF2002D46AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F14A4DC02AD47EE5002D46AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,6 +351,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F14A4DBE2AD47EE5002D46AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F14A4DC52AD47EE5002D46AE /* CallDirectoryHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1DD6ECC2AD2037800E04728 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -285,7 +367,6 @@
 				F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */,
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
 				F1DD6EE42AD2084A00E04728 /* CallProcessor.swift in Sources */,
-				F14A4CA72AD3361F002D46AE /* Color.swift in Sources */,
 				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
 				F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */,
 			);
@@ -298,6 +379,11 @@
 			isa = PBXTargetDependency;
 			target = F14A4CAC2AD3BEF2002D46AE /* MunchUI */;
 			targetProxy = F14A4CB12AD3BEF2002D46AE /* PBXContainerItemProxy */;
+		};
+		F14A4DC82AD47EE5002D46AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F14A4DC12AD47EE5002D46AE /* MunchCallDirectory */;
+			targetProxy = F14A4DC72AD47EE5002D46AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -368,6 +454,60 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F14A4DCB2AD47EE5002D46AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = MunchCallDirectory/MunchCallDirectory.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JUPH6D63HP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MunchCallDirectory/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MunchCallDirectory;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = luka.sarcevic.SpamMuncher.MunchCallDirectory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F14A4DCC2AD47EE5002D46AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_ENTITLEMENTS = MunchCallDirectory/MunchCallDirectory.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JUPH6D63HP;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MunchCallDirectory/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MunchCallDirectory;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = luka.sarcevic.SpamMuncher.MunchCallDirectory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -491,6 +631,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpamMuncher/SpamMuncher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpamMuncher/Preview Content\"";
@@ -521,6 +662,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpamMuncher/SpamMuncher.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpamMuncher/Preview Content\"";
@@ -553,6 +695,15 @@
 			buildConfigurations = (
 				F14A4CB62AD3BEF2002D46AE /* Debug */,
 				F14A4CB72AD3BEF2002D46AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F14A4DCD2AD47EE5002D46AE /* Build configuration list for PBXNativeTarget "MunchCallDirectory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F14A4DCB2AD47EE5002D46AE /* Debug */,
+				F14A4DCC2AD47EE5002D46AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
