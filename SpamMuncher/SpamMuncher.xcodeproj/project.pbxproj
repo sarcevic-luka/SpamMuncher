@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F11182F22AD87410000DBB4F /* PhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */; };
 		F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
@@ -363,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F11182F22AD87410000DBB4F /* PhoneNumberManager.swift in Sources */,
 				F1DD6EE62AD211C700E04728 /* CallListViewModel.swift in Sources */,
 				F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */,
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
