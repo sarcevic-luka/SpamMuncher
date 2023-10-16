@@ -16,7 +16,7 @@
 		F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CF92AD3C236002D46AE /* Color_extension.swift */; };
 		F14A4DC52AD47EE5002D46AE /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */; };
 		F14A4DC92AD47EE5002D46AE /* MunchCallDirectory.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F1C23B4C2AD881D300BD2B4A /* NumberEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* NumberEntryView.swift */; };
+		F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* CallListView.swift */; };
 		F1DD6ED82AD2037B00E04728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DD6ED72AD2037B00E04728 /* Assets.xcassets */; };
@@ -80,7 +80,7 @@
 		F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MunchCallDirectory.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		F14A4DC62AD47EE5002D46AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1C23B4B2AD881D300BD2B4A /* NumberEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberEntryView.swift; sourceTree = "<group>"; };
+		F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopup.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
 		F1DD6ED52AD2037800E04728 /* CallListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListView.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				F1DD6EE12AD2040100E04728 /* Call.swift */,
 				F1DD6EE32AD2084A00E04728 /* CallProcessor.swift */,
 				F1DD6ED52AD2037800E04728 /* CallListView.swift */,
-				F1C23B4B2AD881D300BD2B4A /* NumberEntryView.swift */,
+				F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */,
 				F1DD6EE52AD211C700E04728 /* CallListViewModel.swift */,
 				F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
@@ -373,7 +373,7 @@
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
 				F1DD6EE42AD2084A00E04728 /* CallProcessor.swift in Sources */,
 				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
-				F1C23B4C2AD881D300BD2B4A /* NumberEntryView.swift in Sources */,
+				F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */,
 				F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
