@@ -128,6 +128,25 @@
 			path = "Phone number popup";
 			sourceTree = "<group>";
 		};
+		F1363B982AE3DD8C000EC28E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F1363B992AE3DD97000EC28E /* Call list */,
+				F1363B472AE3D1F5000EC28E /* Phone number popup */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F1363B992AE3DD97000EC28E /* Call list */ = {
+			isa = PBXGroup;
+			children = (
+				F1DD6ED52AD2037800E04728 /* CallListView.swift */,
+				F1DD6EE52AD211C700E04728 /* CallListViewModel.swift */,
+				F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */,
+			);
+			path = "Call list";
+			sourceTree = "<group>";
+		};
 		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,15 +214,12 @@
 		F1DD6ED22AD2037800E04728 /* SpamMuncher */ = {
 			isa = PBXGroup;
 			children = (
+				F1363B982AE3DD8C000EC28E /* Base */,
 				F11182D02AD87056000DBB4F /* SpamMuncher.entitlements */,
 				F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */,
 				F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */,
 				F1DD6EE12AD2040100E04728 /* Call.swift */,
 				F1DD6EE32AD2084A00E04728 /* CallProcessor.swift */,
-				F1DD6ED52AD2037800E04728 /* CallListView.swift */,
-				F1363B472AE3D1F5000EC28E /* Phone number popup */,
-				F1DD6EE52AD211C700E04728 /* CallListViewModel.swift */,
-				F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
 				F1DD6ED92AD2037B00E04728 /* Preview Content */,
 			);
