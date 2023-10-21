@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F11182F22AD87410000DBB4F /* PhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */; };
+		F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */; };
 		F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
@@ -72,6 +73,7 @@
 		F11182D02AD87056000DBB4F /* SpamMuncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpamMuncher.entitlements; sourceTree = "<group>"; };
 		F11182D12AD870AF000DBB4F /* MunchCallDirectory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MunchCallDirectory.entitlements; sourceTree = "<group>"; };
 		F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberManager.swift; sourceTree = "<group>"; };
+		F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopupViewModel.swift; sourceTree = "<group>"; };
 		F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListModel.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
@@ -117,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1363B472AE3D1F5000EC28E /* Phone number popup */ = {
+			isa = PBXGroup;
+			children = (
+				F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */,
+				F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */,
+			);
+			path = "Phone number popup";
+			sourceTree = "<group>";
+		};
 		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +201,7 @@
 				F1DD6EE12AD2040100E04728 /* Call.swift */,
 				F1DD6EE32AD2084A00E04728 /* CallProcessor.swift */,
 				F1DD6ED52AD2037800E04728 /* CallListView.swift */,
-				F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */,
+				F1363B472AE3D1F5000EC28E /* Phone number popup */,
 				F1DD6EE52AD211C700E04728 /* CallListViewModel.swift */,
 				F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
@@ -367,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */,
 				F11182F22AD87410000DBB4F /* PhoneNumberManager.swift in Sources */,
 				F1DD6EE62AD211C700E04728 /* CallListViewModel.swift in Sources */,
 				F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */,

@@ -67,8 +67,7 @@ private extension CallListView {
     var phoneNumberPopup: some View {
         PhoneNumberPopup(
             isPresented: $viewModel.isPhoneNumberPopupVisible,
-            phoneNumber: $viewModel.enteredPhoneNumber,
-            isValid: $viewModel.isPhoneNumberValid,
+            viewModel: viewModel.phoneNumberPopupViewModel,
             onAdd: viewModel.handleAddPhoneNumber
         )
     }

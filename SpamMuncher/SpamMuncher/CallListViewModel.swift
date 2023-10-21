@@ -33,11 +33,12 @@ final class CallListViewModel: ObservableObject {
     // Search variables
     @Published var searchText: String = ""
     @Published var selectedFilterType: FilterType = .none
-    
+
     // State for PhoneNumberPopup
     @Published var isPhoneNumberPopupVisible: Bool = false
     @Published var enteredPhoneNumber: String = ""
     @Published var isPhoneNumberValid: Bool? = nil
+    @Published var phoneNumberPopupViewModel = PhoneNumberPopupViewModel()
 
     var filteredCalls: [Call] {
         callListModel.filterCalls(by: searchText, selectedCallType: selectedFilterType.callType)
