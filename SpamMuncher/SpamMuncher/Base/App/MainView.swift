@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import MunchUI
 
 struct MainView: View {
     var body: some View {
         TabView {
-            BlockListView(viewModel: BlockListViewModel())
-                .tabItem {
-                    Label("BlockList", systemImage: "shield.fill")
-                }
-            
+            NavigationView {
+                BlockListView(viewModel: BlockListViewModel())
+            }
+            .tabItem {
+                Label("BlockList", systemImage: "shield.fill")
+            }
             ContactsView()
                 .tabItem {
                     Label("Contacts", systemImage: "person.fill")
@@ -25,5 +27,6 @@ struct MainView: View {
                     Label("Messages", systemImage: "message.fill")
                 }
         }
+        .accentColor(.alertColor)
     }
 }

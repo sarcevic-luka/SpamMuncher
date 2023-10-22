@@ -1,5 +1,5 @@
 //
-//  CallListView.swift
+//  BlockListView.swift
 //  SpamMuncher
 //
 //  Created by Code Forge on 07.10.2023..
@@ -12,13 +12,15 @@ struct BlockListView: View {
     @ObservedObject var viewModel: BlockListViewModel
 
     var body: some View {
-        ZStack {
-            BackgroundGradientView()
-            mainContent
-            if viewModel.isPhoneNumberPopupVisible {
-                phoneNumberPopup
+            ZStack {
+                BackgroundGradientView()
+                mainContent
+                if viewModel.isPhoneNumberPopupVisible {
+                    phoneNumberPopup
+                }
             }
-        }
+        .navigationBarTitle("BlockList", displayMode: .inline)
+        .navigationBarItems(trailing: addButton)
     }
 }
 
@@ -30,7 +32,6 @@ private extension BlockListView {
             SearchBar(searchText: $viewModel.searchText)
             segmentedControl
             blockedContactsList
-            addButton
         }
     }
 
@@ -49,8 +50,12 @@ private extension BlockListView {
     }
 
     var addButton: some View {
-        Button("Add Blocked Contact") {
+        Button(action: {
             viewModel.togglePhoneNumberPopup()
+        }) {
+            Image(systemName: "plus")
+                .foregroundColor(.secondary) 
+                .font(.system(size: 20))
         }
         .padding()
     }

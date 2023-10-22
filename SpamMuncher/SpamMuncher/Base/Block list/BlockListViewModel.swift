@@ -1,5 +1,5 @@
 //
-//  CallListViewModel.swift
+//  BlockListViewModel.swift
 //  SpamMuncher
 //
 //  Created by Code Forge on 08.10.2023..
