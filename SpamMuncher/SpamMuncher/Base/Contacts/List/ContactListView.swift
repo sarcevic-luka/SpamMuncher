@@ -16,8 +16,14 @@ struct ContactListView: View {
             ZStack {
                 BackgroundGradientView()
                 mainContent
+                if viewModel.isAppleSupportPopupVisible {
+                    withAnimation(.easeInOut) {
+                        appleSupportPopup
+                    }
+                }
             }
             .navigationBarTitle("Contacts", displayMode: .inline)
+            .navigationBarItems(trailing: supportButton)
             .searchable(text: $viewModel.searchText)
             .onAppear(perform: viewModel.fetchContacts)
         }
@@ -45,6 +51,27 @@ private extension ContactListView {
         }
         .listRowBackground(Color.clear)
         .listStyle(PlainListStyle())
+    }
+
+    var supportButton: some View {
+        Button(action: {
+            withAnimation(.easeInOut) {
+                viewModel.isAppleSupportPopupVisible.toggle()
+            }
+        }) {
+            Image(systemName: "exclamationmark.circle")
+                .resizable()
+                .frame(width: 24, height: 24)
+        }
+        .padding()
+    }
+
+    var appleSupportPopup: some View {
+        AppleSupportPopupView(
+            isPresented: $viewModel.isAppleSupportPopupVisible,
+            title: "Apple Support",
+            description: "Would you like to visit Apple Support to read about 'Turn on Silence Unknown Callers'?"
+        )
     }
 
     func contactRows(for key: Character) -> some View {

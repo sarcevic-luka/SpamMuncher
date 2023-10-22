@@ -12,6 +12,7 @@ class ContactsViewModel: ObservableObject {
     @Published var contactsDictionary: [Character: [Contact]] = [:]
     @Published var fetchError: Error?
     @Published var searchText: String = ""
+    @Published var isAppleSupportPopupVisible: Bool = false
 
     func fetchContacts() {
         let contactStore = CNContactStore()

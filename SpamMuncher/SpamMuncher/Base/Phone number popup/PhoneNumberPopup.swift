@@ -28,13 +28,11 @@ private extension PhoneNumberPopup {
             Text("Enter Phone Number")
                 .font(.headline)
                 .foregroundColor(.baseColor)
-            
             numberInputField
             
             if let valid = viewModel.isValid, !valid {
                 validationWarning
             }
-            
             actionButtons
         }
         .padding()

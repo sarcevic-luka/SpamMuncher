@@ -9,12 +9,10 @@ import SwiftUI
 
 public struct ButtonStyling {
     var backgroundColor: Color
-    var borderColor: Color
     var textColor: Color
-    var borderWidth: CGFloat
 
-    public static let primary = ButtonStyling(backgroundColor: .primaryColor, borderColor: .baseColor, textColor: .white, borderWidth: 0)
-    public static let secondary = ButtonStyling(backgroundColor: .clear, borderColor: .baseColor, textColor: .baseColor, borderWidth: 2)
+    public static let primary = ButtonStyling(backgroundColor: .black, textColor: .highlightColor)
+    public static let secondary = ButtonStyling(backgroundColor: .alertColor, textColor: .baseColor)
 }
 
 public struct CustomButtonStyle: ButtonStyle {
@@ -25,7 +23,6 @@ public struct CustomButtonStyle: ButtonStyle {
             .padding()
             .background(style.backgroundColor)
             .foregroundColor(style.textColor)
-            .border(style.borderColor, width: style.borderWidth)
             .cornerRadius(8)
     }
 }
