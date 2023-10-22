@@ -8,9 +8,9 @@
 import SwiftUI
 import MunchUI
 
-struct CallListView: View {
-    @ObservedObject var viewModel: CallListViewModel
-    
+struct BlockListView: View {
+    @ObservedObject var viewModel: BlockListViewModel
+
     var body: some View {
         ZStack {
             BackgroundGradientView()
@@ -24,37 +24,37 @@ struct CallListView: View {
 
 // MARK: - Private Views
 
-private extension CallListView {
+private extension BlockListView {
     var mainContent: some View {
         VStack {
             SearchBar(searchText: $viewModel.searchText)
             segmentedControl
-            callsList
+            blockedContactsList
             addButton
         }
     }
-    
+
     var segmentedControl: some View {
         AdaptiveTextSegmentedScrollControl(selectedValue: $viewModel.selectedFilterType)
             .padding(.horizontal, 0)
             .zIndex(1)
     }
-    
-    var callsList: some View {
-        List(viewModel.filteredCalls) { call in
-            CallRowView(call: call)
+
+    var blockedContactsList: some View {
+        List(viewModel.filteredContacts) { contact in
+            ContactRowView(contact: contact)
         }
         .listRowBackground(Color.clear)
         .listStyle(PlainListStyle())
     }
-    
+
     var addButton: some View {
-        Button("Add Phone Number") {
+        Button("Add Blocked Contact") {
             viewModel.togglePhoneNumberPopup()
         }
         .padding()
     }
-    
+
     var phoneNumberPopup: some View {
         PhoneNumberPopup(
             isPresented: $viewModel.isPhoneNumberPopupVisible,
@@ -64,19 +64,14 @@ private extension CallListView {
     }
 }
 
-struct CallRowView: View {
-    let call: Call
-    
+struct ContactRowView: View {
+    let contact: PhoneNumber
+
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(call.callerName)
-                Text(call.callerNumber)
-            }
+            Text(contact.number.description)
             Spacer()
-            Text(call.callType.description)
-                .foregroundColor(call.callType.textColor)
-            Text(call.callTime)
+            Text(contact.label)
         }
         .listRowBackground(Color.clear)
         .padding([.leading, .trailing], 8)
@@ -86,8 +81,8 @@ struct CallRowView: View {
 
 // MARK: - Previews
 
-struct CallListView_Previews: PreviewProvider {
+struct BlockListView_Previews: PreviewProvider {
     static var previews: some View {
-        CallListView(viewModel: CallListViewModel())
+        BlockListView(viewModel: BlockListViewModel())
     }
 }
