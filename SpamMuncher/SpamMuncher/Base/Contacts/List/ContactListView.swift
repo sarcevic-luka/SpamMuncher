@@ -10,7 +10,7 @@ import MunchUI
 
 struct ContactListView: View {
     @ObservedObject var viewModel: ContactsViewModel
-
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,11 +22,11 @@ struct ContactListView: View {
             .onAppear(perform: viewModel.fetchContacts)
         }
     }
-
+    
     private var mainContent: some View {
         Group {
             if viewModel.contacts().isEmpty && !viewModel.searchText.isEmpty {
-                noResultsView
+                InfoView(imageName: "magnifyingglass", message: "No results found for \"\(viewModel.searchText)\"")
             } else {
                 contactsList
             }
@@ -35,7 +35,7 @@ struct ContactListView: View {
 }
 
 private extension ContactListView {
-    private var contactsList: some View {
+    var contactsList: some View {
         List {
             ForEach(viewModel.contacts().keys.sorted(), id: \.self) { key in
                 Section(header: Text(String(key))) {
@@ -47,24 +47,12 @@ private extension ContactListView {
         .listStyle(PlainListStyle())
     }
 
-    private func contactRows(for key: Character) -> some View {
+    func contactRows(for key: Character) -> some View {
         ForEach(viewModel.contacts()[key]!, id: \.phoneNumber) { contact in
             NavigationLink(destination: ContactDetailView(contact: contact)) {
                 Text(contact.name)
             }
             .listRowBackground(Color.clear)
         }
-    }
-    
-    private var noResultsView: some View {
-        VStack {
-            Image(systemName: "magnifyingglass")
-                .font(.largeTitle)
-                .padding(.bottom)
-            Text("No results found for \"\(viewModel.searchText)\"")
-                .multilineTextAlignment(.center)
-        }
-        .foregroundColor(.lowLightColor)
-        .padding(.horizontal)
     }
 }

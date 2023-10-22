@@ -31,6 +31,7 @@
 		F167ACE32AE578FC0045A325 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACE22AE578FC0045A325 /* ContactViewModel.swift */; };
 		F167ACE72AE579C60045A325 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACE62AE579C60045A325 /* ContactDetailView.swift */; };
 		F167ACED2AE581150045A325 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACEC2AE581150045A325 /* Contact.swift */; };
+		F167ACEF2AE58DB50045A325 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACEE2AE58DB50045A325 /* InfoView.swift */; };
 		F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* BlockListView.swift */; };
@@ -107,6 +108,7 @@
 		F167ACE22AE578FC0045A325 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		F167ACE62AE579C60045A325 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		F167ACEC2AE581150045A325 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		F167ACEE2AE58DB50045A325 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopup.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */,
 				F167ACCD2AE54B730045A325 /* SearchBar.swift */,
+				F167ACEE2AE58DB50045A325 /* InfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */,
 				F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */,
 				F167ACCE2AE54B730045A325 /* SearchBar.swift in Sources */,
+				F167ACEF2AE58DB50045A325 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

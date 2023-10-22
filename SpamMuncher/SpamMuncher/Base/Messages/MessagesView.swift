@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import MunchUI
 
 struct MessagesView: View {
     var body: some View {
         NavigationView {
-            Text("Messages content goes here")
-                .navigationBarTitle("Messages", displayMode: .inline)
+            ZStack {
+                BackgroundGradientView()
+                InfoView(imageName: "hammer.fill", message: "Currently under construction!")
+            }
+            .navigationBarTitle("Messages", displayMode: .inline)
         }
     }
 }
-
