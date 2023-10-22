@@ -17,7 +17,7 @@ struct MainView: View {
             .tabItem {
                 Label("BlockList", systemImage: "shield.fill")
             }
-            ContactsView()
+            ContactListView(viewModel: ContactsViewModel())
                 .tabItem {
                     Label("Contacts", systemImage: "person.fill")
                 }

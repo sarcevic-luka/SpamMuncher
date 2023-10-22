@@ -25,9 +25,12 @@
 		F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */; };
 		F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */; };
 		F167ACCE2AE54B730045A325 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACCD2AE54B730045A325 /* SearchBar.swift */; };
-		F167ACD32AE5575B0045A325 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD22AE5575B0045A325 /* ContactsView.swift */; };
+		F167ACD32AE5575B0045A325 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD22AE5575B0045A325 /* ContactListView.swift */; };
 		F167ACD62AE557820045A325 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD52AE557820045A325 /* MessagesView.swift */; };
 		F167ACD82AE557A80045A325 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD72AE557A80045A325 /* MainView.swift */; };
+		F167ACE32AE578FC0045A325 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACE22AE578FC0045A325 /* ContactViewModel.swift */; };
+		F167ACE72AE579C60045A325 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACE62AE579C60045A325 /* ContactDetailView.swift */; };
+		F167ACED2AE581150045A325 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACEC2AE581150045A325 /* Contact.swift */; };
 		F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* BlockListView.swift */; };
@@ -98,9 +101,12 @@
 		F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOverlayView.swift; sourceTree = "<group>"; };
 		F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
 		F167ACCD2AE54B730045A325 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		F167ACD22AE5575B0045A325 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		F167ACD22AE5575B0045A325 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		F167ACD52AE557820045A325 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		F167ACD72AE557A80045A325 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F167ACE22AE578FC0045A325 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		F167ACE62AE579C60045A325 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
+		F167ACEC2AE581150045A325 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopup.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
@@ -247,7 +253,8 @@
 		F167ACCF2AE556A30045A325 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				F167ACD22AE5575B0045A325 /* ContactsView.swift */,
+				F167ACE52AE5791F0045A325 /* Details */,
+				F167ACE42AE579180045A325 /* List */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -281,6 +288,24 @@
 			children = (
 			);
 			path = "UI components";
+			sourceTree = "<group>";
+		};
+		F167ACE42AE579180045A325 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				F167ACD22AE5575B0045A325 /* ContactListView.swift */,
+				F167ACE22AE578FC0045A325 /* ContactViewModel.swift */,
+				F167ACEC2AE581150045A325 /* Contact.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		F167ACE52AE5791F0045A325 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				F167ACE62AE579C60045A325 /* ContactDetailView.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		F1DD6EC72AD2037800E04728 = {
@@ -496,14 +521,17 @@
 				F167ACD82AE557A80045A325 /* MainView.swift in Sources */,
 				F1DD6EE62AD211C700E04728 /* BlockListViewModel.swift in Sources */,
 				F167ACC22AE5182F0045A325 /* PhoneNumber.swift in Sources */,
+				F167ACED2AE581150045A325 /* Contact.swift in Sources */,
 				F1DD6ED62AD2037800E04728 /* BlockListView.swift in Sources */,
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
 				F1DD6EE42AD2084A00E04728 /* CallProcessor.swift in Sources */,
 				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
 				F167ACC42AE518340045A325 /* PhoneNumberType.swift in Sources */,
+				F167ACE72AE579C60045A325 /* ContactDetailView.swift in Sources */,
 				F167ACD62AE557820045A325 /* MessagesView.swift in Sources */,
 				F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */,
-				F167ACD32AE5575B0045A325 /* ContactsView.swift in Sources */,
+				F167ACE32AE578FC0045A325 /* ContactViewModel.swift in Sources */,
+				F167ACD32AE5575B0045A325 /* ContactListView.swift in Sources */,
 				F167ACC32AE518320045A325 /* PhoneNumberManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +802,7 @@
 				DEVELOPMENT_TEAM = JUPH6D63HP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = Yes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -805,6 +834,7 @@
 				DEVELOPMENT_TEAM = JUPH6D63HP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSContactsUsageDescription = Yes;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
