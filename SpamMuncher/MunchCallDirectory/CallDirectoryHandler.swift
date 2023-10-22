@@ -8,30 +8,16 @@
 import Foundation
 import CallKit
 
-class CallDirectoryHandler: CXCallDirectoryProvider {
-    override func beginRequest(with context: CXCallDirectoryExtensionContext) {
+public final class CallDirectoryHandler: CXCallDirectoryProvider {
+    private let phoneNumberManager = PhoneNumberManager.shared
+
+    public override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self
 
-        // Check whether this is an "incremental" data request. If so, only provide the set of phone number blocking
-        // and identification entries which have been added or removed since the last time this extension's data was loaded.
-        // But the extension must still be prepared to provide the full set of data at any time, so add all blocking
-        // and identification phone numbers if the request is not incremental.
-        
-        
-        
         if context.isIncremental {
-        
             addOrRemoveIncrementalBlockingPhoneNumbers(to: context)
-
             addOrRemoveIncrementalIdentificationPhoneNumbers(to: context)
         } else {
-            
-            let suspiciousNumbers: [CXCallDirectoryPhoneNumber] = [ 253-950-1212]
-            for phoneNumber in suspiciousNumbers {
-                context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
-                context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: "Stinky")
-
-            }
             addAllBlockingPhoneNumbers(to: context)
             addAllIdentificationPhoneNumbers(to: context)
         }
@@ -40,68 +26,62 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
     }
 
     private func addAllBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-        // Retrieve all phone numbers to block from data store. For optimal performance and memory usage when there are many phone numbers,
-        // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
-        //
-        // Numbers must be provided in numerically ascending order.
-        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [ 1_408_555_5555, 1_800_555_5555 ]
-        for phoneNumber in allPhoneNumbers {
-            context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
-        }
+        let allPhoneNumbers = phoneNumberManager.blockedNumbers.map { $0.id }
+        addPhoneNumbers(allPhoneNumbers, to: context)
     }
 
     private func addOrRemoveIncrementalBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-        // Retrieve any changes to the set of phone numbers to block from data store. For optimal performance and memory usage when there are many phone numbers,
-        // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
-        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = [ 1_408_555_1234 ]
-        for phoneNumber in phoneNumbersToAdd {
-            context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
-        }
+        // Here, fetch the numbers you've added or removed since the last fetch.
+        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = []
+        addPhoneNumbers(phoneNumbersToAdd, to: context)
 
-        let phoneNumbersToRemove: [CXCallDirectoryPhoneNumber] = [ 1_800_555_5555 ]
-        for phoneNumber in phoneNumbersToRemove {
-            context.removeBlockingEntry(withPhoneNumber: phoneNumber)
-        }
-
-        // Record the most-recently loaded set of blocking entries in data store for the next incremental load...
+        let phoneNumbersToRemove: [CXCallDirectoryPhoneNumber] = []
+        removePhoneNumbers(phoneNumbersToRemove, from: context)
     }
 
     private func addAllIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-        // Retrieve phone numbers to identify and their identification labels from data store. For optimal performance and memory usage when there are many phone numbers,
-        // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
-        //
-        // Numbers must be provided in numerically ascending order.
-        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [ 1_877_555_5555, 1_888_555_5555 ]
-        let labels = [ "Telemarketer", "Local business" ]
-
-        for (phoneNumber, label) in zip(allPhoneNumbers, labels) {
-            context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: label)
-        }
+        let allPhoneNumbersAndLabels = phoneNumberManager.suspiciousNumbers.map { ($0.id, $0.label) }
+        addIdentificationEntries(allPhoneNumbersAndLabels, to: context)
     }
 
     private func addOrRemoveIncrementalIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-        // Retrieve any changes to the set of phone numbers to identify (and their identification labels) from data store. For optimal performance and memory usage when there are many phone numbers,
-        // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
-        let phoneNumbersToAdd: [CXCallDirectoryPhoneNumber] = [ 1_408_555_5678 ]
-        let labelsToAdd = [ "New local business" ]
+        // Again, fetch the numbers and labels you've added or removed since the last fetch.
+        let phoneNumbersAndLabelsToAdd: [(CXCallDirectoryPhoneNumber, String)] = []
+        addIdentificationEntries(phoneNumbersAndLabelsToAdd, to: context)
 
-        for (phoneNumber, label) in zip(phoneNumbersToAdd, labelsToAdd) {
-            context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: label)
-        }
-
-        let phoneNumbersToRemove: [CXCallDirectoryPhoneNumber] = [ 1_888_555_5555 ]
-
-        for phoneNumber in phoneNumbersToRemove {
-            context.removeIdentificationEntry(withPhoneNumber: phoneNumber)
-        }
-
-        // Record the most-recently loaded set of identification entries in data store for the next incremental load...
+        let phoneNumbersToRemove: [CXCallDirectoryPhoneNumber] = []
+        removeIdentificationEntries(phoneNumbersToRemove, from: context)
     }
 
+    private func addPhoneNumbers(_ phoneNumbers: [CXCallDirectoryPhoneNumber], to context: CXCallDirectoryExtensionContext) {
+        for phoneNumber in phoneNumbers.sorted() {
+            context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
+        }
+    }
+
+    private func removePhoneNumbers(_ phoneNumbers: [CXCallDirectoryPhoneNumber], from context: CXCallDirectoryExtensionContext) {
+        for phoneNumber in phoneNumbers.sorted() {
+            context.removeBlockingEntry(withPhoneNumber: phoneNumber)
+        }
+    }
+
+    private func addIdentificationEntries(_ phoneNumbersAndLabels: [(CXCallDirectoryPhoneNumber, String)], to context: CXCallDirectoryExtensionContext) {
+        let sortedEntries = phoneNumbersAndLabels.sorted(by: { $0.0 < $1.0 })
+        for (phoneNumber, label) in sortedEntries {
+            context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: label)
+        }
+    }
+
+    private func removeIdentificationEntries(_ phoneNumbers: [CXCallDirectoryPhoneNumber], from context: CXCallDirectoryExtensionContext) {
+        for phoneNumber in phoneNumbers.sorted() {
+            context.removeIdentificationEntry(withPhoneNumber: phoneNumber)
+        }
+    }
 }
 
 extension CallDirectoryHandler: CXCallDirectoryExtensionContextDelegate {
-
-    func requestFailed(for extensionContext: CXCallDirectoryExtensionContext, withError error: Error) { }
-
+    public func requestFailed(for extensionContext: CXCallDirectoryExtensionContext, withError error: Error) {
+        // Log or handle the error as needed.
+        print("Call Directory Extension request failed: \(error.localizedDescription)")
+    }
 }

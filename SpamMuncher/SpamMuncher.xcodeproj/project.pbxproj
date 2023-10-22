@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F11182F22AD87410000DBB4F /* PhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */; };
 		F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */; };
+		F1363B9A2AE43B1F000EC28E /* PhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */; };
+		F1363B9D2AE43CFA000EC28E /* PhoneNumberType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B9C2AE43CFA000EC28E /* PhoneNumberType.swift */; };
+		F1363B9F2AE43D2C000EC28E /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B9E2AE43D2C000EC28E /* PhoneNumber.swift */; };
 		F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
@@ -17,6 +19,13 @@
 		F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4CF92AD3C236002D46AE /* Color_extension.swift */; };
 		F14A4DC52AD47EE5002D46AE /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */; };
 		F14A4DC92AD47EE5002D46AE /* MunchCallDirectory.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F167ACC22AE5182F0045A325 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B9E2AE43D2C000EC28E /* PhoneNumber.swift */; };
+		F167ACC32AE518320045A325 /* PhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */; };
+		F167ACC42AE518340045A325 /* PhoneNumberType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B9C2AE43CFA000EC28E /* PhoneNumberType.swift */; };
+		F167ACC72AE545590045A325 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACC62AE545590045A325 /* ButtonStyles.swift */; };
+		F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */; };
+		F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */; };
+		F167ACCE2AE54B730045A325 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACCD2AE54B730045A325 /* SearchBar.swift */; };
 		F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* CallListView.swift */; };
@@ -74,6 +83,8 @@
 		F11182D12AD870AF000DBB4F /* MunchCallDirectory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MunchCallDirectory.entitlements; sourceTree = "<group>"; };
 		F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberManager.swift; sourceTree = "<group>"; };
 		F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopupViewModel.swift; sourceTree = "<group>"; };
+		F1363B9C2AE43CFA000EC28E /* PhoneNumberType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberType.swift; sourceTree = "<group>"; };
+		F1363B9E2AE43D2C000EC28E /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		F14A4C9D2AD2E22A002D46AE /* CallListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListModel.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
@@ -82,6 +93,10 @@
 		F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MunchCallDirectory.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		F14A4DC62AD47EE5002D46AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F167ACC62AE545590045A325 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOverlayView.swift; sourceTree = "<group>"; };
+		F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
+		F167ACCD2AE54B730045A325 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopup.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
@@ -147,6 +162,16 @@
 			path = "Call list";
 			sourceTree = "<group>";
 		};
+		F1363B9B2AE43CE6000EC28E /* Phone number manager */ = {
+			isa = PBXGroup;
+			children = (
+				F1363B9E2AE43D2C000EC28E /* PhoneNumber.swift */,
+				F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */,
+				F1363B9C2AE43CFA000EC28E /* PhoneNumberType.swift */,
+			);
+			path = "Phone number manager";
+			sourceTree = "<group>";
+		};
 		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +185,8 @@
 		F14A4CF32AD3C063002D46AE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F167ACC82AE54AE10045A325 /* Overlays */,
+				F167ACC52AE545420045A325 /* Buttons */,
 				F14A4CF42AD3C06E002D46AE /* Views */,
 			);
 			path = Components;
@@ -169,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */,
+				F167ACCD2AE54B730045A325 /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,10 +213,28 @@
 			isa = PBXGroup;
 			children = (
 				F11182D12AD870AF000DBB4F /* MunchCallDirectory.entitlements */,
+				F1363B9B2AE43CE6000EC28E /* Phone number manager */,
 				F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */,
 				F14A4DC62AD47EE5002D46AE /* Info.plist */,
 			);
 			path = MunchCallDirectory;
+			sourceTree = "<group>";
+		};
+		F167ACC52AE545420045A325 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F167ACC62AE545590045A325 /* ButtonStyles.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		F167ACC82AE54AE10045A325 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */,
+				F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */,
+			);
+			path = Overlays;
 			sourceTree = "<group>";
 		};
 		F1DD6EC72AD2037800E04728 = {
@@ -214,10 +260,9 @@
 		F1DD6ED22AD2037800E04728 /* SpamMuncher */ = {
 			isa = PBXGroup;
 			children = (
-				F1363B982AE3DD8C000EC28E /* Base */,
 				F11182D02AD87056000DBB4F /* SpamMuncher.entitlements */,
+				F1363B982AE3DD8C000EC28E /* Base */,
 				F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */,
-				F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */,
 				F1DD6EE12AD2040100E04728 /* Call.swift */,
 				F1DD6EE32AD2084A00E04728 /* CallProcessor.swift */,
 				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
@@ -378,7 +423,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F14A4CF72AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift in Sources */,
+				F167ACC72AE545590045A325 /* ButtonStyles.swift in Sources */,
 				F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */,
+				F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */,
+				F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */,
+				F167ACCE2AE54B730045A325 /* SearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +436,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F14A4DC52AD47EE5002D46AE /* CallDirectoryHandler.swift in Sources */,
+				F1363B9A2AE43B1F000EC28E /* PhoneNumberManager.swift in Sources */,
+				F1363B9D2AE43CFA000EC28E /* PhoneNumberType.swift in Sources */,
+				F1363B9F2AE43D2C000EC28E /* PhoneNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,14 +447,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */,
-				F11182F22AD87410000DBB4F /* PhoneNumberManager.swift in Sources */,
 				F1DD6EE62AD211C700E04728 /* CallListViewModel.swift in Sources */,
+				F167ACC22AE5182F0045A325 /* PhoneNumber.swift in Sources */,
 				F1DD6ED62AD2037800E04728 /* CallListView.swift in Sources */,
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
 				F1DD6EE42AD2084A00E04728 /* CallProcessor.swift in Sources */,
 				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
+				F167ACC42AE518340045A325 /* PhoneNumberType.swift in Sources */,
 				F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */,
 				F14A4C9E2AD2E22A002D46AE /* CallListModel.swift in Sources */,
+				F167ACC32AE518320045A325 /* PhoneNumberManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

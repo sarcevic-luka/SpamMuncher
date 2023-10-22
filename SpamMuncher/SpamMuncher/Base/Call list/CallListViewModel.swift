@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 import MunchUI
+import MunchCallDirectory
+import CallKit
 
 final class CallListViewModel: ObservableObject {
     enum FilterType: String, CaseIterable {
@@ -45,18 +47,19 @@ final class CallListViewModel: ObservableObject {
     }
 
     private var callListModel: CallListModel = createCallListModel()
+    private let phoneNumberManager = PhoneNumberManager.shared
 
     func checkPhoneNumberValidity() {
         // Check if entered phone number is valid, you can adjust this logic.
+        print("enteredPhoneNumber: " ,enteredPhoneNumber)
         isPhoneNumberValid = enteredPhoneNumber.range(of: "^[0-9]{10}$", options: .regularExpression) != nil
     }
 
     func addPhoneNumber() {
-        if isPhoneNumberValid == true {
-            // Add the phone number to your list or perform other operations.
-            // Example: add to a list
-//            let newCall = Call(callerName: "New Caller", callerNumber: enteredPhoneNumber, callType: .normal, timestamp: Date())
-//            callListModel.incomingCalls.append(newCall)
+        if isPhoneNumberValid == true, let validNumber = Int64(enteredPhoneNumber) {
+            // Create a new PhoneNumber and add it to the manager
+            let newPhoneNumber = PhoneNumber(id: validNumber, number: validNumber, label: "Suspicious")
+            phoneNumberManager.addNumber(newPhoneNumber, type: .suspicious)
             
             // Close the popup
             withAnimation {
@@ -67,13 +70,22 @@ final class CallListViewModel: ObservableObject {
         }
     }
 
+    private func refreshCallDirectory() {
+        let directoryHandler = CallDirectoryHandler()
+        // Create a context for the handler (assuming you have an extension context available)
+        let context = CXCallDirectoryExtensionContext()
+        directoryHandler.beginRequest(with: context)
+    }
+
     func togglePhoneNumberPopup() {
         withAnimation {
             isPhoneNumberPopupVisible.toggle()
+            phoneNumberPopupViewModel.phoneNumber = self.enteredPhoneNumber
         }
     }
     
     func handleAddPhoneNumber() {
+        self.enteredPhoneNumber = phoneNumberPopupViewModel.phoneNumber
         checkPhoneNumberValidity()
         if isPhoneNumberValid == true {
             addPhoneNumber()

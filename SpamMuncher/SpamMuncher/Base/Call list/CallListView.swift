@@ -9,13 +9,11 @@ import SwiftUI
 import MunchUI
 
 struct CallListView: View {
-    typealias FilterType = CallListViewModel.FilterType
-    
     @ObservedObject var viewModel: CallListViewModel
     
     var body: some View {
         ZStack {
-            backgroundGradient
+            BackgroundGradientView()
             mainContent
             if viewModel.isPhoneNumberPopupVisible {
                 phoneNumberPopup
@@ -27,13 +25,6 @@ struct CallListView: View {
 // MARK: - Private Views
 
 private extension CallListView {
-    var backgroundGradient: some View {
-        Rectangle()
-            .fill(LinearGradient(gradient: Gradient(colors: [.gray, .lightPrimary]), startPoint: .top, endPoint: .bottom))
-            .ignoresSafeArea()
-            .zIndex(0)
-    }
-    
     var mainContent: some View {
         VStack {
             SearchBar(searchText: $viewModel.searchText)
@@ -93,16 +84,7 @@ struct CallRowView: View {
     }
 }
 
-
-struct SearchBar: View {
-    @Binding var searchText: String
-    
-    var body: some View {
-        TextField("Search", text: $searchText)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .padding(.horizontal)
-    }
-}
+// MARK: - Previews
 
 struct CallListView_Previews: PreviewProvider {
     static var previews: some View {

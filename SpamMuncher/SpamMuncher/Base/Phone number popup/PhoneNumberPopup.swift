@@ -12,21 +12,18 @@ struct PhoneNumberPopup: View {
     @Binding var isPresented: Bool
     @ObservedObject var viewModel: PhoneNumberPopupViewModel
     let onAdd: () -> Void
-
-    var body: some View {
-        Color.black.opacity(0.5)
-            .edgesIgnoringSafeArea(.all)
-            .onTapGesture {
-                withAnimation {
-                    isPresented = false
-                }
-            }
-            .overlay(
-                contentBox
-            )
-    }
     
-    var contentBox: some View {
+    var body: some View {
+        BackgroundOverlayView(isPresented: $isPresented) {
+            mainContent
+        }
+    }
+}
+
+// MARK: - Private Views
+
+private extension PhoneNumberPopup {
+    var mainContent: some View {
         VStack(spacing: 20) {
             Text("Enter Phone Number")
                 .font(.headline)
@@ -37,7 +34,7 @@ struct PhoneNumberPopup: View {
             if let valid = viewModel.isValid, !valid {
                 validationWarning
             }
-
+            
             actionButtons
         }
         .padding()
@@ -72,15 +69,15 @@ struct PhoneNumberPopup: View {
             Button("Add") {
                 viewModel.validateAndAddPhoneNumber(onAdd: onAdd)
             }
+            .customStyle(.primary)
             .disabled(viewModel.isAddButtonDisabled)
-            .buttonStyle(PrimaryButtonStyle())
-            
+
             Button("Cancel") {
                 withAnimation {
                     isPresented = false
                 }
             }
-            .buttonStyle(SecondaryButtonStyle())
+            .customStyle(.secondary)
         }
     }
     
@@ -96,25 +93,7 @@ struct PhoneNumberPopup: View {
     }
 }
 
-struct PrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(8)
-    }
-}
-
-struct SecondaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding()
-            .border(Color.blue, width: 2)
-            .cornerRadius(8)
-    }
-}
-
+// MARK: - Previews
 
 struct PhoneNumberPopup_Previews: PreviewProvider {
     @State static var isPresented = true
