@@ -23,7 +23,7 @@ struct ContactDetailView: View {
             HStack {
                 Image(systemName: "phone.fill")
                 Image(systemName: "message.fill")
-                Image(systemName: "shield.fill") // Represents 'block'
+                Image(systemName: "shield.fill")
             }
             .font(.largeTitle)
             Spacer()

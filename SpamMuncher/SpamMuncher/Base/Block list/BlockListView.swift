@@ -97,6 +97,6 @@ struct ContactRowView: View {
 
 struct BlockListView_Previews: PreviewProvider {
     static var previews: some View {
-        BlockListView(viewModel: BlockListViewModel())
+        BlockListView(viewModel: BlockListViewModel.mock)
     }
 }

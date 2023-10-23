@@ -33,6 +33,8 @@
 		F167ACED2AE581150045A325 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACEC2AE581150045A325 /* Contact.swift */; };
 		F167ACEF2AE58DB50045A325 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACEE2AE58DB50045A325 /* InfoView.swift */; };
 		F167ACF22AE5AFB60045A325 /* AppleSupportPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACF12AE5AFB60045A325 /* AppleSupportPopupView.swift */; };
+		F167AD302AE715250045A325 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */; };
+		F167AD332AE715730045A325 /* Mock_BlockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167AD322AE715730045A325 /* Mock_BlockListViewModel.swift */; };
 		F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* BlockListView.swift */; };
@@ -111,6 +113,7 @@
 		F167ACEC2AE581150045A325 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		F167ACEE2AE58DB50045A325 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F167ACF12AE5AFB60045A325 /* AppleSupportPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSupportPopupView.swift; sourceTree = "<group>"; };
+		F167AD322AE715730045A325 /* Mock_BlockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock_BlockListViewModel.swift; sourceTree = "<group>"; };
 		F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopup.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
@@ -173,6 +176,7 @@
 		F1363B992AE3DD97000EC28E /* Block list */ = {
 			isa = PBXGroup;
 			children = (
+				F167AD312AE7155D0045A325 /* Mock */,
 				F1DD6ED52AD2037800E04728 /* BlockListView.swift */,
 				F1DD6EE52AD211C700E04728 /* BlockListViewModel.swift */,
 			);
@@ -320,6 +324,14 @@
 				F167ACF12AE5AFB60045A325 /* AppleSupportPopupView.swift */,
 			);
 			path = "Apple support pop-up";
+			sourceTree = "<group>";
+		};
+		F167AD312AE7155D0045A325 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				F167AD322AE715730045A325 /* Mock_BlockListViewModel.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		F1DD6EC72AD2037800E04728 = {
@@ -541,11 +553,13 @@
 				F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */,
 				F167ACF22AE5AFB60045A325 /* AppleSupportPopupView.swift in Sources */,
 				F1DD6EE42AD2084A00E04728 /* CallProcessor.swift in Sources */,
+				F167AD332AE715730045A325 /* Mock_BlockListViewModel.swift in Sources */,
 				F1DD6EE22AD2040100E04728 /* Call.swift in Sources */,
 				F167ACC42AE518340045A325 /* PhoneNumberType.swift in Sources */,
 				F167ACE72AE579C60045A325 /* ContactDetailView.swift in Sources */,
 				F167ACD62AE557820045A325 /* MessagesView.swift in Sources */,
 				F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */,
+				F167AD302AE715250045A325 /* CallDirectoryHandler.swift in Sources */,
 				F167ACE32AE578FC0045A325 /* ContactViewModel.swift in Sources */,
 				F167ACD32AE5575B0045A325 /* ContactListView.swift in Sources */,
 				F167ACC32AE518320045A325 /* PhoneNumberManager.swift in Sources */,
