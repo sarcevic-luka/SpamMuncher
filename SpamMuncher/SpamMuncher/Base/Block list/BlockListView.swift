@@ -32,16 +32,21 @@ private extension BlockListView {
             VStack {
                 SearchBar(searchText: $viewModel.searchText)
                 if viewModel.filteredContacts.isEmpty && !viewModel.searchText.isEmpty {
-                    Spacer(minLength: 0)
-                    InfoView(imageName: "magnifyingglass", message: "No numbers found for \"\(viewModel.searchText)\"")
-                        .frame(maxHeight: geometry.size.height - 44)
-                    Spacer(minLength: 0)
+                    intoView(for: geometry)
                 } else {
                     segmentedControl
                     blockedContactsList
                 }
             }
         }
+    }
+    
+    @ViewBuilder
+    func intoView(for content: GeometryProxy) -> some View {
+        Spacer(minLength: 0)
+        InfoView(imageName: "magnifyingglass", message: "No numbers found for \"\(viewModel.searchText)\"")
+            .frame(maxHeight: content.size.height - 44)
+        Spacer(minLength: 0)
     }
 
     var segmentedControl: some View {

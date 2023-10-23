@@ -38,7 +38,6 @@ final class BlockListViewModel: ObservableObject {
     @Published var phoneNumberPopupViewModel = PhoneNumberPopupViewModel()
 
     var filteredContacts: [PhoneNumber] {
-        let phoneNumberManager = PhoneNumberManager.shared
         let allContacts: [PhoneNumber]
 
         switch selectedFilterType.phoneNumberType {
@@ -60,12 +59,10 @@ final class BlockListViewModel: ObservableObject {
 
     }
 
-    private let phoneNumberManager = PhoneNumberManager.shared
+    private let phoneNumberManager: PhoneNumberManager
 
-    func checkPhoneNumberValidity() {
-        // Check if entered phone number is valid, you can adjust this logic.
-        print("enteredPhoneNumber: " ,enteredPhoneNumber)
-        isPhoneNumberValid = enteredPhoneNumber.range(of: "^[0-9]{10}$", options: .regularExpression) != nil
+    init(phoneNumberManager: PhoneNumberManager = PhoneNumberManager.shared) {
+        self.phoneNumberManager = phoneNumberManager
     }
 
     func addPhoneNumber() {
@@ -80,6 +77,10 @@ final class BlockListViewModel: ObservableObject {
             enteredPhoneNumber = ""
             isPhoneNumberValid = nil
         }
+    }
+
+    private func checkPhoneNumberValidity() {
+        isPhoneNumberValid = enteredPhoneNumber.range(of: "^[0-9]{10}$", options: .regularExpression) != nil
     }
 
     private func refreshCallDirectory() {
