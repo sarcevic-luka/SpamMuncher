@@ -32,7 +32,7 @@ struct ContactListView: View {
     private var mainContent: some View {
         Group {
             if viewModel.contacts().isEmpty && !viewModel.searchText.isEmpty {
-                InfoView(imageName: "magnifyingglass", message: "No results found for \"\(viewModel.searchText)\"")
+                InfoView(imageName: "magnifyingglass", message: "No contacts found for \"\(viewModel.searchText)\"")
             } else {
                 contactsList
             }

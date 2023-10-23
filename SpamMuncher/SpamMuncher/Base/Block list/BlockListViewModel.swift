@@ -39,14 +39,25 @@ final class BlockListViewModel: ObservableObject {
 
     var filteredContacts: [PhoneNumber] {
         let phoneNumberManager = PhoneNumberManager.shared
+        let allContacts: [PhoneNumber]
+
         switch selectedFilterType.phoneNumberType {
         case .blocked:
-            return phoneNumberManager.blockedNumbers
+            allContacts = phoneNumberManager.blockedNumbers
         case .suspicious:
-            return phoneNumberManager.suspiciousNumbers
+            allContacts =  phoneNumberManager.suspiciousNumbers
         case nil:
-            return phoneNumberManager.blockedNumbers + phoneNumberManager.suspiciousNumbers
+            allContacts =  phoneNumberManager.blockedNumbers + phoneNumberManager.suspiciousNumbers
         }
+        
+        if !searchText.isEmpty {
+            return allContacts.filter { contact in
+                contact.number.description.contains(searchText) || contact.label.contains(searchText)
+            }
+        } else {
+            return allContacts
+        }
+
     }
 
     private let phoneNumberManager = PhoneNumberManager.shared
@@ -59,11 +70,10 @@ final class BlockListViewModel: ObservableObject {
 
     func addPhoneNumber() {
         if isPhoneNumberValid == true, let validNumber = Int64(enteredPhoneNumber) {
-            // Create a new PhoneNumber and add it to the manager
-            let newPhoneNumber = PhoneNumber(id: validNumber, number: validNumber, label: "Suspicious")
-            phoneNumberManager.addNumber(newPhoneNumber, type: .suspicious)
+
+            let newPhoneNumber = PhoneNumber(id: validNumber, number: validNumber, label: phoneNumberPopupViewModel.selectedNumberType.rawValue.capitalized)
+            phoneNumberManager.addNumber(newPhoneNumber, type: phoneNumberPopupViewModel.selectedNumberType)
             
-            // Close the popup
             withAnimation {
                 isPhoneNumberPopupVisible = false
             }

@@ -28,10 +28,19 @@ struct BlockListView: View {
 
 private extension BlockListView {
     var mainContent: some View {
-        VStack {
-            SearchBar(searchText: $viewModel.searchText)
-            segmentedControl
-            blockedContactsList
+        GeometryReader { geometry in
+            VStack {
+                SearchBar(searchText: $viewModel.searchText)
+                if viewModel.filteredContacts.isEmpty && !viewModel.searchText.isEmpty {
+                    Spacer(minLength: 0)
+                    InfoView(imageName: "magnifyingglass", message: "No numbers found for \"\(viewModel.searchText)\"")
+                        .frame(maxHeight: geometry.size.height - 44)
+                    Spacer(minLength: 0)
+                } else {
+                    segmentedControl
+                    blockedContactsList
+                }
+            }
         }
     }
 
