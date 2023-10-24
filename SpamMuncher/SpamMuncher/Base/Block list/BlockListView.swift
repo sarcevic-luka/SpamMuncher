@@ -31,7 +31,7 @@ private extension BlockListView {
         GeometryReader { geometry in
             VStack {
                 SearchBar(searchText: $viewModel.searchText)
-                if viewModel.filteredContacts.isEmpty && !viewModel.searchText.isEmpty {
+                if viewModel.filteredContacts().isEmpty && !viewModel.searchText.isEmpty {
                     intoView(for: geometry)
                 } else {
                     segmentedControl
@@ -56,7 +56,7 @@ private extension BlockListView {
     }
 
     var blockedContactsList: some View {
-        List(viewModel.filteredContacts) { contact in
+        List(viewModel.filteredContacts()) { contact in
             ContactRowView(contact: contact)
         }
         .listRowBackground(Color.clear)

@@ -11,7 +11,7 @@ public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable,
     @Binding var selectedValue: T
 
     private let columns: [GridItem] = [
-            GridItem(.adaptive(minimum: 40))
+            GridItem(.adaptive(minimum: 34))
         ]
 
     public init(selectedValue: Binding<T>) {
@@ -19,32 +19,36 @@ public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable,
     }
 
     public var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHGrid(rows: columns, alignment: .center, spacing: 5) {
-                ForEach(Array(T.allCases.enumerated()), id: \.offset) { index, value in
-                    let isSelected = selectedValue == value
-                    ZStack {
-                        Rectangle()
-                            .fill(isSelected ? Color.baseColor : Color.primaryColor)
-                            .cornerRadius(20)
-                            .onTapGesture {
-                                withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 2, blendDuration: 0.5)) {
-                                    selectedValue = value
-                                }
+        VStack {
+            GeometryReader { geometry in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: columns, alignment: .center, spacing: 5) {
+                        ForEach(Array(T.allCases.enumerated()), id: \.offset) { index, value in
+                            let isSelected = selectedValue == value
+                            ZStack {
+                                Rectangle()
+                                    .fill(isSelected ? Color.baseColor : Color.primaryColor)
+                                    .cornerRadius(17)
+                                    .onTapGesture {
+                                        withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 2, blendDuration: 0.5)) {
+                                            selectedValue = value
+                                        }
+                                    }
+                                Text(value.rawValue.capitalized)
+                                    .font(isSelected ? .headline : .subheadline)
+                                    .foregroundColor(isSelected ? .highlightColor : .lowKeyPrimary)
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.horizontal, 8)
+                                    .frame(minWidth: 100)
                             }
-                        Text(value.rawValue.capitalized)
-                            .font(isSelected ? .headline : .subheadline)
-                            .foregroundColor(isSelected ? .highlightColor : .lowLightColor)
-                            .lineLimit(1)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .padding(.horizontal, 8)
-                            .frame(minWidth: 100)
+                        }
                     }
+                    .padding(.horizontal, max(0, (geometry.size.width - CGFloat(T.allCases.count) * 108) / 2))
                 }
             }
-            .padding(.horizontal)
+            .frame(height: 34)
         }
-        .frame(height: 40)
     }
 }
 

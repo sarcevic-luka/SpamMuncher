@@ -37,7 +37,7 @@ final class BlockListViewModel: ObservableObject {
     @Published var isPhoneNumberValid: Bool? = nil
     @Published var phoneNumberPopupViewModel = PhoneNumberPopupViewModel()
 
-    var filteredContacts: [PhoneNumber] {
+    func filteredContacts() -> [PhoneNumber] {
         let allContacts: [PhoneNumber]
 
         switch selectedFilterType.phoneNumberType {

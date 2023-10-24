@@ -16,6 +16,7 @@ struct PhoneNumberPopup: View {
     var body: some View {
         BackgroundOverlayView(isPresented: $isPresented) {
             mainContent
+                .padding(20)
         }
     }
 }
@@ -25,24 +26,25 @@ struct PhoneNumberPopup: View {
 private extension PhoneNumberPopup {
     var mainContent: some View {
         VStack(spacing: 20) {
-            Text("Enter Phone Number")
-                .font(.headline)
-                .foregroundColor(.baseColor)
+            header
             numberInputField
-            
+            segmentedControl
             if let valid = viewModel.isValid, !valid {
                 validationWarning
             }
             actionButtons
         }
-        .padding()
-        .background(Color.white)
+        .padding(20)
+        .background(Color.lowLightColor)
         .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.15), radius: 10, x: 0, y: 5)
-        .overlay(
-            closeButton,
-            alignment: .topTrailing
-        )
+        .offset(y: -50)
+    }
+    
+    var header: some View {
+        Text("Enter Phone Number")
+            .font(.headline)
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
     }
     
     var numberInputField: some View {
@@ -51,43 +53,58 @@ private extension PhoneNumberPopup {
             TextField("Phone Number", text: $viewModel.phoneNumber)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
-                .padding(.leading)
         }
     }
     
+    var numberTypeSegment: some View {
+        Picker("Number Type", selection: $viewModel.selectedNumberType) {
+            ForEach(PhoneNumberType.allCases, id: \.self) { type in
+                Text(type.rawValue.capitalized).tag(type)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+    
+    var segmentedControl: some View {
+        AdaptiveTextSegmentedScrollControl(selectedValue: $viewModel.selectedNumberType)
+            .padding(.horizontal, 0)
+            .zIndex(1)
+    }
+
     var validationWarning: some View {
         HStack {
             Image(systemName: "exclamationmark.triangle.fill").foregroundColor(.red)
-            Text("Invalid phone number").foregroundColor(.red)
+            Text("Invalid phone number").foregroundColor(.alertColor)
         }
     }
     
     var actionButtons: some View {
         HStack(spacing: 15) {
-            Button("Add") {
-                viewModel.validateAndAddPhoneNumber(onAdd: onAdd)
-            }
-            .customStyle(.primary)
-            .disabled(viewModel.isAddButtonDisabled)
-
-            Button("Cancel") {
-                withAnimation {
-                    isPresented = false
-                }
-            }
-            .customStyle(.secondary)
+            addButton
+            cancelButton
         }
     }
     
-    var closeButton: some View {
+    var addButton: some View {
+        Button(action: {
+            viewModel.validateAndAddPhoneNumber(onAdd: onAdd)
+        }) {
+            Text("Add")
+                .padding(.horizontal, 30)
+        }
+        .disabled(viewModel.isAddButtonDisabled)
+    }
+
+    var cancelButton: some View {
         Button(action: {
             withAnimation {
                 isPresented = false
             }
         }) {
-            Image(systemName: "xmark.circle.fill").foregroundColor(.gray)
+            Text("Cancel")
+                .padding(.horizontal, 12)
         }
-        .padding([.top, .trailing], 5)
+        .customStyle(.secondary)
     }
 }
 

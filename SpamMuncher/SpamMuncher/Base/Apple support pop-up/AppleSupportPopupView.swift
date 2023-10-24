@@ -10,7 +10,6 @@ import MunchUI
 
 struct AppleSupportPopupView: View {
     @Binding var isPresented: Bool
-    
     let title: String
     let description: String
     let supportLink: URL = URL(string: "https://support.apple.com/en-us/HT207099?cid=ytsc_yt1298")!
@@ -19,10 +18,6 @@ struct AppleSupportPopupView: View {
         BackgroundOverlayView(isPresented: $isPresented) {
             mainContent
         }
-    }
-    
-    func openSupportLink() {
-        UIApplication.shared.open(supportLink)
     }
 }
 
@@ -48,13 +43,13 @@ private extension AppleSupportPopupView {
             .multilineTextAlignment(.center)
     }
     
-    private var descriptionText: some View {
+    var descriptionText: some View {
         Text(description)
             .multilineTextAlignment(.center)
             .foregroundColor(.white)
     }
     
-    private var actionButtons: some View {
+    var actionButtons: some View {
         HStack(spacing: 20) {
             supportButton
             dismissButton
@@ -77,6 +72,15 @@ private extension AppleSupportPopupView {
             Text("Dismiss")
         })
         .customStyle(.secondary)
+    }
+}
+
+
+// MARK: - Private functions
+
+private extension AppleSupportPopupView {
+    func openSupportLink() {
+        UIApplication.shared.open(supportLink)
     }
 }
 

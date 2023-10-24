@@ -10,7 +10,8 @@ import Foundation
 class PhoneNumberPopupViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var isValid: Bool? = nil
-    
+    @Published var selectedNumberType: PhoneNumberType = .suspicious
+
     var isAddButtonDisabled: Bool {
         phoneNumber.isEmpty
     }
