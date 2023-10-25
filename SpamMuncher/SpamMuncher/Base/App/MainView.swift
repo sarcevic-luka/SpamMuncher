@@ -13,12 +13,10 @@ struct MainView: View {
 
     var body: some View {
         TabView {
-            NavigationView {
-                BlockListView(viewModel: BlockListViewModel(phoneNumberManager: phoneNumberManager))
-            }
-            .tabItem {
-                Label("BlockList", systemImage: "shield.fill")
-            }
+            BlockListView(viewModel: BlockListViewModel(phoneNumberManager: phoneNumberManager))
+                .tabItem {
+                    Label("BlockList", systemImage: "shield.fill")
+                }
             ContactListView(viewModel: ContactsListViewModel(phoneNumberManager: phoneNumberManager))
                 .tabItem {
                     Label("Contacts", systemImage: "person.fill")

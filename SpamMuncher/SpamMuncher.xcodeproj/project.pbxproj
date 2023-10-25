@@ -24,7 +24,6 @@
 		F167ACC72AE545590045A325 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACC62AE545590045A325 /* ButtonStyles.swift */; };
 		F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */; };
 		F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */; };
-		F167ACCE2AE54B730045A325 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACCD2AE54B730045A325 /* SearchBar.swift */; };
 		F167ACD32AE5575B0045A325 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD22AE5575B0045A325 /* ContactListView.swift */; };
 		F167ACD62AE557820045A325 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD52AE557820045A325 /* MessagesView.swift */; };
 		F167ACD82AE557A80045A325 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACD72AE557A80045A325 /* MainView.swift */; };
@@ -105,7 +104,6 @@
 		F167ACC62AE545590045A325 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOverlayView.swift; sourceTree = "<group>"; };
 		F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
-		F167ACCD2AE54B730045A325 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		F167ACD22AE5575B0045A325 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
 		F167ACD52AE557820045A325 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		F167ACD72AE557A80045A325 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				F14A4CF62AD3C13E002D46AE /* AdaptiveTextSegmentedScrollControl.swift */,
-				F167ACCD2AE54B730045A325 /* SearchBar.swift */,
 				F167ACEE2AE58DB50045A325 /* InfoView.swift */,
 			);
 			path = Views;
@@ -527,7 +524,6 @@
 				F14A4CFA2AD3C236002D46AE /* Color_extension.swift in Sources */,
 				F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */,
 				F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */,
-				F167ACCE2AE54B730045A325 /* SearchBar.swift in Sources */,
 				F167ACEF2AE58DB50045A325 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

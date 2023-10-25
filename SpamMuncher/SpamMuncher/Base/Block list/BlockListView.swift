@@ -12,6 +12,7 @@ struct BlockListView: View {
     @ObservedObject private var viewModel: BlockListViewModel
 
     var body: some View {
+        NavigationView {
             ZStack {
                 BackgroundGradientView()
                 mainContent
@@ -19,8 +20,10 @@ struct BlockListView: View {
                     phoneNumberPopup
                 }
             }
-        .navigationBarTitle("BlockList", displayMode: .inline)
-        .navigationBarItems(trailing: addButton)
+            .navigationBarTitle("BlockList", displayMode: .inline)
+            .searchable(text: $viewModel.searchText)
+            .navigationBarItems(trailing: addButton)
+        }
     }
     
     init(viewModel: BlockListViewModel) {
@@ -34,7 +37,6 @@ private extension BlockListView {
     var mainContent: some View {
         GeometryReader { geometry in
             VStack {
-                SearchBar(searchText: $viewModel.searchText)
                 segmentedControl
                 switch viewModel.infoViewState {
                 case .hidden:
