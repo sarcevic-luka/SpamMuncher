@@ -97,27 +97,6 @@ private extension BlockListView {
     }
 }
 
-struct ContactRowView: View {
-    let contact: PhoneNumber
-    var onDelete: () -> Void
-
-    var body: some View {
-        HStack {
-            Text(contact.id.description)
-            Spacer()
-            Text(contact.type.rawValue)
-            Button(action: onDelete) {
-                Image(systemName: "trash.fill")
-                    .foregroundColor(.red)
-                    .padding(.leading)
-            }
-        }
-        .listRowBackground(Color.clear)
-        .padding([.leading, .trailing], 8)
-        .padding([.top, .bottom], 4)
-    }
-}
-
 // MARK: - Previews
 
 struct BlockListView_Previews: PreviewProvider {

@@ -25,11 +25,23 @@ extension String {
         return Int64(self) ?? 0
     }
     
-        func toCXCallDirectoryPhoneNumber() -> CXCallDirectoryPhoneNumber {
-            // Remove all non-numeric characters from the string
-            let cleanedString = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    var formattedAsPhoneNumber: String {
+        let numbers = self.filter { $0.isWholeNumber }
+        
+        guard numbers.count == 10 else { return self }
+        
+        let areaCode = numbers.prefix(3)
+        let middle = numbers.dropFirst(3).prefix(3)
+        let last = numbers.suffix(4)
+        
+        return "(\(areaCode)) \(middle)-\(last)"
+    }
 
-            // Convert the cleaned string to CXCallDirectoryPhoneNumber (Int64)
-            return CXCallDirectoryPhoneNumber(cleanedString) ?? 0
-        }
+    func toCXCallDirectoryPhoneNumber() -> CXCallDirectoryPhoneNumber {
+        // Remove all non-numeric characters from the string
+        let cleanedString = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        // Convert the cleaned string to CXCallDirectoryPhoneNumber (Int64)
+        return CXCallDirectoryPhoneNumber(cleanedString) ?? 0
+    }
 }

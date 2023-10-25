@@ -14,6 +14,7 @@ extension Color {
     public static let lowKeyPrimary = Color(red: 0.56, green: 0.56, blue: 0.56)
     public static let highlightColor = Color(red: 0.98, green: 0.82, blue: 0.22)
     public static let lowLightColor = Color(red: 0.11, green: 0.11, blue: 0.11)
+    public static let lowestLightColor = Color(red: 0.94, green: 0.94, blue: 0.94)
     public static let alertColor = Color(red: 0.98, green: 0.22, blue: 0.22)
     public static let warningColor = Color(red: 0.98, green: 0.82, blue: 0.22)
 }

@@ -94,7 +94,7 @@ private extension ContactListView {
                     Text(contact.name)
                     Text(contact.phoneNumber)
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.lowestLightColor)
                 }
             }
         }
