@@ -35,6 +35,7 @@
 		F167ACF22AE5AFB60045A325 /* AppleSupportPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ACF12AE5AFB60045A325 /* AppleSupportPopupView.swift */; };
 		F167AD302AE715250045A325 /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */; };
 		F167AD332AE715730045A325 /* Mock_BlockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167AD322AE715730045A325 /* Mock_BlockListViewModel.swift */; };
+		F167ADB52AE833E90045A325 /* ContactDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F167ADB42AE833E90045A325 /* ContactDetailViewModel.swift */; };
 		F1C23B4C2AD881D300BD2B4A /* PhoneNumberPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */; };
 		F1DD6ED42AD2037800E04728 /* SpamMuncherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */; };
 		F1DD6ED62AD2037800E04728 /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD6ED52AD2037800E04728 /* BlockListView.swift */; };
@@ -114,6 +115,7 @@
 		F167ACEE2AE58DB50045A325 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F167ACF12AE5AFB60045A325 /* AppleSupportPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSupportPopupView.swift; sourceTree = "<group>"; };
 		F167AD322AE715730045A325 /* Mock_BlockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock_BlockListViewModel.swift; sourceTree = "<group>"; };
+		F167ADB42AE833E90045A325 /* ContactDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewModel.swift; sourceTree = "<group>"; };
 		F1C23B4B2AD881D300BD2B4A /* PhoneNumberPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopup.swift; sourceTree = "<group>"; };
 		F1DD6ED02AD2037800E04728 /* SpamMuncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpamMuncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpamMuncherApp.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				F167ACE62AE579C60045A325 /* ContactDetailView.swift */,
+				F167ADB42AE833E90045A325 /* ContactDetailViewModel.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				F167AD302AE715250045A325 /* CallDirectoryHandler.swift in Sources */,
 				F167ACE32AE578FC0045A325 /* ContactViewModel.swift in Sources */,
 				F167ACD32AE5575B0045A325 /* ContactListView.swift in Sources */,
+				F167ADB52AE833E90045A325 /* ContactDetailViewModel.swift in Sources */,
 				F167ACC32AE518320045A325 /* PhoneNumberManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

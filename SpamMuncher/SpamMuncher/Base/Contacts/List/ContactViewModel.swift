@@ -7,12 +7,19 @@
 
 import Contacts
 import UIKit
+import MunchCallDirectory
 
-class ContactsViewModel: ObservableObject {
+class ContactsListViewModel: ObservableObject {
     @Published var contactsDictionary: [Character: [Contact]] = [:]
     @Published var fetchError: Error?
     @Published var searchText: String = ""
     @Published var isAppleSupportPopupVisible: Bool = false
+    var phoneNumberManager: PhoneNumberManaging
+
+    init(phoneNumberManager: PhoneNumberManaging) {
+        self.phoneNumberManager = phoneNumberManager
+    }
+
 
     func fetchContacts() {
         let contactStore = CNContactStore()

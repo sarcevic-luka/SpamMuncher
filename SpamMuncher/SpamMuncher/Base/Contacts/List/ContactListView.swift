@@ -9,7 +9,7 @@ import SwiftUI
 import MunchUI
 
 struct ContactListView: View {
-    @ObservedObject var viewModel: ContactsViewModel
+    @ObservedObject var viewModel: ContactsListViewModel
     
     var body: some View {
         NavigationView {
@@ -76,10 +76,28 @@ private extension ContactListView {
 
     func contactRows(for key: Character) -> some View {
         ForEach(viewModel.contacts()[key]!, id: \.phoneNumber) { contact in
-            NavigationLink(destination: ContactDetailView(contact: contact)) {
-                Text(contact.name)
-            }
-            .listRowBackground(Color.clear)
+            let contactDetailVM = ContactDetailViewModel(contact: contact, phoneNumberManager: viewModel.phoneNumberManager)
+            contactRow(for: contact, with: contactDetailVM)
         }
+    }
+
+    func contactRow(for contact: Contact, with viewModel: ContactDetailViewModel) -> some View {
+        NavigationLink(destination: ContactDetailView(viewModel: viewModel)) {
+            HStack {
+                if viewModel.isContactBlocked {
+                    Image(systemName: "shield.fill")
+                        .foregroundColor(.red)
+                        .padding(.trailing, 5)
+                }
+
+                VStack(alignment: .leading) {
+                    Text(contact.name)
+                    Text(contact.phoneNumber)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+        .listRowBackground(Color.clear)
     }
 }

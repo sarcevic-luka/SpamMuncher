@@ -9,7 +9,7 @@ import Foundation
 import CallKit
 
 public final class CallDirectoryHandler: CXCallDirectoryProvider {
-    private let phoneNumberManager = PhoneNumberManager.shared
+    private let phoneNumberManager = PhoneNumberManager()
 
     public override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self

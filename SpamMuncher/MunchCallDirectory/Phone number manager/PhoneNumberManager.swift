@@ -6,29 +6,53 @@
 //
 
 import Foundation
+import Combine
 
-public final class PhoneNumberManager: ObservableObject {
+protocol PhoneNumberManaging {
+    var blockedNumbers: [PhoneNumber] { get set }
+    var suspiciousNumbers: [PhoneNumber] { get set }
+    
+    var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
+    var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
+
+    func addNumber(_ number: PhoneNumber, type: PhoneNumberType)
+    func removeNumber(_ number: PhoneNumber, type: PhoneNumberType)
+}
+
+
+public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
     public enum Action {
         case add, remove
     }
+    
+    @Published public internal(set) var blockedNumbers: [PhoneNumber] = []
+    @Published public internal(set) var suspiciousNumbers: [PhoneNumber] = []
 
-    @Published public private(set) var blockedNumbers: [PhoneNumber] = []
-    @Published public private(set) var suspiciousNumbers: [PhoneNumber] = []
-
-    public static let shared = PhoneNumberManager(defaults: UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncher")!)
+    public var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
+        $blockedNumbers.eraseToAnyPublisher()
+    }
+    
+    public var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
+        $suspiciousNumbers.eraseToAnyPublisher()
+    }
 
     private let defaults: UserDefaults
     
-    init(defaults: UserDefaults) {
+    init(defaults: UserDefaults = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncher")!) {
         self.defaults = defaults
         blockedNumbers = (try? fetchNumbers(ofType: .blocked)) ?? []
         suspiciousNumbers = (try? fetchNumbers(ofType: .suspicious)) ?? []
+
     }
     
     public func addNumber(_ number: PhoneNumber, type: PhoneNumberType) {
+        guard !numbers(for: type).contains(where: { $0.id == number.id }) else {
+            return
+        }
+        
         updateNumbers(with: number, type: type, action: .add)
     }
-    
+
     public func removeNumber(_ number: PhoneNumber, type: PhoneNumberType) {
         updateNumbers(with: number, type: type, action: .remove)
     }
@@ -76,6 +100,7 @@ private extension PhoneNumberManager {
         } else {
             suspiciousNumbers = numbers
         }
+        objectWillChange.send()
     }
 
     func fetchNumbers(ofType type: PhoneNumberType) throws -> [PhoneNumber]? {

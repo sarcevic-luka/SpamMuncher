@@ -10,6 +10,7 @@ import SwiftUI
 import MunchUI
 import MunchCallDirectory
 import CallKit
+import Combine
 
 final class BlockListViewModel: ObservableObject {
     enum FilterType: String, CaseIterable {
@@ -29,46 +30,76 @@ final class BlockListViewModel: ObservableObject {
         }
     }
 
-    @Published var searchText: String = ""
     @Published var selectedFilterType: FilterType = .all
-
     @Published var isPhoneNumberPopupVisible: Bool = false
     @Published var enteredPhoneNumber: String = ""
     @Published var isPhoneNumberValid: Bool? = nil
+    @Published var contacts: [PhoneNumber] = []
     @Published var phoneNumberPopupViewModel = PhoneNumberPopupViewModel()
+    @Published var isContactsListEmpty: Bool = false
+    @Published var searchText: String = ""
+    @Published var phoneNumberManager: PhoneNumberManaging
+    
+    private var bag = Set<AnyCancellable>()
 
-    func filteredContacts() -> [PhoneNumber] {
+    init(phoneNumberManager: PhoneNumberManaging = PhoneNumberManager()) {
+        self.phoneNumberManager = phoneNumberManager
+        setObservers()
+    }
+    
+    private func setObservers() {
+        $contacts
+           .map { $0.isEmpty }
+           .sink { [weak self] in
+               self?.isContactsListEmpty = $0
+           }
+           .store(in: &bag)
+        
+        let changedPublisher = Publishers.CombineLatest(
+            phoneNumberManager.blockedNumbersPublisher,
+            phoneNumberManager.suspiciousNumbersPublisher
+        )
+            .eraseToAnyPublisher()
+        
+        Publishers.CombineLatest3(
+            $selectedFilterType,
+            $searchText,
+            changedPublisher
+        )
+            .map {  [weak self] filter, searchText, lists in
+                self?.filteredContacts(with: filter, for: searchText, numbersList: lists) ?? []
+            }
+            .sink { [weak self] in
+                self?.contacts = $0
+            }
+            .store(in: &bag)
+    }
+    
+    private func filteredContacts(with filter: FilterType, for searchText: String, numbersList:  (blockedNumbers: [PhoneNumber],suspiciousNumbers: [PhoneNumber])) -> [PhoneNumber] {
         let allContacts: [PhoneNumber]
 
-        switch selectedFilterType.phoneNumberType {
+        switch filter {
         case .blocked:
-            allContacts = phoneNumberManager.blockedNumbers
+            allContacts = numbersList.blockedNumbers
         case .suspicious:
-            allContacts =  phoneNumberManager.suspiciousNumbers
-        case nil:
-            allContacts =  phoneNumberManager.blockedNumbers + phoneNumberManager.suspiciousNumbers
+            allContacts = numbersList.suspiciousNumbers
+        case .all:
+            allContacts = numbersList.blockedNumbers + numbersList.suspiciousNumbers
         }
         
         if !searchText.isEmpty {
             return allContacts.filter { contact in
-                contact.number.description.contains(searchText) || contact.label.contains(searchText)
+                contact.id.description.contains(searchText) || contact.label.contains(searchText)
             }
         } else {
             return allContacts
         }
-
-    }
-
-    private let phoneNumberManager: PhoneNumberManager
-
-    init(phoneNumberManager: PhoneNumberManager = PhoneNumberManager.shared) {
-        self.phoneNumberManager = phoneNumberManager
     }
 
     func addPhoneNumber() {
         if isPhoneNumberValid == true, let validNumber = Int64(enteredPhoneNumber) {
 
-            let newPhoneNumber = PhoneNumber(id: validNumber, number: validNumber, label: phoneNumberPopupViewModel.selectedNumberType.rawValue.capitalized)
+            let newPhoneNumber = PhoneNumber(id: validNumber, label: phoneNumberPopupViewModel.selectedNumberType.rawValue.capitalized)
             phoneNumberManager.addNumber(newPhoneNumber, type: phoneNumberPopupViewModel.selectedNumberType)
             
             withAnimation {
@@ -85,7 +116,6 @@ final class BlockListViewModel: ObservableObject {
 
     private func refreshCallDirectory() {
         let directoryHandler = CallDirectoryHandler()
-        // Create a context for the handler (assuming you have an extension context available)
         let context = CXCallDirectoryExtensionContext()
         directoryHandler.beginRequest(with: context)
     }
@@ -98,10 +128,11 @@ final class BlockListViewModel: ObservableObject {
     }
     
     func handleAddPhoneNumber() {
-        self.enteredPhoneNumber = phoneNumberPopupViewModel.phoneNumber
+        enteredPhoneNumber = phoneNumberPopupViewModel.phoneNumber
         checkPhoneNumberValidity()
         if isPhoneNumberValid == true {
             addPhoneNumber()
         }
+        
     }
 }

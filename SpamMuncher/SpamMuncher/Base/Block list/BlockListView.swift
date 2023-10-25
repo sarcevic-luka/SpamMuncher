@@ -9,7 +9,7 @@ import SwiftUI
 import MunchUI
 
 struct BlockListView: View {
-    @ObservedObject var viewModel: BlockListViewModel
+    @ObservedObject private var viewModel: BlockListViewModel
 
     var body: some View {
             ZStack {
@@ -22,6 +22,10 @@ struct BlockListView: View {
         .navigationBarTitle("BlockList", displayMode: .inline)
         .navigationBarItems(trailing: addButton)
     }
+    
+    init(viewModel: BlockListViewModel) {
+        self.viewModel = viewModel
+    }
 }
 
 // MARK: - Private Views
@@ -31,8 +35,8 @@ private extension BlockListView {
         GeometryReader { geometry in
             VStack {
                 SearchBar(searchText: $viewModel.searchText)
-                if viewModel.filteredContacts().isEmpty && !viewModel.searchText.isEmpty {
-                    intoView(for: geometry)
+                if viewModel.contacts.isEmpty && !viewModel.searchText.isEmpty {
+                    infoView(for: geometry)
                 } else {
                     segmentedControl
                     blockedContactsList
@@ -42,7 +46,7 @@ private extension BlockListView {
     }
     
     @ViewBuilder
-    func intoView(for content: GeometryProxy) -> some View {
+    func infoView(for content: GeometryProxy) -> some View {
         Spacer(minLength: 0)
         InfoView(imageName: "magnifyingglass", message: "No numbers found for \"\(viewModel.searchText)\"")
             .frame(maxHeight: content.size.height - 44)
@@ -56,7 +60,7 @@ private extension BlockListView {
     }
 
     var blockedContactsList: some View {
-        List(viewModel.filteredContacts()) { contact in
+        List(viewModel.contacts) { contact in
             ContactRowView(contact: contact)
         }
         .listRowBackground(Color.clear)
@@ -88,7 +92,7 @@ struct ContactRowView: View {
 
     var body: some View {
         HStack {
-            Text(contact.number.description)
+            Text(contact.id.description)
             Spacer()
             Text(contact.label)
         }
