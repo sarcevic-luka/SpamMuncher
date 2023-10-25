@@ -22,7 +22,7 @@ public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable,
         VStack {
             GeometryReader { geometry in
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: columns, alignment: .center, spacing: 5) {
+                    LazyHGrid(rows: columns, alignment: .center, spacing: 8) {
                         ForEach(Array(T.allCases.enumerated()), id: \.offset) { index, value in
                             let isSelected = selectedValue == value
                             ZStack {
