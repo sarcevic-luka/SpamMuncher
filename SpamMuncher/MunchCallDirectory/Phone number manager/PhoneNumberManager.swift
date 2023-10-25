@@ -15,8 +15,8 @@ protocol PhoneNumberManaging {
     var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
     var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
 
-    func addNumber(_ number: PhoneNumber, type: PhoneNumberType)
-    func removeNumber(_ number: PhoneNumber, type: PhoneNumberType)
+    func addNumber(_ number: PhoneNumber)
+    func removeNumber(_ number: PhoneNumber)
 }
 
 
@@ -45,16 +45,15 @@ public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
 
     }
     
-    public func addNumber(_ number: PhoneNumber, type: PhoneNumberType) {
-        guard !numbers(for: type).contains(where: { $0.id == number.id }) else {
+    public func addNumber(_ number: PhoneNumber) {
+        guard !numbers(for: number.type).contains(where: { $0.id == number.id }) else {
             return
         }
-        
-        updateNumbers(with: number, type: type, action: .add)
+        updateNumbers(with: number, action: .add)
     }
 
-    public func removeNumber(_ number: PhoneNumber, type: PhoneNumberType) {
-        updateNumbers(with: number, type: type, action: .remove)
+    public func removeNumber(_ number: PhoneNumber) {
+        updateNumbers(with: number, action: .remove)
     }
 }
 
@@ -69,8 +68,8 @@ private extension PhoneNumberManager {
         return type.rawValue + "PhoneNumbers"
     }
     
-    private func updateNumbers(with number: PhoneNumber, type: PhoneNumberType, action: Action) {
-        var numbers = numbers(for: type)
+    private func updateNumbers(with number: PhoneNumber, action: Action) {
+        var numbers = numbers(for: number.type)
         
         switch action {
         case .add:
@@ -80,13 +79,13 @@ private extension PhoneNumberManager {
         }
         
         do {
-            try saveNumbers(numbers, ofType: type)
-            setNumbers(numbers, for: type)
+            try saveNumbers(numbers, ofType: number.type)
+            setNumbers(numbers, for: number.type)
         } catch let error as PhoneNumberError {
             // Handle or log error
             print(error)
         } catch {
-            print("Error saving numbers for \(type.rawValue): \(error)")
+            print("Error saving numbers for \(number.type.rawValue): \(error)")
         }
     }
 

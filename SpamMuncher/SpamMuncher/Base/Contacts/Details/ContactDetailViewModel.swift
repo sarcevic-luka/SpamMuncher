@@ -46,12 +46,12 @@ class ContactDetailViewModel: ObservableObject {
     }
 
     func blockOrUnblockContact() {
-        let phoneNumber = PhoneNumber(id: contact.phoneNumber.toCXCallDirectoryPhoneNumber(), label: PhoneNumberType.blocked.rawValue, name: contact.name)
+        let phoneNumber = PhoneNumber(id: contact.phoneNumber.toCXCallDirectoryPhoneNumber(), type: .blocked, name: contact.name)
         
         if isContactBlocked {
-            phoneNumberManager.removeNumber(phoneNumber, type: .blocked)
+            phoneNumberManager.removeNumber(phoneNumber)
         } else {
-            phoneNumberManager.addNumber(phoneNumber, type: .blocked)
+            phoneNumberManager.addNumber(phoneNumber)
         }
         
 //        isContactBlocked = isBlocked

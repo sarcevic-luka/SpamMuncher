@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum PhoneNumberType: String, CaseIterable {
-    case blocked
-    case suspicious
+public enum PhoneNumberType: String, Codable, CaseIterable {
+    case blocked = "Blocked"
+    case suspicious = "Suspicious"
 }

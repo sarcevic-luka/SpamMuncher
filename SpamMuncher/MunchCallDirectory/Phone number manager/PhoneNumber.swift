@@ -10,12 +10,12 @@ import CallKit
 
 public struct PhoneNumber: Identifiable, Codable {
     public var id: CXCallDirectoryPhoneNumber
-    public var label: String
+    public var type: PhoneNumberType
     public var name: String?
 
-    public init(id: CXCallDirectoryPhoneNumber, label: String, name: String? = nil) {
+    public init(id: CXCallDirectoryPhoneNumber, type: PhoneNumberType, name: String? = nil) {
         self.id = id
-        self.label = label
+        self.type = type
         self.name = name
     }
 }

@@ -13,12 +13,12 @@ extension BlockListViewModel {
         let viewModel = BlockListViewModel()
         
         let samplePhoneNumbers: [PhoneNumber] = [
-            PhoneNumber(id: 1234567890, label: "Blocked"),
-            PhoneNumber(id: 0987654321, label: "Suspicious")
+            PhoneNumber(id: 1234567890, type: .blocked),
+            PhoneNumber(id: 0987654321, type: .suspicious)
         ]
         
         let phoneNumberManager = PhoneNumberManager()
-        samplePhoneNumbers.forEach { phoneNumberManager.addNumber($0, type: PhoneNumberType(rawValue: $0.label.lowercased())!) }
+        samplePhoneNumbers.forEach { phoneNumberManager.addNumber($0) }
         
         return viewModel
     }

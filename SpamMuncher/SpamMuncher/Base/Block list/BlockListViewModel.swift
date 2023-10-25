@@ -97,7 +97,7 @@ final class BlockListViewModel: ObservableObject {
         
         if !searchText.isEmpty {
             return allContacts.filter { contact in
-                contact.id.description.contains(searchText) || contact.label.contains(searchText)
+                contact.id.description.contains(searchText) || (contact.name?.contains(searchText) ?? false)
             }
         } else {
             return allContacts
@@ -107,8 +107,8 @@ final class BlockListViewModel: ObservableObject {
     func addPhoneNumber() {
         if isPhoneNumberValid == true, let validNumber = Int64(enteredPhoneNumber) {
 
-            let newPhoneNumber = PhoneNumber(id: validNumber, label: phoneNumberPopupViewModel.selectedNumberType.rawValue.capitalized)
-            phoneNumberManager.addNumber(newPhoneNumber, type: phoneNumberPopupViewModel.selectedNumberType)
+            let newPhoneNumber = PhoneNumber(id: validNumber, type: phoneNumberPopupViewModel.selectedNumberType)
+            phoneNumberManager.addNumber(newPhoneNumber)
             
             withAnimation {
                 isPhoneNumberPopupVisible = false
@@ -118,6 +118,10 @@ final class BlockListViewModel: ObservableObject {
         }
     }
 
+    func deleteContact(contact: PhoneNumber) {
+        phoneNumberManager.removeNumber(contact)
+    }
+    
     private func checkPhoneNumberValidity() {
         isPhoneNumberValid = enteredPhoneNumber.range(of: "^[0-9]{10}$", options: .regularExpression) != nil
     }

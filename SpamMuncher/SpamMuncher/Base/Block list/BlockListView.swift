@@ -69,7 +69,9 @@ private extension BlockListView {
 
     var blockedContactsList: some View {
         List(viewModel.contacts) { contact in
-            ContactRowView(contact: contact)
+            ContactRowView(contact: contact) {
+                viewModel.deleteContact(contact: contact)
+            }
         }
         .listRowBackground(Color.clear)
         .listStyle(PlainListStyle())
@@ -80,7 +82,7 @@ private extension BlockListView {
             viewModel.togglePhoneNumberPopup()
         }) {
             Image(systemName: "plus")
-                .foregroundColor(.secondary) 
+                .foregroundColor(.alertColor) 
                 .font(.system(size: 20))
         }
         .padding()
@@ -97,12 +99,18 @@ private extension BlockListView {
 
 struct ContactRowView: View {
     let contact: PhoneNumber
+    var onDelete: () -> Void
 
     var body: some View {
         HStack {
             Text(contact.id.description)
             Spacer()
-            Text(contact.label)
+            Text(contact.type.rawValue)
+            Button(action: onDelete) {
+                Image(systemName: "trash.fill")
+                    .foregroundColor(.red)
+                    .padding(.leading)
+            }
         }
         .listRowBackground(Color.clear)
         .padding([.leading, .trailing], 8)

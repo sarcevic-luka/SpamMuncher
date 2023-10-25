@@ -40,7 +40,7 @@ public final class CallDirectoryHandler: CXCallDirectoryProvider {
     }
 
     private func addAllIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
-        let allPhoneNumbersAndLabels = phoneNumberManager.suspiciousNumbers.map { ($0.id, $0.label) }
+        let allPhoneNumbersAndLabels = phoneNumberManager.suspiciousNumbers.map { ($0.id, $0.type.rawValue) }
         addIdentificationEntries(allPhoneNumbersAndLabels, to: context)
     }
 
