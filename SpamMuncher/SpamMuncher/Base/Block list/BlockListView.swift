@@ -35,20 +35,26 @@ private extension BlockListView {
         GeometryReader { geometry in
             VStack {
                 SearchBar(searchText: $viewModel.searchText)
-                if viewModel.contacts.isEmpty && !viewModel.searchText.isEmpty {
-                    infoView(for: geometry)
-                } else {
-                    segmentedControl
+                segmentedControl
+                switch viewModel.infoViewState {
+                case .hidden:
                     blockedContactsList
+                case .noNumbersFound, .noNumbersAdded:
+                    Spacer(minLength: 0)
+                    InfoView(state: viewModel.infoViewState)
+                        .frame(maxHeight: geometry.size.height - 44)
+                    Spacer(minLength: 0)
+                default:
+                    EmptyView()
                 }
             }
         }
     }
-    
+
     @ViewBuilder
     func infoView(for content: GeometryProxy) -> some View {
         Spacer(minLength: 0)
-        InfoView(imageName: "magnifyingglass", message: "No numbers found for \"\(viewModel.searchText)\"")
+        InfoView(state: .noNumbersFound(searchText: $viewModel.searchText))
             .frame(maxHeight: content.size.height - 44)
         Spacer(minLength: 0)
     }

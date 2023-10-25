@@ -13,7 +13,7 @@ struct MessagesView: View {
         NavigationView {
             ZStack {
                 BackgroundGradientView()
-                InfoView(imageName: "hammer.fill", message: "Currently under construction!")
+                InfoView(state: .underConstruction)
             }
             .navigationBarTitle("Messages", displayMode: .inline)
         }

@@ -14,7 +14,7 @@ import Combine
 
 final class BlockListViewModel: ObservableObject {
     enum FilterType: String, CaseIterable {
-        case all = "ALL"
+        case all = "All"
         case blocked = "Blocked"
         case suspicious = "Suspicious"
 
@@ -36,9 +36,9 @@ final class BlockListViewModel: ObservableObject {
     @Published var isPhoneNumberValid: Bool? = nil
     @Published var contacts: [PhoneNumber] = []
     @Published var phoneNumberPopupViewModel = PhoneNumberPopupViewModel()
-    @Published var isContactsListEmpty: Bool = false
     @Published var searchText: String = ""
     @Published var phoneNumberManager: PhoneNumberManaging
+    @Published var infoViewState: InfoView.InfoViewState = .hidden
     
     private var bag = Set<AnyCancellable>()
 
@@ -49,12 +49,20 @@ final class BlockListViewModel: ObservableObject {
     
     private func setObservers() {
         $contacts
-           .map { $0.isEmpty }
-           .sink { [weak self] in
-               self?.isContactsListEmpty = $0
-           }
-           .store(in: &bag)
-        
+            .combineLatest($searchText)
+            .sink { [weak self] contacts, searchText in
+                if contacts.isEmpty {
+                    if searchText.isEmpty {
+                        self?.infoViewState = .noNumbersAdded(filterText: self?.selectedFilterType.rawValue ?? "All")
+                    } else {
+                        self?.infoViewState = .noNumbersFound(searchText: .constant(searchText))
+                    }
+                } else {
+                    self?.infoViewState = .hidden
+                }
+            }
+            .store(in: &bag)
+
         let changedPublisher = Publishers.CombineLatest(
             phoneNumberManager.blockedNumbersPublisher,
             phoneNumberManager.suspiciousNumbersPublisher
