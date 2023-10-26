@@ -28,13 +28,18 @@ extension String {
     var formattedAsPhoneNumber: String {
         let numbers = self.filter { $0.isWholeNumber }
         
-        guard numbers.count == 10 else { return self }
-        
         let areaCode = numbers.prefix(3)
         let middle = numbers.dropFirst(3).prefix(3)
-        let last = numbers.suffix(4)
+        let last = numbers.dropFirst(6)
         
-        return "(\(areaCode)) \(middle)-\(last)"
+        switch numbers.count {
+        case 1...3:
+            return "(\(areaCode))"
+        case 4...6:
+            return "(\(areaCode)) \(middle)"
+        default:
+            return "(\(areaCode)) \(middle)-\(last)"
+        }
     }
 
     func toCXCallDirectoryPhoneNumber() -> CXCallDirectoryPhoneNumber {

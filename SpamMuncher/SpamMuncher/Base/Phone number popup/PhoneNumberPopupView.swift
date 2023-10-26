@@ -29,7 +29,7 @@ private extension PhoneNumberPopupView {
             header
             numberInputField
             segmentedControl
-            if let valid = viewModel.isValid, !valid {
+            if !viewModel.isValid {
                 validationWarning
             }
             actionButtons
@@ -50,7 +50,7 @@ private extension PhoneNumberPopupView {
     var numberInputField: some View {
         HStack {
             Image(systemName: "phone.fill").foregroundColor(.gray)
-            TextField("Phone Number", text: $viewModel.phoneNumber)
+            PhoneNumberField("Phone Number", text: $viewModel.phoneNumber)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
         }
@@ -96,7 +96,8 @@ private extension PhoneNumberPopupView {
             Text("Add")
                 .padding(.horizontal, 30)
         }
-        .disabled(viewModel.isAddButtonDisabled)
+        .customStyle(.primary)
+        .disabled(!viewModel.isValid)
     }
 
 

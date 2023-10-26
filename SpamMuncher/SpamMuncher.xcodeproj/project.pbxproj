@@ -19,6 +19,7 @@
 		F14A4DC52AD47EE5002D46AE /* CallDirectoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */; };
 		F14A4DC92AD47EE5002D46AE /* MunchCallDirectory.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F14A4DC22AD47EE5002D46AE /* MunchCallDirectory.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F14FA1352AE9D5ED007DE6B1 /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14FA1342AE9D5ED007DE6B1 /* ContactRowView.swift */; };
+		F14FA1C82AEB02A2007DE6B1 /* PhoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14FA1C72AEB02A2007DE6B1 /* PhoneNumberField.swift */; };
 		F167ACC22AE5182F0045A325 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B9E2AE43D2C000EC28E /* PhoneNumber.swift */; };
 		F167ACC32AE518320045A325 /* PhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11182F12AD87410000DBB4F /* PhoneNumberManager.swift */; };
 		F167ACC42AE518340045A325 /* PhoneNumberType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B9C2AE43CFA000EC28E /* PhoneNumberType.swift */; };
@@ -103,6 +104,7 @@
 		F14A4DC42AD47EE5002D46AE /* CallDirectoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDirectoryHandler.swift; sourceTree = "<group>"; };
 		F14A4DC62AD47EE5002D46AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14FA1342AE9D5ED007DE6B1 /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
+		F14FA1C72AEB02A2007DE6B1 /* PhoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberField.swift; sourceTree = "<group>"; };
 		F167ACC62AE545590045A325 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F167ACC92AE54AF90045A325 /* BackgroundOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundOverlayView.swift; sourceTree = "<group>"; };
 		F167ACCB2AE54B0A0045A325 /* BackgroundGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradientView.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		F1363B982AE3DD8C000EC28E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F14FA1C62AEB0287007DE6B1 /* Components */,
 				F167ACD12AE557300045A325 /* App */,
 				F167ACF02AE5AF450045A325 /* Apple support pop-up */,
 				F1363B992AE3DD97000EC28E /* Block list */,
@@ -211,7 +214,6 @@
 			children = (
 				F167ACC52AE545420045A325 /* Buttons */,
 				F167ACC82AE54AE10045A325 /* Overlays */,
-				F167ACD92AE559620045A325 /* TabView */,
 				F14A4CF42AD3C06E002D46AE /* Views */,
 			);
 			path = Components;
@@ -251,6 +253,14 @@
 				F14FA1342AE9D5ED007DE6B1 /* ContactRowView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F14FA1C62AEB0287007DE6B1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F14FA1C72AEB02A2007DE6B1 /* PhoneNumberField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		F167ACC52AE545420045A325 /* Buttons */ = {
@@ -294,13 +304,6 @@
 				F167ACD52AE557820045A325 /* MessagesView.swift */,
 			);
 			path = Messages;
-			sourceTree = "<group>";
-		};
-		F167ACD92AE559620045A325 /* TabView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TabView;
 			sourceTree = "<group>";
 		};
 		F167ACDA2AE559E60045A325 /* UI components */ = {
@@ -558,6 +561,7 @@
 				F14FA1352AE9D5ED007DE6B1 /* ContactRowView.swift in Sources */,
 				F167ACD82AE557A80045A325 /* MainView.swift in Sources */,
 				F1DD6EE62AD211C700E04728 /* BlockListViewModel.swift in Sources */,
+				F14FA1C82AEB02A2007DE6B1 /* PhoneNumberField.swift in Sources */,
 				F167ACC22AE5182F0045A325 /* PhoneNumber.swift in Sources */,
 				F167ACED2AE581150045A325 /* Contact.swift in Sources */,
 				F1DD6ED62AD2037800E04728 /* BlockListView.swift in Sources */,

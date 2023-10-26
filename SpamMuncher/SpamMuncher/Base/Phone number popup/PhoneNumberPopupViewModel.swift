@@ -6,43 +6,36 @@
 //
 
 import Foundation
+import Combine
 
 class PhoneNumberPopupViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
-    @Published var isValid: Bool? = nil
+    @Published var isValid: Bool = false
     @Published var selectedNumberType: PhoneNumberType = .suspicious
-    @Published var opacity: Double = 1
 
     private var phoneNumberManager: PhoneNumberManaging
 
     init(phoneNumberManager: PhoneNumberManaging) {
         self.phoneNumberManager = phoneNumberManager
+        setupBindings()
     }
 
-    var isAddButtonDisabled: Bool {
-        phoneNumber.isEmpty
-    }
-    
-    func addPhoneNumberAndClose(_ closeAction: () -> Void) {
-        checkPhoneNumberValidity()
-
-        if isValid == true {
-            addPhoneNumber()
+    func addPhoneNumberAndClose(_ closeAction: @escaping () -> Void) {
+        if isValid {
+            let numericPhoneNumber = phoneNumber.filter { $0.isWholeNumber }
+            if let validNumber = Int64(numericPhoneNumber) {
+                phoneNumberManager.addNumber(PhoneNumber(id: validNumber, type: selectedNumberType))
+                phoneNumber = ""
+            }
             closeAction()
         }
     }
+}
 
-    private func addPhoneNumber() {
-        if let validNumber = Int64(phoneNumber) {
-            let newPhoneNumber = PhoneNumber(id: validNumber, type: selectedNumberType)
-            phoneNumberManager.addNumber(newPhoneNumber)
-            phoneNumber = ""
-            isValid = nil
-        }
-    }
-
-    private func checkPhoneNumberValidity() {
-        // For real app would probablt have more complex and accurate validation logic
-        isValid = phoneNumber.range(of: "^[0-9]{10}$", options: .regularExpression) != nil
+private extension PhoneNumberPopupViewModel {
+    func setupBindings() {
+        $phoneNumber
+            .map { $0.range(of: "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$", options: .regularExpression) != nil }
+            .assign(to: &$isValid)
     }
 }

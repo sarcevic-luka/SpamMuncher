@@ -17,13 +17,17 @@ public struct ButtonStyling {
 
 public struct CustomButtonStyle: ButtonStyle {
     var style: ButtonStyling
+    @Environment(\.isEnabled) private var isEnabled: Bool
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(style.backgroundColor)
-            .foregroundColor(style.textColor)
+            .background(isEnabled ? style.backgroundColor : style.backgroundColor.opacity(0.3))
+            .foregroundColor(isEnabled ? style.textColor : style.textColor.opacity(0.3))
             .cornerRadius(8)
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.5), value: configuration.isPressed)
+
     }
 }
 
