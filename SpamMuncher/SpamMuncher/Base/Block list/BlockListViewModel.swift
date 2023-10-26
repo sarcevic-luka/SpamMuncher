@@ -35,54 +35,74 @@ final class BlockListViewModel: ObservableObject {
     @Published var enteredPhoneNumber: String = ""
     @Published var isPhoneNumberValid: Bool? = nil
     @Published var contacts: [PhoneNumber] = []
-    @Published var phoneNumberPopupViewModel = PhoneNumberPopupViewModel()
     @Published var searchText: String = ""
     @Published var phoneNumberManager: PhoneNumberManaging
     @Published var infoViewState: InfoView.InfoViewState = .hidden
-    
+
     private var bag = Set<AnyCancellable>()
 
     init(phoneNumberManager: PhoneNumberManaging = PhoneNumberManager()) {
         self.phoneNumberManager = phoneNumberManager
         setObservers()
     }
-    
-    private func setObservers() {
-        $contacts
-            .combineLatest($searchText)
-            .sink { [weak self] contacts, searchText in
-                if contacts.isEmpty {
-                    if searchText.isEmpty {
-                        self?.infoViewState = .noNumbersAdded(filterText: self?.selectedFilterType.rawValue ?? "All")
-                    } else {
-                        self?.infoViewState = .noNumbersFound(searchText: .constant(searchText))
-                    }
-                } else {
-                    self?.infoViewState = .hidden
-                }
-            }
-            .store(in: &bag)
 
+    func deleteContact(contact: PhoneNumber) {
+        phoneNumberManager.removeNumber(contact)
+    }
+
+    func togglePhoneNumberPopup() {
+        withAnimation {
+            isPhoneNumberPopupVisible.toggle()
+        }
+    }
+}
+
+private extension BlockListViewModel {
+    private func setObservers() {
+        // Binds changes for Contacts list
         let changedPublisher = Publishers.CombineLatest(
             phoneNumberManager.blockedNumbersPublisher,
             phoneNumberManager.suspiciousNumbersPublisher
         )
             .eraseToAnyPublisher()
-        
+
         Publishers.CombineLatest3(
             $selectedFilterType,
             $searchText,
             changedPublisher
         )
-            .map {  [weak self] filter, searchText, lists in
-                self?.filteredContacts(with: filter, for: searchText, numbersList: lists) ?? []
-            }
-            .sink { [weak self] in
-                self?.contacts = $0
-            }
-            .store(in: &bag)
+        .map {  [weak self] filter, searchText, lists in
+            self?.filteredContacts(with: filter, for: searchText, numbersList: lists) ?? []
+        }
+        .sink { [weak self] in
+            self?.contacts = $0
+        }
+        .store(in: &bag)
+
+        // Binds UI changes for InfoStateView
+        Publishers.CombineLatest3(
+            $selectedFilterType,
+            $searchText,
+            $contacts
+        )
+        .sink { [weak self] filter, searchText, contacts in
+            self?.updateInfoViewState(filter: filter, searchText: searchText, contacts: contacts)
+        }
+        .store(in: &bag)
     }
-    
+
+    private func updateInfoViewState(filter: FilterType, searchText: String, contacts: [PhoneNumber]) {
+        if contacts.isEmpty {
+            if searchText.isEmpty {
+                infoViewState = .noNumbersAdded(filterText: filter.rawValue)
+            } else {
+                infoViewState = .noNumbersFound(searchText: .constant(searchText))
+            }
+        } else {
+            infoViewState = .hidden
+        }
+    }
+
     private func filteredContacts(with filter: FilterType, for searchText: String, numbersList:  (blockedNumbers: [PhoneNumber],suspiciousNumbers: [PhoneNumber])) -> [PhoneNumber] {
         let allContacts: [PhoneNumber]
 
@@ -94,7 +114,7 @@ final class BlockListViewModel: ObservableObject {
         case .all:
             allContacts = numbersList.blockedNumbers + numbersList.suspiciousNumbers
         }
-        
+
         if !searchText.isEmpty {
             return allContacts.filter { contact in
                 contact.id.description.contains(searchText) || (contact.name?.contains(searchText) ?? false)
@@ -102,49 +122,5 @@ final class BlockListViewModel: ObservableObject {
         } else {
             return allContacts
         }
-    }
-
-    func addPhoneNumber() {
-        if isPhoneNumberValid == true, let validNumber = Int64(enteredPhoneNumber) {
-
-            let newPhoneNumber = PhoneNumber(id: validNumber, type: phoneNumberPopupViewModel.selectedNumberType)
-            phoneNumberManager.addNumber(newPhoneNumber)
-            
-            withAnimation {
-                isPhoneNumberPopupVisible = false
-            }
-            enteredPhoneNumber = ""
-            isPhoneNumberValid = nil
-        }
-    }
-
-    func deleteContact(contact: PhoneNumber) {
-        phoneNumberManager.removeNumber(contact)
-    }
-    
-    private func checkPhoneNumberValidity() {
-        isPhoneNumberValid = enteredPhoneNumber.range(of: "^[0-9]{10}$", options: .regularExpression) != nil
-    }
-
-    private func refreshCallDirectory() {
-        let directoryHandler = CallDirectoryHandler()
-        let context = CXCallDirectoryExtensionContext()
-        directoryHandler.beginRequest(with: context)
-    }
-
-    func togglePhoneNumberPopup() {
-        withAnimation {
-            isPhoneNumberPopupVisible.toggle()
-            phoneNumberPopupViewModel.phoneNumber = self.enteredPhoneNumber
-        }
-    }
-    
-    func handleAddPhoneNumber() {
-        enteredPhoneNumber = phoneNumberPopupViewModel.phoneNumber
-        checkPhoneNumberValidity()
-        if isPhoneNumberValid == true {
-            addPhoneNumber()
-        }
-        
     }
 }

@@ -44,21 +44,12 @@ private extension BlockListView {
                 case .noNumbersFound, .noNumbersAdded:
                     Spacer(minLength: 0)
                     InfoView(state: viewModel.infoViewState)
-                        .frame(maxHeight: geometry.size.height - 44)
                     Spacer(minLength: 0)
                 default:
                     EmptyView()
                 }
             }
         }
-    }
-
-    @ViewBuilder
-    func infoView(for content: GeometryProxy) -> some View {
-        Spacer(minLength: 0)
-        InfoView(state: .noNumbersFound(searchText: $viewModel.searchText))
-            .frame(maxHeight: content.size.height - 44)
-        Spacer(minLength: 0)
     }
 
     var segmentedControl: some View {
@@ -89,10 +80,9 @@ private extension BlockListView {
     }
 
     var phoneNumberPopup: some View {
-        PhoneNumberPopup(
+        PhoneNumberPopupView(
             isPresented: $viewModel.isPhoneNumberPopupVisible,
-            viewModel: viewModel.phoneNumberPopupViewModel,
-            onAdd: viewModel.handleAddPhoneNumber
+            viewModel: PhoneNumberPopupViewModel(phoneNumberManager: viewModel.phoneNumberManager)
         )
     }
 }

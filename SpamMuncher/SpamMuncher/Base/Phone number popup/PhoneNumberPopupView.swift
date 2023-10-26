@@ -7,12 +7,12 @@
 
 import SwiftUI
 import MunchUI
+import Combine
 
-struct PhoneNumberPopup: View {
+struct PhoneNumberPopupView: View {
     @Binding var isPresented: Bool
     @ObservedObject var viewModel: PhoneNumberPopupViewModel
-    let onAdd: () -> Void
-    
+
     var body: some View {
         BackgroundOverlayView(isPresented: $isPresented) {
             mainContent
@@ -23,7 +23,7 @@ struct PhoneNumberPopup: View {
 
 // MARK: - Private Views
 
-private extension PhoneNumberPopup {
+private extension PhoneNumberPopupView {
     var mainContent: some View {
         VStack(spacing: 20) {
             header
@@ -87,13 +87,18 @@ private extension PhoneNumberPopup {
     
     var addButton: some View {
         Button(action: {
-            viewModel.validateAndAddPhoneNumber(onAdd: onAdd)
+            viewModel.addPhoneNumberAndClose {
+                withAnimation {
+                    isPresented = false
+                }
+            }
         }) {
             Text("Add")
                 .padding(.horizontal, 30)
         }
         .disabled(viewModel.isAddButtonDisabled)
     }
+
 
     var cancelButton: some View {
         Button(action: {
@@ -110,16 +115,12 @@ private extension PhoneNumberPopup {
 
 // MARK: - Previews
 
-struct PhoneNumberPopup_Previews: PreviewProvider {
+struct PhoneNumberPopupView_Previews: PreviewProvider {
     @State static var isPresented = true
-    static let viewModel1 = {
-        let vm = PhoneNumberPopupViewModel()
-        vm.phoneNumber = ""
-        return vm
-    }()
+    static let viewModel1 = PhoneNumberPopupViewModel(phoneNumberManager: MockPhoneNumberManager())
     
-    static let viewModel2 = {
-        let vm = PhoneNumberPopupViewModel()
+    static let viewModel2: PhoneNumberPopupViewModel = {
+        let vm = PhoneNumberPopupViewModel(phoneNumberManager: MockPhoneNumberManager())
         vm.phoneNumber = "123456"
         vm.isValid = false
         return vm
@@ -127,31 +128,57 @@ struct PhoneNumberPopup_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            PhoneNumberPopup(
+            PhoneNumberPopupView(
                 isPresented: $isPresented,
-                viewModel: viewModel1,
-                onAdd: {
-                    if viewModel1.phoneNumber.count == 10 {
-                        viewModel1.isValid = true
-                    } else {
-                        viewModel1.isValid = false
-                    }
-                }
+                viewModel: viewModel1
             )
             .padding()
             .background(Color.gray.opacity(0.3))
             .previewLayout(.sizeThatFits)
             .previewDisplayName("Default state")
             
-            PhoneNumberPopup(
+            PhoneNumberPopupView(
                 isPresented: $isPresented,
-                viewModel: viewModel2,
-                onAdd: {}
+                viewModel: viewModel2
             )
             .padding()
             .background(Color.gray.opacity(0.3))
             .previewLayout(.sizeThatFits)
             .previewDisplayName("Invalid phone number")
+        }
+    }
+}
+
+// MockPhoneNumberManager for preview purposes
+class MockPhoneNumberManager: PhoneNumberManaging {
+    var blockedNumbers: [PhoneNumber] = []
+    var suspiciousNumbers: [PhoneNumber] = []
+
+    var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
+        Just(blockedNumbers).eraseToAnyPublisher()
+    }
+
+    var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
+        Just(suspiciousNumbers).eraseToAnyPublisher()
+    }
+
+    func addNumber(_ number: PhoneNumber) {
+        // Add a simple logic to append the number
+        switch number.type {
+        case .blocked:
+            blockedNumbers.append(number)
+        case .suspicious:
+            suspiciousNumbers.append(number)
+        }
+    }
+
+    func removeNumber(_ number: PhoneNumber) {
+        // Add a simple logic to remove the number
+        switch number.type {
+        case .blocked:
+            blockedNumbers.removeAll { $0.id == number.id }
+        case .suspicious:
+            suspiciousNumbers.removeAll { $0.id == number.id }
         }
     }
 }
