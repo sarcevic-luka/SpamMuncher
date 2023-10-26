@@ -31,7 +31,7 @@ private extension AppleSupportPopupView {
             actionButtons
         }
         .padding(20)
-        .background(Color.baseColor)
+        .background(Color.charcoalGray)
         .cornerRadius(15)
         .offset(y: -50)
     }

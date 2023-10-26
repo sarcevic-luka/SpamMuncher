@@ -82,7 +82,7 @@ private extension BlockListView {
             viewModel.togglePhoneNumberPopup()
         }) {
             Image(systemName: "plus")
-                .foregroundColor(.alertColor) 
+                .foregroundColor(.crimsonRed) 
                 .font(.system(size: 20))
         }
         .padding()

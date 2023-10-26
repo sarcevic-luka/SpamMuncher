@@ -27,6 +27,6 @@ struct MainView: View {
                     Label("Messages", systemImage: "message.fill")
                 }
         }
-        .accentColor(.alertColor)
+        .accentColor(.crimsonRed)
     }
 }

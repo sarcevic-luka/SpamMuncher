@@ -19,9 +19,9 @@ struct Call: Identifiable {
             case .normal:
                 return Color.primary
             case .suspicious:
-                return Color.warningColor
+                return Color.amberYellow
             case .scam:
-                return Color.alertColor
+                return Color.crimsonRed
             }
         }
         

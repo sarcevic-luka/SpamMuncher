@@ -35,7 +35,7 @@ private extension PhoneNumberPopup {
             actionButtons
         }
         .padding(20)
-        .background(Color.lowLightColor)
+        .background(Color.deepBlack)
         .cornerRadius(15)
         .offset(y: -50)
     }
@@ -74,7 +74,7 @@ private extension PhoneNumberPopup {
     var validationWarning: some View {
         HStack {
             Image(systemName: "exclamationmark.triangle.fill").foregroundColor(.red)
-            Text("Invalid phone number").foregroundColor(.alertColor)
+            Text("Invalid phone number").foregroundColor(.crimsonRed)
         }
     }
     

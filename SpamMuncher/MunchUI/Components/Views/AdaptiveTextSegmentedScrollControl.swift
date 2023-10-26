@@ -27,7 +27,7 @@ public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable,
                             let isSelected = selectedValue == value
                             ZStack {
                                 Rectangle()
-                                    .fill(isSelected ? Color.baseColor : Color.primaryColor)
+                                    .fill(isSelected ? Color.charcoalGray : Color.charcoalGraySemiTransparent)
                                     .cornerRadius(17)
                                     .onTapGesture {
                                         withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 2, blendDuration: 0.5)) {
@@ -36,7 +36,7 @@ public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable,
                                     }
                                 Text(value.rawValue.capitalized)
                                     .font(isSelected ? .headline : .subheadline)
-                                    .foregroundColor(isSelected ? .highlightColor : .lowKeyPrimary)
+                                    .foregroundColor(isSelected ? .sunnyYellow : .mediumSlateGray)
                                     .lineLimit(1)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .padding(.horizontal, 8)

@@ -11,8 +11,8 @@ public struct ButtonStyling {
     var backgroundColor: Color
     var textColor: Color
 
-    public static let primary = ButtonStyling(backgroundColor: .black, textColor: .highlightColor)
-    public static let secondary = ButtonStyling(backgroundColor: .alertColor, textColor: .baseColor)
+    public static let primary = ButtonStyling(backgroundColor: .black, textColor: .sunnyYellow)
+    public static let secondary = ButtonStyling(backgroundColor: .crimsonRed, textColor: .charcoalGray)
 }
 
 public struct CustomButtonStyle: ButtonStyle {

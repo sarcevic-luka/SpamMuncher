@@ -13,7 +13,7 @@ public struct BackgroundGradientView: View {
     
     public var body: some View {
         Rectangle()
-            .fill(LinearGradient(gradient: Gradient(colors: [.lightPrimary, .gray, .lightPrimary]), startPoint: .top, endPoint: .bottom))
+            .fill(LinearGradient(gradient: Gradient(colors: [.darkSlateGray, .gray, .darkSlateGray]), startPoint: .top, endPoint: .bottom))
             .ignoresSafeArea()
             .zIndex(0)
     }

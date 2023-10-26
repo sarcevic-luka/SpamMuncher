@@ -29,7 +29,7 @@ struct ContactRowView: View {
             }
             Text("\(contact.id)".formattedAsPhoneNumber)
                 .font(.subheadline)
-                .foregroundColor(.lowestLightColor)
+                .foregroundColor(.offWhite)
         }
     }
     
@@ -40,7 +40,7 @@ struct ContactRowView: View {
     private var deleteButton: some View {
         Button(action: onDelete) {
             Image(systemName: "trash.fill")
-                .foregroundColor(.warningColor)
+                .foregroundColor(.amberYellow)
                 .padding(.leading)
         }
     }

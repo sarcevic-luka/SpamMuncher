@@ -62,7 +62,7 @@ public struct InfoView: View {
                     Text(message)
                         .multilineTextAlignment(.center)
                 }
-                .foregroundColor(.lowLightColor)
+                .foregroundColor(.deepBlack)
                 .padding(.horizontal)
             }
         }
