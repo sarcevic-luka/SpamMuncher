@@ -8,6 +8,7 @@
 import UIKit
 import Contacts
 
+/// In real live app I would probably fetched all numbers and then block entire user contact if any of the numbers is spam.
 struct Contact: Identifiable {
     let id: UUID = UUID()
     var name: String
@@ -15,28 +16,12 @@ struct Contact: Identifiable {
     var image: UIImage?
     
     init(from cnContact: CNContact) {
-        let givenName = cnContact.givenName
-        let familyName = cnContact.familyName
-        let organizationName = cnContact.organizationName
+        let namesAndOrganization = [cnContact.givenName, cnContact.familyName, cnContact.organizationName].filter { !$0.isEmpty }
         
-        if !givenName.isEmpty && !familyName.isEmpty {
-            self.name = "\(givenName) \(familyName)"
-        } else if !givenName.isEmpty {
-            self.name = givenName
-        } else if !familyName.isEmpty {
-            self.name = familyName
-        } else if !organizationName.isEmpty {
-            self.name = organizationName
-        } else {
-            self.name = ""
-        }
+        self.name = namesAndOrganization.joined(separator: " ")
 
         self.phoneNumber = cnContact.phoneNumbers.first?.value.stringValue ?? ""
         
-        if let imageData = cnContact.imageData {
-            self.image = UIImage(data: imageData)
-        } else {
-            self.image = nil
-        }
+        self.image = cnContact.imageData.flatMap(UIImage.init)
     }
 }

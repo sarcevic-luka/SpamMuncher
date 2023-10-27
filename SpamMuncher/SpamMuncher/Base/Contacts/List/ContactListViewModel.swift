@@ -24,6 +24,7 @@ class ContactsListViewModel: ObservableObject {
         requestContactPermissions()
     }
 
+    /// Requests permission to access contacts and fetches them if permission is granted.
     func requestContactPermissions() {
         let store = CNContactStore()
         store.requestAccess(for: .contacts) { granted, error in
@@ -42,8 +43,9 @@ class ContactsListViewModel: ObservableObject {
             return contactsDictionary
         } else {
             var filteredContacts: [Character: [Contact]] = [:]
+            let lowercasedSearchText = searchText.lowercased()
             for (key, contacts) in contactsDictionary {
-                let filtered = contacts.filter { $0.name.contains(searchText) }
+                let filtered = contacts.filter { $0.name.lowercased().contains(lowercasedSearchText) }
                 if !filtered.isEmpty {
                     filteredContacts[key] = filtered
                 }
@@ -56,7 +58,8 @@ class ContactsListViewModel: ObservableObject {
 // MARK: - Private methods
 
 private extension ContactsListViewModel {
-    private func fetchContacts() {
+    /// Fetches contacts from the contact store and filters out contacts without a name or number.
+    func fetchContacts() {
         let contactStore = CNContactStore()
         let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactOrganizationNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey]
         let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
@@ -86,5 +89,4 @@ private extension ContactsListViewModel {
             }
         }
     }
-
 }
