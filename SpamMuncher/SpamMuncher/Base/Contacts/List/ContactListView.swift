@@ -31,10 +31,13 @@ struct ContactListView: View {
     
     private var mainContent: some View {
         Group {
-            if viewModel.contacts().isEmpty && !viewModel.searchText.isEmpty {
-                InfoView(state: .noNumbersFound(searchText: $viewModel.searchText))
-            } else {
+            switch viewModel.infoViewState {
+            case .hidden:
                 contactsList
+            case .noContactsPermissionGranted, .noContacts:
+                InfoView(state: viewModel.infoViewState)
+            default:
+                EmptyView()
             }
         }
     }

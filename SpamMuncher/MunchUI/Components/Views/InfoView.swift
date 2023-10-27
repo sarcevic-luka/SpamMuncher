@@ -17,6 +17,7 @@ public struct InfoView: View {
         case noContactsPermissionGranted
         case noContacts
         case hidden
+        case error(message: String)
         
         fileprivate var details: (imageName: String, message: String) {
             switch self {
@@ -30,6 +31,8 @@ public struct InfoView: View {
                 return ("lock.fill", "Please allow access to contacts in Settings")
             case .noContacts:
                 return ("xmark.circle", "No Contacts Available")
+            case .error(let message):
+                return ("exclamationmark.triangle.fill", message) 
             case .hidden:
                 return ("", "")
             }

@@ -32,6 +32,8 @@ class PhoneNumberPopupViewModel: ObservableObject {
     }
 }
 
+// MARK: - Private methods
+
 private extension PhoneNumberPopupViewModel {
     func setupBindings() {
         $phoneNumber

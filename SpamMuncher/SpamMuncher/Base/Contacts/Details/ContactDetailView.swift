@@ -8,8 +8,6 @@
 import SwiftUI
 import MunchUI
 
-import SwiftUI
-
 struct ContactDetailView: View {
     @ObservedObject var viewModel: ContactDetailViewModel
 

@@ -1,5 +1,5 @@
 //
-//  ContactViewModel.swift
+//  ContactsListViewModel.swift
 //  SpamMuncher
 //
 //  Created by Code Forge on 22.10.2023..
@@ -7,6 +7,7 @@
 
 import Contacts
 import UIKit
+import MunchUI
 import MunchCallDirectory
 
 class ContactsListViewModel: ObservableObject {
@@ -14,13 +15,29 @@ class ContactsListViewModel: ObservableObject {
     @Published var fetchError: Error?
     @Published var searchText: String = ""
     @Published var isAppleSupportPopupVisible: Bool = false
+    @Published var infoViewState: InfoView.InfoViewState = .hidden
+
     var phoneNumberManager: PhoneNumberManaging
 
     init(phoneNumberManager: PhoneNumberManaging) {
         self.phoneNumberManager = phoneNumberManager
+        requestContactPermissions()
     }
 
+    private func requestContactPermissions() {
+        let store = CNContactStore()
+        store.requestAccess(for: .contacts) { granted, error in
+            DispatchQueue.main.async { [weak self] in
+                if granted {
+                    self?.fetchContacts()
+                } else {
+                    self?.infoViewState = .noContactsPermissionGranted
+                }
+            }
+        }
+    }
 
+    
     func fetchContacts() {
         let contactStore = CNContactStore()
         let keys = [CNContactGivenNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey]

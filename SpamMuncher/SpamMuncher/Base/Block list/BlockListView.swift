@@ -35,19 +35,17 @@ struct BlockListView: View {
 
 private extension BlockListView {
     var mainContent: some View {
-        GeometryReader { geometry in
-            VStack {
-                segmentedControl
-                switch viewModel.infoViewState {
-                case .hidden:
-                    blockedContactsList
-                case .noNumbersFound, .noNumbersAdded:
-                    Spacer(minLength: 0)
-                    InfoView(state: viewModel.infoViewState)
-                    Spacer(minLength: 0)
-                default:
-                    EmptyView()
-                }
+        VStack {
+            segmentedControl
+            switch viewModel.infoViewState {
+            case .hidden:
+                blockedContactsList
+            case .noNumbersFound, .noNumbersAdded:
+                Spacer(minLength: 0)
+                InfoView(state: viewModel.infoViewState)
+                Spacer(minLength: 0)
+            default:
+                EmptyView()
             }
         }
     }

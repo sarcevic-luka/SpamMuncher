@@ -75,7 +75,6 @@ private extension AppleSupportPopupView {
     }
 }
 
-
 // MARK: - Private functions
 
 private extension AppleSupportPopupView {
