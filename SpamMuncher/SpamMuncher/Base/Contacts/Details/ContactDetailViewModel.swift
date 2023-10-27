@@ -28,7 +28,6 @@ class ContactDetailViewModel: ObservableObject {
     ) {
         self.contact = contact
         self.phoneNumberManager = phoneNumberManager
-        self.isContactBlocked = isContactBlockedInitially()
         
         setupBindings()
     }
@@ -53,19 +52,14 @@ class ContactDetailViewModel: ObservableObject {
         } else {
             phoneNumberManager.addNumber(phoneNumber)
         }
-        
-//        isContactBlocked = isBlocked
     }
     
     private func setupBindings() {
-        phoneNumberManager.blockedNumbersPublisher
-            .sink { [weak self] _ in
-                self?.isContactBlocked = self?.isContactBlockedInitially() ?? false
+        phoneNumberManager
+            .blockedNumbersPublisher
+            .sink { [weak self] blockedNumbersList in
+                self?.isContactBlocked = blockedNumbersList.contains { $0.id == self?.contactPhoneNumberAsId }
             }
             .store(in: &cancellables)
-    }
-    
-    private func isContactBlockedInitially() -> Bool {
-        return phoneNumberManager.blockedNumbers.contains { $0.id == contactPhoneNumberAsId }
     }
 }

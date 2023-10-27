@@ -25,7 +25,7 @@ struct ContactListView: View {
             .navigationBarTitle("Contacts", displayMode: .inline)
             .navigationBarItems(trailing: supportButton)
             .searchable(text: $viewModel.searchText)
-            .onAppear(perform: viewModel.fetchContacts)
+            .onAppear(perform: viewModel.requestContactPermissions)
         }
     }
     
@@ -78,7 +78,7 @@ private extension ContactListView {
     }
 
     func contactRows(for key: Character) -> some View {
-        ForEach(viewModel.contacts()[key]!, id: \.phoneNumber) { contact in
+        ForEach(viewModel.contacts()[key]!, id: \.id) { contact in
             let contactDetailVM = ContactDetailViewModel(contact: contact, phoneNumberManager: viewModel.phoneNumberManager)
             contactRow(for: contact, with: contactDetailVM)
         }
