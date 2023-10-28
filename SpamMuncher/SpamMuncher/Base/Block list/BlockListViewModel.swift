@@ -33,7 +33,6 @@ final class BlockListViewModel: ObservableObject {
     @Published var selectedFilterType: FilterType = .all
     @Published var isPhoneNumberPopupVisible: Bool = false
     @Published var enteredPhoneNumber: String = ""
-    @Published var isPhoneNumberValid: Bool? = nil
     @Published var contacts: [PhoneNumber] = []
     @Published var searchText: String = ""
     @Published var phoneNumberManager: PhoneNumberManaging

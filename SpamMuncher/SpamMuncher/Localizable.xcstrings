@@ -1,0 +1,117 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj"
+          }
+        }
+      }
+    },
+    "Apple Support" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jabučna potpora"
+          }
+        }
+      }
+    },
+    "BlockList" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Črna lista"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategorički odbij"
+          }
+        }
+      }
+    },
+    "Contacts" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prike"
+          }
+        }
+      }
+    },
+    "Dismiss" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otpusti"
+          }
+        }
+      }
+    },
+    "Enter Phone Number" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unesi broj mobilnog"
+          }
+        }
+      }
+    },
+    "Invalid phone number" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nevalja ti taj broj"
+          }
+        }
+      }
+    },
+    "Messages" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porukice"
+          }
+        }
+      }
+    },
+    "Number Type" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vrsta smetnje"
+          }
+        }
+      }
+    },
+    "Visit Apple Support" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pogje šta kaže Epl"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
