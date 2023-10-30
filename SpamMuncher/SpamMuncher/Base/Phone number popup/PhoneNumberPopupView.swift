@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MunchUI
+import MunchModel
 import Combine
 
 struct PhoneNumberPopupView: View {

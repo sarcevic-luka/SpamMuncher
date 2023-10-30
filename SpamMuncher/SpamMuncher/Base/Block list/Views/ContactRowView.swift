@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MunchUI
+import MunchModel
 
 struct ContactRowView: View {
     let contact: PhoneNumber

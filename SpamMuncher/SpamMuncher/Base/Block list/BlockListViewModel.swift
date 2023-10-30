@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import MunchUI
-import MunchCallDirectory
+import MunchModel
 import CallKit
 import Combine
 

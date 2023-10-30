@@ -7,13 +7,17 @@
 
 import Foundation
 import Combine
+import CallKit
+import MunchModel
 
-protocol PhoneNumberManaging {
+public protocol PhoneNumberManaging {
     var blockedNumbers: [PhoneNumber] { get set }
     var suspiciousNumbers: [PhoneNumber] { get set }
     
     var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
     var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
+    
+    var numberUpdated: PassthroughSubject<Void, Never> { get }
 
     func addNumber(_ number: PhoneNumber)
     func removeNumber(_ number: PhoneNumber)
@@ -21,12 +25,13 @@ protocol PhoneNumberManaging {
 
 
 public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
-    public enum Action {
+    
+    private enum Action {
         case add, remove
     }
     
-    @Published public internal(set) var blockedNumbers: [PhoneNumber] = []
-    @Published public internal(set) var suspiciousNumbers: [PhoneNumber] = []
+    @Published public var blockedNumbers: [PhoneNumber] = []
+    @Published public var suspiciousNumbers: [PhoneNumber] = []
 
     public var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
         $blockedNumbers.eraseToAnyPublisher()
@@ -37,8 +42,9 @@ public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
     }
 
     private let defaults: UserDefaults
-    
-    init(defaults: UserDefaults = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncher")!) {
+    public let numberUpdated = PassthroughSubject<Void, Never>()
+
+    init(defaults: UserDefaults = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncherApp")!) {
         self.defaults = defaults
         blockedNumbers = (try? fetchNumbers(ofType: .blocked)) ?? []
         suspiciousNumbers = (try? fetchNumbers(ofType: .suspicious)) ?? []
@@ -87,6 +93,8 @@ private extension PhoneNumberManager {
         } catch {
             print("Error saving numbers for \(number.type.rawValue): \(error)")
         }
+        numberUpdated.send(())
+        reloadExtensionData()
     }
 
     func numbers(for type: PhoneNumberType) -> [PhoneNumber] {
@@ -117,6 +125,17 @@ private extension PhoneNumberManager {
             defaults.setValue(data, forKey: key(for: type))
         } catch {
             throw PhoneNumberError.encodingError(error)
+        }
+    }
+    
+    func reloadExtensionData() {
+        CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "luka.sarcevic.SpamMunchApp.CallMunchExtension") { error in
+            if let error = error {
+                // Handle error
+                print("Error reloading extension: \(error)")
+            } else {
+                print("Call Directory Extension reloaded successfully.")
+            }
         }
     }
 }

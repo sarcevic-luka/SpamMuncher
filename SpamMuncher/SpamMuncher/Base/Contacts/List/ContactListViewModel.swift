@@ -8,7 +8,6 @@
 import Contacts
 import UIKit
 import MunchUI
-import MunchCallDirectory
 
 class ContactListViewModel: ObservableObject {
     @Published var contactsDictionary: [Character: [Contact]] = [:]

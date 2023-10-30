@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MunchModel
 
 // Mock data for preview purposes.
 extension BlockListViewModel {

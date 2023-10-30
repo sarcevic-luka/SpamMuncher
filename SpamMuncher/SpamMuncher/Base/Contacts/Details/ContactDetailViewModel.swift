@@ -8,6 +8,7 @@
 import Combine
 import UIKit
 import CallKit
+import MunchModel
 
 class ContactDetailViewModel: ObservableObject {
     @Published var isContactBlocked: Bool = false

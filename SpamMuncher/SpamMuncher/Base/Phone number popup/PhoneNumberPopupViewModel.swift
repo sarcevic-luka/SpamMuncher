@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import MunchModel
 
 class PhoneNumberPopupViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
