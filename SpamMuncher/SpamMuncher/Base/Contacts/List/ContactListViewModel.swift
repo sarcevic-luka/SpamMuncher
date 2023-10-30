@@ -10,7 +10,7 @@ import UIKit
 import MunchUI
 import MunchCallDirectory
 
-class ContactsListViewModel: ObservableObject {
+class ContactListViewModel: ObservableObject {
     @Published var contactsDictionary: [Character: [Contact]] = [:]
     @Published var fetchError: Error?
     @Published var searchText: String = ""
@@ -18,6 +18,7 @@ class ContactsListViewModel: ObservableObject {
     @Published var infoViewState: InfoView.InfoViewState = .hidden
 
     var phoneNumberManager: PhoneNumberManaging
+    private let contactFetchingQueue = DispatchQueue(label: "com.SmapMuncher.contactFetching", qos: .userInitiated)
 
     init(phoneNumberManager: PhoneNumberManaging) {
         self.phoneNumberManager = phoneNumberManager
@@ -27,11 +28,12 @@ class ContactsListViewModel: ObservableObject {
     /// Requests permission to access contacts and fetches them if permission is granted.
     func requestContactPermissions() {
         let store = CNContactStore()
-        store.requestAccess(for: .contacts) { granted, error in
-            DispatchQueue.main.async { [weak self] in
-                if granted {
-                    self?.fetchContacts()
-                } else {
+        store.requestAccess(for: .contacts) { [weak self] granted, error in
+            // Check permissions before deciding which thread to use.
+            if granted {
+                self?.fetchContacts()
+            } else {
+                DispatchQueue.main.async {
                     self?.infoViewState = .noContactsPermissionGranted
                 }
             }
@@ -57,34 +59,47 @@ class ContactsListViewModel: ObservableObject {
 
 // MARK: - Private methods
 
-private extension ContactsListViewModel {
+private extension ContactListViewModel {
     /// Fetches contacts from the contact store and filters out contacts without a name or number.
     func fetchContacts() {
         let contactStore = CNContactStore()
-        let keys = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactOrganizationNameKey, CNContactPhoneNumbersKey, CNContactImageDataKey]
-        let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
+        let keys: [CNKeyDescriptor] = [
+            CNContactGivenNameKey as CNKeyDescriptor,
+            CNContactFamilyNameKey as CNKeyDescriptor,
+            CNContactOrganizationNameKey as CNKeyDescriptor,
+            CNContactPhoneNumbersKey as CNKeyDescriptor,
+            CNContactImageDataKey as CNKeyDescriptor
+        ]
+        let request = CNContactFetchRequest(keysToFetch: keys)
 
-        DispatchQueue.global(qos: .userInitiated).async {
+        contactFetchingQueue.async { [weak self] in
             do {
                 var newContacts: [Character: [Contact]] = [:]
 
                 try contactStore.enumerateContacts(with: request) { (contact, stop) in
-                    if (!contact.givenName.isEmpty || !contact.familyName.isEmpty || !contact.organizationName.isEmpty) && !contact.phoneNumbers.isEmpty {
-                        let contactModel = Contact(from: contact)
-                        let firstLetter = contactModel.name.first ?? "#"
-                        if newContacts[firstLetter] != nil {
-                            newContacts[firstLetter]?.append(contactModel)
-                        } else {
-                            newContacts[firstLetter] = [contactModel]
-                        }
+                    // Use early return pattern
+                    guard (!contact.givenName.isEmpty ||
+                           !contact.familyName.isEmpty ||
+                           !contact.organizationName.isEmpty),
+                          !contact.phoneNumbers.isEmpty else {
+                        return
+                    }
+
+                    let contactModel = Contact(from: contact)
+                    let firstLetter = contactModel.name.first ?? "#"
+                    if newContacts[firstLetter] != nil {
+                        newContacts[firstLetter]?.append(contactModel)
+                    } else {
+                        newContacts[firstLetter] = [contactModel]
                     }
                 }
+
                 DispatchQueue.main.async {
-                    self.contactsDictionary = newContacts
+                    self?.contactsDictionary = newContacts
                 }
             } catch {
                 DispatchQueue.main.async {
-                    self.infoViewState = .error(message: "Something went wrong while fetching contacts: \(error.localizedDescription)")
+                    self?.infoViewState = .error(message: "Something went wrong while fetching contacts: \(error.localizedDescription)")
                 }
             }
         }

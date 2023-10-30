@@ -21,8 +21,8 @@ struct PhoneNumberField: View {
         TextField(placeholder, text: $text)
             .onChange(of: text) { newValue in
                 let filtered = newValue.filter { $0.isWholeNumber }
-                if filtered.count <= 10 {
-                    lastValidText = filtered.formattedAsPhoneNumber
+                if filtered.count <= 12 {
+                    lastValidText = newValue //filtered.formattedAsPhoneNumber
                     text = lastValidText
                 } else {
                     text = lastValidText

@@ -58,7 +58,9 @@ private extension AppleSupportPopupView {
     
     var supportButton: some View {
         Button(action: {
-            openSupportLink()
+            if let url = URL(string: "https://support.apple.com/en-us/HT207099?cid=ytsc_yt1298") {
+                openURL(url)
+            }
         }, label: {
             Text("Visit Apple Support")
         })
@@ -72,14 +74,6 @@ private extension AppleSupportPopupView {
             Text("Dismiss")
         })
         .customStyle(.secondary)
-    }
-}
-
-// MARK: - Private functions
-
-private extension AppleSupportPopupView {
-    func openSupportLink() {
-        UIApplication.shared.open(supportLink)
     }
 }
 

@@ -50,16 +50,14 @@ final class BlockListViewModel: ObservableObject {
     }
 
     func togglePhoneNumberPopup() {
-        withAnimation {
-            isPhoneNumberPopupVisible.toggle()
-        }
+        isPhoneNumberPopupVisible.toggle()
     }
 }
 
 private extension BlockListViewModel {
-    private func setObservers() {
+    func setObservers() {
         // Binds changes for Contacts list
-        let changedPublisher = Publishers.CombineLatest(
+        let changedPublisher: AnyPublisher<([PhoneNumber], [PhoneNumber]), Never>  = Publishers.CombineLatest(
             phoneNumberManager.blockedNumbersPublisher,
             phoneNumberManager.suspiciousNumbersPublisher
         )
@@ -70,7 +68,7 @@ private extension BlockListViewModel {
             $searchText,
             changedPublisher
         )
-        .map {  [weak self] filter, searchText, lists in
+        .map {  [weak self] (filter: FilterType, searchText: String, lists: ([PhoneNumber], [PhoneNumber])) in
             self?.filteredContacts(with: filter, for: searchText, numbersList: lists) ?? []
         }
         .sink { [weak self] in
@@ -90,7 +88,7 @@ private extension BlockListViewModel {
         .store(in: &bag)
     }
 
-    private func updateInfoViewState(filter: FilterType, searchText: String, contacts: [PhoneNumber]) {
+    func updateInfoViewState(filter: FilterType, searchText: String, contacts: [PhoneNumber]) {
         if contacts.isEmpty {
             if searchText.isEmpty {
                 infoViewState = .noNumbersAdded(filterText: filter.rawValue)
@@ -102,7 +100,7 @@ private extension BlockListViewModel {
         }
     }
 
-    private func filteredContacts(with filter: FilterType, for searchText: String, numbersList:  (blockedNumbers: [PhoneNumber],suspiciousNumbers: [PhoneNumber])) -> [PhoneNumber] {
+    func filteredContacts(with filter: FilterType, for searchText: String, numbersList:  (blockedNumbers: [PhoneNumber],suspiciousNumbers: [PhoneNumber])) -> [PhoneNumber] {
         let allContacts: [PhoneNumber]
 
         switch filter {

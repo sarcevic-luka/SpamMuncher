@@ -9,7 +9,7 @@ import SwiftUI
 import MunchUI
 
 struct ContactListView: View {
-    @ObservedObject var viewModel: ContactsListViewModel
+    @ObservedObject var viewModel: ContactListViewModel
     
     var body: some View {
         NavigationView {

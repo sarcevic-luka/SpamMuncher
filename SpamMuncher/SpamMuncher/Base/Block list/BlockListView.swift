@@ -68,7 +68,9 @@ private extension BlockListView {
 
     var addButton: some View {
         Button(action: {
-            viewModel.togglePhoneNumberPopup()
+            withAnimation {
+                viewModel.togglePhoneNumberPopup()
+            }
         }) {
             Image(systemName: "plus")
                 .foregroundColor(.crimsonRed) 

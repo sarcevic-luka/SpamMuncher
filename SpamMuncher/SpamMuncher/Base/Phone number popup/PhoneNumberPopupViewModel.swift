@@ -10,7 +10,7 @@ import Combine
 
 class PhoneNumberPopupViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
-    @Published var isValid: Bool = false
+    @Published var isValid: Bool = true
     @Published var selectedNumberType: PhoneNumberType = .suspicious
 
     private var phoneNumberManager: PhoneNumberManaging
@@ -36,8 +36,8 @@ class PhoneNumberPopupViewModel: ObservableObject {
 
 private extension PhoneNumberPopupViewModel {
     func setupBindings() {
-        $phoneNumber
-            .map { $0.range(of: "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$", options: .regularExpression) != nil }
-            .assign(to: &$isValid)
+//        $phoneNumber
+//            .map { $0.range(of: "^\\([0-9]{3}\\) [0-9]{3}-[0-9]{4}$", options: .regularExpression) != nil }
+//            .assign(to: &$isValid)
     }
 }

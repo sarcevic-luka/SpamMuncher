@@ -19,7 +19,9 @@ struct ContactRowView: View {
             contactType
             deleteButton
         }
-        .listRowStyling
+        .padding([.leading, .trailing], 8)
+        .padding([.top, .bottom], 4)
+        .listRowBackground(Color.clear)
     }
     
     private var contactInfo: some View {
@@ -43,15 +45,6 @@ struct ContactRowView: View {
                 .foregroundColor(.amberYellow)
                 .padding(.leading)
         }
-    }
-}
-
-private extension View {
-    var listRowStyling: some View {
-        self
-            .padding([.leading, .trailing], 8)
-            .padding([.top, .bottom], 4)
-            .listRowBackground(Color.clear)
     }
 }
 

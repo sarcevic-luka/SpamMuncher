@@ -152,8 +152,14 @@ struct PhoneNumberPopupView_Previews: PreviewProvider {
 
 // MockPhoneNumberManager for preview purposes
 class MockPhoneNumberManager: PhoneNumberManaging {
+    
+    var numberUpdated: PassthroughSubject<Void, Never>
     var blockedNumbers: [PhoneNumber] = []
     var suspiciousNumbers: [PhoneNumber] = []
+
+    init() {
+        numberUpdated = PassthroughSubject<Void, Never>()
+    }
 
     var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
         Just(blockedNumbers).eraseToAnyPublisher()
@@ -164,7 +170,6 @@ class MockPhoneNumberManager: PhoneNumberManaging {
     }
 
     func addNumber(_ number: PhoneNumber) {
-        // Add a simple logic to append the number
         switch number.type {
         case .blocked:
             blockedNumbers.append(number)
@@ -174,7 +179,6 @@ class MockPhoneNumberManager: PhoneNumberManaging {
     }
 
     func removeNumber(_ number: PhoneNumber) {
-        // Add a simple logic to remove the number
         switch number.type {
         case .blocked:
             blockedNumbers.removeAll { $0.id == number.id }

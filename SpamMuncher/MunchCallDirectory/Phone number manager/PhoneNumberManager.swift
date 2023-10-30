@@ -103,7 +103,6 @@ private extension PhoneNumberManager {
     }
 
     func fetchNumbers(ofType type: PhoneNumberType) throws -> [PhoneNumber]? {
-        defer { defaults.synchronize() }
         guard let data = defaults.data(forKey: key(for: type)) else { return nil }
         do {
             return try JSONDecoder().decode([PhoneNumber].self, from: data)
@@ -113,7 +112,6 @@ private extension PhoneNumberManager {
     }
     
     func saveNumbers(_ numbers: [PhoneNumber], ofType type: PhoneNumberType) throws {
-        defer { defaults.synchronize() }
         do {
             let data = try JSONEncoder().encode(numbers)
             defaults.setValue(data, forKey: key(for: type))
