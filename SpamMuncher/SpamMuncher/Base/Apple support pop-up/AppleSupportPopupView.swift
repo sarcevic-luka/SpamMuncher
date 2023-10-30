@@ -10,9 +10,9 @@ import MunchUI
 
 struct AppleSupportPopupView: View {
     @Binding var isPresented: Bool
+    @Environment(\.openURL) private var openURL
     let title: String
     let description: String
-    let supportLink: URL = URL(string: "https://support.apple.com/en-us/HT207099?cid=ytsc_yt1298")!
     
     var body: some View {
         BackgroundOverlayView(isPresented: $isPresented) {
