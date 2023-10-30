@@ -56,8 +56,7 @@ class ContactDetailViewModel: ObservableObject {
     }
     
     private func setupBindings() {
-        phoneNumberManager
-            .blockedNumbersPublisher
+        phoneNumberManager.blockedNumbers
             .sink { [weak self] blockedNumbersList in
                 self?.isContactBlocked = blockedNumbersList.contains { $0.id == self?.contactPhoneNumberAsId }
             }

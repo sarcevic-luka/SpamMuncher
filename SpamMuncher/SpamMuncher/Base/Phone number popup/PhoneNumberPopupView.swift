@@ -153,38 +153,37 @@ struct PhoneNumberPopupView_Previews: PreviewProvider {
 
 // MockPhoneNumberManager for preview purposes
 class MockPhoneNumberManager: PhoneNumberManaging {
-    
-    var numberUpdated: PassthroughSubject<Void, Never>
-    var blockedNumbers: [PhoneNumber] = []
-    var suspiciousNumbers: [PhoneNumber] = []
+    var blockedNumbers: CurrentValueSubject<[PhoneNumber], Never>
+    var suspiciousNumbers: CurrentValueSubject<[PhoneNumber], Never>
 
     init() {
-        numberUpdated = PassthroughSubject<Void, Never>()
-    }
-
-    var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
-        Just(blockedNumbers).eraseToAnyPublisher()
-    }
-
-    var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
-        Just(suspiciousNumbers).eraseToAnyPublisher()
+        blockedNumbers = CurrentValueSubject<[PhoneNumber], Never>([])
+        suspiciousNumbers = CurrentValueSubject<[PhoneNumber], Never>([])
     }
 
     func addNumber(_ number: PhoneNumber) {
         switch number.type {
         case .blocked:
-            blockedNumbers.append(number)
+            var currentNumbers = blockedNumbers.value
+            currentNumbers.append(number)
+            blockedNumbers.send(currentNumbers)
         case .suspicious:
-            suspiciousNumbers.append(number)
+            var currentNumbers = suspiciousNumbers.value
+            currentNumbers.append(number)
+            suspiciousNumbers.send(currentNumbers)
         }
     }
 
     func removeNumber(_ number: PhoneNumber) {
         switch number.type {
         case .blocked:
-            blockedNumbers.removeAll { $0.id == number.id }
+            var currentNumbers = blockedNumbers.value
+            currentNumbers.removeAll { $0.id == number.id }
+            blockedNumbers.send(currentNumbers)
         case .suspicious:
-            suspiciousNumbers.removeAll { $0.id == number.id }
+            var currentNumbers = suspiciousNumbers.value
+            currentNumbers.removeAll { $0.id == number.id }
+            suspiciousNumbers.send(currentNumbers)
         }
     }
 }

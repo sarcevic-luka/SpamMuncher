@@ -11,14 +11,9 @@ import CallKit
 import MunchModel
 
 public protocol PhoneNumberManaging {
-    var blockedNumbers: [PhoneNumber] { get set }
-    var suspiciousNumbers: [PhoneNumber] { get set }
+    var blockedNumbers: CurrentValueSubject<[PhoneNumber], Never> { get }
+    var suspiciousNumbers: CurrentValueSubject<[PhoneNumber], Never> { get }
     
-    var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
-    var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> { get }
-    
-    var numberUpdated: PassthroughSubject<Void, Never> { get }
-
     func addNumber(_ number: PhoneNumber)
     func removeNumber(_ number: PhoneNumber)
 }
@@ -30,27 +25,17 @@ public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
         case add, remove
     }
     
-    @Published public var blockedNumbers: [PhoneNumber] = []
-    @Published public var suspiciousNumbers: [PhoneNumber] = []
+    public var blockedNumbers = CurrentValueSubject<[PhoneNumber], Never>([])
+    public var suspiciousNumbers = CurrentValueSubject<[PhoneNumber], Never>([])
 
-    public var blockedNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
-        $blockedNumbers.eraseToAnyPublisher()
-    }
-    
-    public var suspiciousNumbersPublisher: AnyPublisher<[PhoneNumber], Never> {
-        $suspiciousNumbers.eraseToAnyPublisher()
-    }
+    var defaults: UserDefaults?
 
-    private let defaults: UserDefaults
-    public let numberUpdated = PassthroughSubject<Void, Never>()
-
-    init(defaults: UserDefaults = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncherApp")!) {
+    init(defaults: UserDefaults? = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncherApp")) {
         self.defaults = defaults
-        blockedNumbers = (try? fetchNumbers(ofType: .blocked)) ?? []
-        suspiciousNumbers = (try? fetchNumbers(ofType: .suspicious)) ?? []
-
+        self.blockedNumbers.value = (try? fetchNumbers(ofType: .blocked)) ?? []
+        self.suspiciousNumbers.value = (try? fetchNumbers(ofType: .suspicious)) ?? []
     }
-    
+
     public func addNumber(_ number: PhoneNumber) {
         guard !numbers(for: number.type).contains(where: { $0.id == number.id }) else {
             return
@@ -65,11 +50,6 @@ public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
 
 // MARK: - Helpers
 private extension PhoneNumberManager {
-    enum PhoneNumberError: Error {
-        case decodingError(Error)
-        case encodingError(Error)
-    }
-
     func key(for type: PhoneNumberType) -> String {
         return type.rawValue + "PhoneNumbers"
     }
@@ -87,51 +67,37 @@ private extension PhoneNumberManager {
         do {
             try saveNumbers(numbers, ofType: number.type)
             setNumbers(numbers, for: number.type)
-        } catch let error as PhoneNumberError {
-            // Handle or log error
-            print(error)
         } catch {
-            print("Error saving numbers for \(number.type.rawValue): \(error)")
+            print("Error updating numbers for \(number.type.rawValue): \(error)")
         }
-        numberUpdated.send(())
         reloadExtensionData()
     }
 
     func numbers(for type: PhoneNumberType) -> [PhoneNumber] {
-        return (type == .blocked) ? blockedNumbers : suspiciousNumbers
+        (type == .blocked) ? blockedNumbers.value : suspiciousNumbers.value
     }
 
     func setNumbers(_ numbers: [PhoneNumber], for type: PhoneNumberType) {
         if type == .blocked {
-            blockedNumbers = numbers
+            blockedNumbers.send(numbers)
         } else {
-            suspiciousNumbers = numbers
+            suspiciousNumbers.send(numbers)
         }
-        objectWillChange.send()
     }
 
     func fetchNumbers(ofType type: PhoneNumberType) throws -> [PhoneNumber]? {
-        guard let data = defaults.data(forKey: key(for: type)) else { return nil }
-        do {
-            return try JSONDecoder().decode([PhoneNumber].self, from: data)
-        } catch {
-            throw PhoneNumberError.decodingError(error)
-        }
+        guard let data = defaults?.data(forKey: key(for: type)) else { return nil }
+        return try JSONDecoder().decode([PhoneNumber].self, from: data)
     }
     
     func saveNumbers(_ numbers: [PhoneNumber], ofType type: PhoneNumberType) throws {
-        do {
-            let data = try JSONEncoder().encode(numbers)
-            defaults.setValue(data, forKey: key(for: type))
-        } catch {
-            throw PhoneNumberError.encodingError(error)
-        }
+        let data = try JSONEncoder().encode(numbers)
+        defaults?.setValue(data, forKey: key(for: type))
     }
     
     func reloadExtensionData() {
         CXCallDirectoryManager.sharedInstance.reloadExtension(withIdentifier: "luka.sarcevic.SpamMunchApp.CallMunchExtension") { error in
             if let error = error {
-                // Handle error
                 print("Error reloading extension: \(error)")
             } else {
                 print("Call Directory Extension reloaded successfully.")

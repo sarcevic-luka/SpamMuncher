@@ -56,34 +56,25 @@ final class BlockListViewModel: ObservableObject {
 
 private extension BlockListViewModel {
     func setObservers() {
-        // Binds changes for Contacts list
-        let changedPublisher: AnyPublisher<([PhoneNumber], [PhoneNumber]), Never>  = Publishers.CombineLatest(
-            phoneNumberManager.blockedNumbersPublisher,
-            phoneNumberManager.suspiciousNumbersPublisher
-        )
-            .eraseToAnyPublisher()
-
-        Publishers.CombineLatest3(
+        Publishers.CombineLatest4(
             $selectedFilterType,
             $searchText,
-            changedPublisher
+            phoneNumberManager.blockedNumbers,
+            phoneNumberManager.suspiciousNumbers
         )
-        .map {  [weak self] (filter: FilterType, searchText: String, lists: ([PhoneNumber], [PhoneNumber])) in
-            self?.filteredContacts(with: filter, for: searchText, numbersList: lists) ?? []
+        .map { [weak self] (filter, searchText, blockedNumbers, suspiciousNumbers) in
+            self?.filteredContacts(
+                with: filter,
+                for: searchText,
+                numbersList: (blockedNumbers: blockedNumbers, suspiciousNumbers: suspiciousNumbers)
+            ) ?? []
         }
         .sink { [weak self] in
             self?.contacts = $0
-        }
-        .store(in: &bag)
-
-        // Binds UI changes for InfoStateView
-        Publishers.CombineLatest3(
-            $selectedFilterType,
-            $searchText,
-            $contacts
-        )
-        .sink { [weak self] filter, searchText, contacts in
-            self?.updateInfoViewState(filter: filter, searchText: searchText, contacts: contacts)
+            self?.updateInfoViewState(
+                filter: self?.selectedFilterType ?? .all,
+                searchText: self?.searchText ?? "",
+                contacts: $0)
         }
         .store(in: &bag)
     }
