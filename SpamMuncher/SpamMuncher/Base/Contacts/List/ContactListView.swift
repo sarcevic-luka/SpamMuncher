@@ -92,13 +92,7 @@ private extension ContactListView {
                         .foregroundColor(.red)
                         .padding(.trailing, 5)
                 }
-
-                VStack(alignment: .leading) {
-                    Text(contact.name)
-                    Text(contact.phoneNumber)
-                        .font(.subheadline)
-                        .foregroundColor(.offWhite)
-                }
+                Text(contact.name)
             }
         }
         .listRowBackground(Color.clear)

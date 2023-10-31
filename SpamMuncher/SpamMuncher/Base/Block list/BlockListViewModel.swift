@@ -40,7 +40,7 @@ final class BlockListViewModel: ObservableObject {
 
     private var bag = Set<AnyCancellable>()
 
-    init(phoneNumberManager: PhoneNumberManaging = PhoneNumberManager()) {
+    init(phoneNumberManager: PhoneNumberManaging) {
         self.phoneNumberManager = phoneNumberManager
         setObservers()
     }
@@ -62,19 +62,26 @@ private extension BlockListViewModel {
             phoneNumberManager.blockedNumbers,
             phoneNumberManager.suspiciousNumbers
         )
-        .map { [weak self] (filter, searchText, blockedNumbers, suspiciousNumbers) in
-            self?.filteredContacts(
+        .map { [weak self] (filter, searchText, blockedNumbers, suspiciousNumbers) -> [PhoneNumber] in
+            return self?.filteredContacts(
                 with: filter,
                 for: searchText,
                 numbersList: (blockedNumbers: blockedNumbers, suspiciousNumbers: suspiciousNumbers)
             ) ?? []
         }
-        .sink { [weak self] in
-            self?.contacts = $0
+        .sink { [weak self] newContacts in
+            self?.contacts = newContacts
+        }
+        .store(in: &bag)
+
+        $contacts
+        .combineLatest($selectedFilterType, $searchText)
+        .sink { [weak self] contacts, filter, searchText in
             self?.updateInfoViewState(
-                filter: self?.selectedFilterType ?? .all,
-                searchText: self?.searchText ?? "",
-                contacts: $0)
+                filter: filter,
+                searchText: searchText,
+                contacts: contacts
+            )
         }
         .store(in: &bag)
     }

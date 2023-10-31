@@ -11,7 +11,7 @@ import MunchModel
 // Mock data for preview purposes.
 extension BlockListViewModel {
     static var mock: BlockListViewModel {
-        let viewModel = BlockListViewModel()
+        let viewModel = BlockListViewModel(phoneNumberManager: PhoneNumberManager())
         
         let samplePhoneNumbers: [PhoneNumber] = [
             PhoneNumber(id: 1234567890, type: .blocked),

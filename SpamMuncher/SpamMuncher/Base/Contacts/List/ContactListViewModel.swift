@@ -76,7 +76,6 @@ private extension ContactListViewModel {
                 var newContacts: [Character: [Contact]] = [:]
 
                 try contactStore.enumerateContacts(with: request) { (contact, stop) in
-                    // Use early return pattern
                     guard (!contact.givenName.isEmpty ||
                            !contact.familyName.isEmpty ||
                            !contact.organizationName.isEmpty),
