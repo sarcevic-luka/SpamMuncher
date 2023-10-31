@@ -17,6 +17,8 @@
 		F12A2D492AEFFDC000EBCCA8 /* MunchModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F12A2D382AEFFABB00EBCCA8 /* MunchModel.framework */; };
 		F12A2D4A2AEFFDC000EBCCA8 /* MunchModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F12A2D382AEFFABB00EBCCA8 /* MunchModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F12A2D502AF1149F00EBCCA8 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D4F2AF1149F00EBCCA8 /* String_Extension.swift */; };
+		F12A2D542AF1A07500EBCCA8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */; };
+		F12A2D572AF1A32800EBCCA8 /* Localized_Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */; };
 		F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
@@ -130,6 +132,8 @@
 		F12A2D442AEFFB3100EBCCA8 /* PhoneNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumber.swift; sourceTree = "<group>"; };
 		F12A2D462AEFFB5900EBCCA8 /* PhoneNumberType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberType.swift; sourceTree = "<group>"; };
 		F12A2D4F2AF1149F00EBCCA8 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
+		F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized_Bundle.swift; sourceTree = "<group>"; };
 		F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopupViewModel.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
@@ -240,6 +244,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F12A2D552AF1A31700EBCCA8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F1363B472AE3D1F5000EC28E /* Phone number popup */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,9 +297,11 @@
 		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXGroup;
 			children = (
+				F12A2D552AF1A31700EBCCA8 /* Helpers */,
 				F14A4CF82AD3C1F9002D46AE /* Colors */,
 				F14A4CF32AD3C063002D46AE /* Components */,
 				F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */,
+				F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */,
 			);
 			path = MunchUI;
 			sourceTree = "<group>";
@@ -626,6 +640,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12A2D542AF1A07500EBCCA8 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +684,7 @@
 				F167ACCC2AE54B0A0045A325 /* BackgroundGradientView.swift in Sources */,
 				F167ACCA2AE54AF90045A325 /* BackgroundOverlayView.swift in Sources */,
 				F167ACEF2AE58DB50045A325 /* InfoView.swift in Sources */,
+				F12A2D572AF1A32800EBCCA8 /* Localized_Bundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

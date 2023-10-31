@@ -28,6 +28,17 @@ final class BlockListViewModel: ObservableObject {
                 return .suspicious
             }
         }
+        
+        var localizedDescription: LocalizedStringKey {
+            switch self {
+            case .all:
+                return "All"
+            case .blocked:
+                return "Blocked"
+            case .suspicious:
+                return "Suspicious"
+            }
+        }
     }
 
     @Published var selectedFilterType: FilterType = .all

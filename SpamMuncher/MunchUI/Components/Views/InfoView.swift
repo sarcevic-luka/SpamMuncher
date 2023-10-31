@@ -22,17 +22,19 @@ public struct InfoView: View {
         fileprivate var details: (imageName: String, message: String) {
             switch self {
             case .underConstruction:
-                return ("hammer.fill", "Under Construction")
+                return ("hammer.fill", NSLocalizedString("UnderConstruction", bundle: Bundle.munchUIBundle, comment: ""))
             case .noNumbersFound(let binding):
-                return ("magnifyingglass", "No numbers found for \(binding.wrappedValue)")
+                let localizedMessage = String(format: NSLocalizedString("NoNumbersFound", bundle: Bundle.munchUIBundle, comment: ""), binding.wrappedValue)
+                return ("magnifyingglass", localizedMessage)
             case .noNumbersAdded(let filterText):
-                return ("plus.circle", "No numbers currently added for \(filterText)")
+                let localizedMessage = String(format: NSLocalizedString("NoNumbersAdded", bundle: Bundle.munchUIBundle, comment: ""), filterText)
+                return ("plus.circle", localizedMessage)
             case .noContactsPermissionGranted:
-                return ("lock.fill", "Please allow access to contacts in Settings")
+                return ("lock.fill", NSLocalizedString("NoContactsPermission", bundle: Bundle.munchUIBundle, comment: ""))
             case .noContacts:
-                return ("xmark.circle", "No Contacts Available")
+                return ("xmark.circle", NSLocalizedString("NoContactsAvailable", bundle: Bundle.munchUIBundle, comment: ""))
             case .error(let message):
-                return ("exclamationmark.triangle.fill", message) 
+                return ("exclamationmark.triangle.fill", message)
             case .hidden:
                 return ("", "")
             }

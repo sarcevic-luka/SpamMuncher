@@ -72,7 +72,7 @@ private extension PhoneNumberPopupView {
     var validationMessage: some View {
         HStack {
             Image(systemName: viewModel.validationState.validationImageName)
-            Text(viewModel.validationState.rawValue)
+            Text(viewModel.validationState.localizedDescription)
         }
         .foregroundColor(viewModel.validationState.validationColor)
     }

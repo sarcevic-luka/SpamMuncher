@@ -16,9 +16,9 @@ class PhoneNumberPopupViewModel: ObservableObject {
     @Published var validationState: ValidationState = .invalid
     @Published var selectedNumberType: PhoneNumberType = .suspicious
 
-    enum ValidationState: String, Equatable {
-        case valid = "Valid number format"
-        case invalid = "Enter a number in valid format"
+    enum ValidationState: Equatable {
+        case valid
+        case invalid
         
         var validationColor: Color {
             switch self {
@@ -37,6 +37,15 @@ class PhoneNumberPopupViewModel: ObservableObject {
             case .invalid:
                 return "exclamationmark.triangle.fill"
 
+            }
+        }
+        
+        var localizedDescription: LocalizedStringKey {
+            switch self {
+            case .valid:
+                return "ValidNumberFormat"
+            case .invalid:
+                return "EnterValidNumberFormat"
             }
         }
     }
