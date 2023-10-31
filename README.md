@@ -23,8 +23,8 @@ SpamMuncher is crafted with love using the latest and greatest in Swift, strictl
 - **Testing**: One unit test to rule them all! Just to showcase our testing approach.
 - **And More...** We've added a pinch of overengineering and a spoonful of fun, because why not?
 
-## The Boring (but Important) Stuff:
-- **License**: [MIT](LICENSE)
+
+
 - **Contributions**: Feel like adding a feature or squashing a bug? Pull requests are welcome!
 
 ## Final Thoughts 💭
