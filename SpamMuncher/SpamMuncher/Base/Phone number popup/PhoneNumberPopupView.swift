@@ -30,15 +30,12 @@ private extension PhoneNumberPopupView {
             header
             numberInputField
             segmentedControl
-            if !viewModel.isValid {
-                validationWarning
-            }
+            validationMessage
             actionButtons
         }
         .padding(20)
         .background(Color.deepBlack)
         .cornerRadius(15)
-        .offset(y: -50)
     }
     
     var header: some View {
@@ -51,7 +48,7 @@ private extension PhoneNumberPopupView {
     var numberInputField: some View {
         HStack {
             Image(systemName: "phone.fill").foregroundColor(.gray)
-            PhoneNumberField("Phone Number", text: $viewModel.phoneNumber)
+            PhoneNumberField("+XXX XX XXX XXXX", text: $viewModel.phoneNumber)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
         }
@@ -72,11 +69,12 @@ private extension PhoneNumberPopupView {
             .zIndex(1)
     }
 
-    var validationWarning: some View {
+    var validationMessage: some View {
         HStack {
-            Image(systemName: "exclamationmark.triangle.fill").foregroundColor(.red)
-            Text("Invalid phone number").foregroundColor(.crimsonRed)
+            Image(systemName: viewModel.validationState.validationImageName)
+            Text(viewModel.validationState.rawValue)
         }
+        .foregroundColor(viewModel.validationState.validationColor)
     }
     
     var actionButtons: some View {
@@ -98,7 +96,7 @@ private extension PhoneNumberPopupView {
                 .padding(.horizontal, 30)
         }
         .customStyle(.primary)
-        .disabled(!viewModel.isValid)
+        .disabled(viewModel.validationState == .invalid)
     }
 
 
@@ -124,7 +122,6 @@ struct PhoneNumberPopupView_Previews: PreviewProvider {
     static let viewModel2: PhoneNumberPopupViewModel = {
         let vm = PhoneNumberPopupViewModel(phoneNumberManager: MockPhoneNumberManager())
         vm.phoneNumber = "123456"
-        vm.isValid = false
         return vm
     }()
     

@@ -6,7 +6,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dodaj"
+            "value" : "Dodati"
           }
         }
       }
@@ -17,7 +17,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Jabučna potpora"
+            "value" : "Apple Potpora"
           }
         }
       }
@@ -27,7 +27,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Črna lista"
+            "value" : "Blok lista"
           }
         }
       }
@@ -37,7 +37,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kategorički odbij"
+            "value" : "Otkaži"
           }
         }
       }
@@ -47,7 +47,18 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prike"
+            "value" : "Kontakti"
+          }
+        }
+      }
+    },
+    "Default state" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadano stanje"
           }
         }
       }
@@ -57,7 +68,18 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Otpusti"
+            "value" : "Prekini"
+          }
+        }
+      }
+    },
+    "Enter a number in valid format" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unesite broj u valjanom formatu"
           }
         }
       }
@@ -67,17 +89,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unesi broj mobilnog"
-          }
-        }
-      }
-    },
-    "Invalid phone number" : {
-      "localizations" : {
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nevalja ti taj broj"
+            "value" : "Unesite broj mobitela"
           }
         }
       }
@@ -87,7 +99,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Porukice"
+            "value" : "Poruke"
           }
         }
       }
@@ -97,7 +109,35 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vrsta smetnje"
+            "value" : "Vrsta broja"
+          }
+        }
+      }
+    },
+    "Phone number" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Broj mobitela"
+          }
+        }
+      }
+    },
+    "Valid number format" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valid number format"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ispravan format broja"
           }
         }
       }
@@ -107,7 +147,7 @@
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pogje šta kaže Epl"
+            "value" : "Provjeri službeni dokumentaciju"
           }
         }
       }

@@ -1,18 +1,14 @@
 //
-//  PhoneNumber.swift
-//  MunchCallDirectory
+//  String_Extension.swift
+//  SpamMuncher
 //
-//  Created by Code Forge on 21.10.2023..
+//  Created by Code Forge on 31.10.2023..
 //
 
 import Foundation
 import CallKit
 
 extension String {
-    var asCXCallDirectoryPhoneNumber: CXCallDirectoryPhoneNumber {
-        return Int64(self) ?? 0
-    }
-    
     var formattedAsPhoneNumber: String {
         let numbers = self.filter { $0.isWholeNumber }
         
@@ -30,11 +26,25 @@ extension String {
         }
     }
 
-    func toCXCallDirectoryPhoneNumber() -> CXCallDirectoryPhoneNumber {
-        // Remove all non-numeric characters from the string
-        let cleanedString = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    var formattedAsPhoneNumberWithRegion: String {
+        let cleanPhoneNumber = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        let mask = "+XXX XX XXXX XXX"
         
-        // Convert the cleaned string to CXCallDirectoryPhoneNumber (Int64)
+        var result = ""
+        var index = cleanPhoneNumber.startIndex
+        for ch in mask where index < cleanPhoneNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanPhoneNumber[index])
+                index = cleanPhoneNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
+    }
+
+    func toCXCallDirectoryPhoneNumber() -> CXCallDirectoryPhoneNumber {
+        let cleanedString = self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         return CXCallDirectoryPhoneNumber(cleanedString) ?? 0
     }
 }

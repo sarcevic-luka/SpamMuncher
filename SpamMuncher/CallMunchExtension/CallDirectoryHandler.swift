@@ -39,7 +39,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
 
     private func addAllIdentificationPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
         let suspiciousNumbers = fetchNumbers(ofType: .suspicious)
-        let labels = Array(repeating: "Suspicious", count: suspiciousNumbers.count) // Use appropriate labels for your suspicious numbers
+        let labels = Array(repeating: "Suspicious", count: suspiciousNumbers.count) 
         for (phoneNumber, label) in zip(suspiciousNumbers, labels) {
             context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: label)
         }
