@@ -16,7 +16,7 @@ SpamMuncher is crafted with love using the latest and greatest in Swift, strictl
 - **Dependency Injection**: We've kept it simple yet effective.
 - **Storage**: For speed and simplicity, UserDefaults is our go-to. But in a parallel universe where SpamMuncher is battling real spam, we'd probably opt for CoreData.
 - **Frameworks**: No external SPM frameworks were used, keeping it light and tight. But hey, in a real-world scenario, we might.
-- **Local Flavors**: Say hello to `MunchUI` for delightful UI elements and `Model` for, well, models!
+- **Local Flavors**: Say hello to `MunchUI` for delightful UI elements and `MunchModel` for, well, models!
 - **UI Extravaganza**: We might have gone a tad overboard with custom UI elements like our segmented control. But hey, why not?
 - **Number Formats**: Currently, we play nice with "+XXX XX XXXX XXX". Future SpamMuncher might juggle more complex formats.
 - **Previews Galore**: Most views have their previews because we love instant gratification.
