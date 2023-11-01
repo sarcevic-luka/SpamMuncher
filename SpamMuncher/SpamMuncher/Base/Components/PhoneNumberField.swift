@@ -9,8 +9,10 @@ import SwiftUI
 
 struct PhoneNumberField: View {
     @Binding var text: String
-    let placeholder: String
     @State private var lastValidText: String = ""
+    
+    let placeholder: String
+    private let maxNumberOfNumbersInPhoneNumber = 13 // This is just for testing - real app would have different approach
     
     init(
         _ placeholder: String,
@@ -24,7 +26,7 @@ struct PhoneNumberField: View {
         TextField(placeholder, text: $text)
             .onChange(of: text) { newValue in
                 let filtered = newValue.filter { $0.isWholeNumber }
-                if filtered.count <= 13 {
+                if filtered.count <= maxNumberOfNumbersInPhoneNumber {
                     lastValidText = filtered.formattedAsPhoneNumberWithRegion
                     text = lastValidText
                 } else {

@@ -11,7 +11,7 @@ import MunchModel
 
 struct ContactRowView: View {
     let contact: PhoneNumber
-    var onDelete: () -> Void
+    let onDelete: () -> Void
 
     var body: some View {
         HStack {

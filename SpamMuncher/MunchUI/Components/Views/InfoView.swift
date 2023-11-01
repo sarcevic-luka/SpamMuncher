@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-import SwiftUI
-
 public struct InfoView: View {
-    public enum InfoViewState {
+    public enum State {
         case underConstruction
         case noNumbersFound(searchText: Binding<String>)
         case noNumbersAdded(filterText: String)
@@ -41,11 +39,11 @@ public struct InfoView: View {
         }
     }
     
-    private var imageName: String
-    private var message: String
-    private var state: InfoViewState
+    private let imageName: String
+    private let message: String
+    private let state: State
     
-    public init(state: InfoViewState) {
+    public init(state: State) {
         self.state = state
         
         let details = state.details

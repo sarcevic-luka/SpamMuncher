@@ -14,14 +14,13 @@ class ContactDetailViewModel: ObservableObject {
     @Published var isContactBlocked: Bool = false
 
     let contact: Contact
-
+    let phoneNumberManager: PhoneNumberManaging
+    
     var contactPhoneNumberAsId: Int64 {
-        return Int64(contact.phoneNumber) ?? 0
+        Int64(contact.phoneNumber) ?? 0
     }
 
-
     private var cancellables: Set<AnyCancellable> = []
-     var phoneNumberManager: PhoneNumberManaging
 
     init(
         contact: Contact,

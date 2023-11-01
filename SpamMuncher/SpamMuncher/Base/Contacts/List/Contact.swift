@@ -11,17 +11,17 @@ import Contacts
 /// In real live app I would probably fetched all numbers and then block entire user contact if any of the numbers is spam.
 struct Contact: Identifiable {
     let id: UUID = UUID()
-    var name: String
-    var phoneNumber: String
-    var image: UIImage?
+    let name: String
+    let phoneNumber: String
+    let image: UIImage?
     
-    init(from cnContact: CNContact) {
-        let namesAndOrganization = [cnContact.givenName, cnContact.familyName, cnContact.organizationName].filter { !$0.isEmpty }
+    init(from contact: CNContact) {
+        let namesAndOrganization = [contact.givenName, contact.familyName, contact.organizationName].filter { !$0.isEmpty }
         
         self.name = namesAndOrganization.joined(separator: " ")
 
-        self.phoneNumber = cnContact.phoneNumbers.first?.value.stringValue ?? ""
+        self.phoneNumber = contact.phoneNumbers.first?.value.stringValue ?? ""
         
-        self.image = cnContact.imageData.flatMap(UIImage.init)
+        self.image = contact.imageData.flatMap(UIImage.init)
     }
 }

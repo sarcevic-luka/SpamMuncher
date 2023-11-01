@@ -10,9 +10,7 @@ import SwiftUI
 public struct AdaptiveTextSegmentedScrollControl<T>: View where T: CaseIterable, T: RawRepresentable, T.RawValue == String  {
     @Binding var selectedValue: T
 
-    private let columns: [GridItem] = [
-            GridItem(.adaptive(minimum: 34))
-        ]
+    private let columns: [GridItem] = [GridItem(.adaptive(minimum: 34))]
 
     public init(selectedValue: Binding<T>) {
         self._selectedValue = selectedValue

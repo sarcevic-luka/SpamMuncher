@@ -14,9 +14,9 @@ class ContactListViewModel: ObservableObject {
     @Published var fetchError: Error?
     @Published var searchText: String = ""
     @Published var isAppleSupportPopupVisible: Bool = false
-    @Published var infoViewState: InfoView.InfoViewState = .hidden
+    @Published var infoViewState: InfoView.State = .hidden
 
-    var phoneNumberManager: PhoneNumberManaging
+    let  phoneNumberManager: PhoneNumberManaging
     private let contactFetchingQueue = DispatchQueue(label: "com.SmapMuncher.contactFetching", qos: .userInitiated)
 
     init(phoneNumberManager: PhoneNumberManaging) {

@@ -8,15 +8,15 @@
 import SwiftUI
 
 public struct ButtonStyling {
-    var backgroundColor: Color
-    var textColor: Color
+    let backgroundColor: Color
+    let textColor: Color
 
     public static let primary = ButtonStyling(backgroundColor: .black, textColor: .sunnyYellow)
     public static let secondary = ButtonStyling(backgroundColor: .crimsonRed, textColor: .charcoalGray)
 }
 
 public struct CustomButtonStyle: ButtonStyle {
-    var style: ButtonStyling
+    let style: ButtonStyling
     @Environment(\.isEnabled) private var isEnabled: Bool
 
     public func makeBody(configuration: Configuration) -> some View {
@@ -31,8 +31,8 @@ public struct CustomButtonStyle: ButtonStyle {
     }
 }
 
-extension Button {
-    public func customStyle(_ style: ButtonStyling) -> some View {
+public extension Button {
+    func customStyle(_ style: ButtonStyling) -> some View {
         self.buttonStyle(CustomButtonStyle(style: style))
     }
 }

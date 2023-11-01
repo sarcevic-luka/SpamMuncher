@@ -50,7 +50,9 @@ class PhoneNumberPopupViewModel: ObservableObject {
         }
     }
 
-    private var phoneNumberManager: PhoneNumberManaging
+    private var bag = Set<AnyCancellable>()
+    private let maxNumberOfNumbersInPhoneNumber = 13 // This is just for testing - real app would have different approach
+    private let phoneNumberManager: PhoneNumberManaging
 
     init(phoneNumberManager: PhoneNumberManaging) {
         self.phoneNumberManager = phoneNumberManager
@@ -72,13 +74,18 @@ class PhoneNumberPopupViewModel: ObservableObject {
 private extension PhoneNumberPopupViewModel {
     func setupBindings() {
         $phoneNumber
-            .map { self.validationStateForNumber($0) }
-            .assign(to: &$validationState)
+            .map { [weak self] phoneNumber in
+                self?.validationStateForNumber(phoneNumber) ?? .invalid
+            }
+            .sink { [weak self] validationState in
+                self?.validationState = validationState
+            }
+            .store(in: &bag) 
     }
     
     func validationStateForNumber(_ number: String) -> ValidationState {
         let filtered = number.filter { $0.isWholeNumber }
-        if filtered.count <= 13 && number.range(of: "^\\+\\d{3} \\d{2} \\d{4} \\d{3}$", options: .regularExpression) != nil {
+        if filtered.count <= maxNumberOfNumbersInPhoneNumber && number.range(of: "^\\+\\d{3} \\d{2} \\d{4} \\d{3}$", options: .regularExpression) != nil {
             return .valid
         } else {
             return .invalid

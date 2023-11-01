@@ -1,5 +1,5 @@
 //
-//  Color_extension.swift
+//  ColorExtension.swift
 //  MunchUI
 //
 //  Created by Code Forge on 09.10.2023..

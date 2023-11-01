@@ -41,13 +41,18 @@ final class BlockListViewModel: ObservableObject {
         }
     }
 
+    struct NumbersList {
+        var blockedNumbers: [PhoneNumber]
+        var suspiciousNumbers: [PhoneNumber]
+    }
+
     @Published var selectedFilterType: FilterType = .all
     @Published var isPhoneNumberPopupVisible: Bool = false
     @Published var enteredPhoneNumber: String = ""
     @Published var contacts: [PhoneNumber] = []
     @Published var searchText: String = ""
     @Published var phoneNumberManager: PhoneNumberManaging
-    @Published var infoViewState: InfoView.InfoViewState = .hidden
+    @Published var infoViewState: InfoView.State = .hidden
 
     private var bag = Set<AnyCancellable>()
 
@@ -77,7 +82,10 @@ private extension BlockListViewModel {
             return self?.filteredContacts(
                 with: filter,
                 for: searchText,
-                numbersList: (blockedNumbers: blockedNumbers, suspiciousNumbers: suspiciousNumbers)
+                numbersList: NumbersList(
+                    blockedNumbers: blockedNumbers,
+                    suspiciousNumbers: suspiciousNumbers
+                )
             ) ?? []
         }
         .sink { [weak self] newContacts in
@@ -109,7 +117,7 @@ private extension BlockListViewModel {
         }
     }
 
-    func filteredContacts(with filter: FilterType, for searchText: String, numbersList:  (blockedNumbers: [PhoneNumber],suspiciousNumbers: [PhoneNumber])) -> [PhoneNumber] {
+    func filteredContacts(with filter: FilterType, for searchText: String, numbersList: NumbersList) -> [PhoneNumber] {
         let allContacts: [PhoneNumber]
 
         switch filter {
@@ -121,12 +129,8 @@ private extension BlockListViewModel {
             allContacts = numbersList.blockedNumbers + numbersList.suspiciousNumbers
         }
 
-        if !searchText.isEmpty {
-            return allContacts.filter { contact in
-                contact.id.description.contains(searchText) || (contact.name?.contains(searchText) ?? false)
-            }
-        } else {
-            return allContacts
+        return searchText.isEmpty ? allContacts : allContacts.filter { contact in
+            contact.id.description.contains(searchText) || (contact.name?.contains(searchText) ?? false)
         }
     }
 }
