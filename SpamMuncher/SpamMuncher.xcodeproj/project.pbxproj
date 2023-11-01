@@ -19,6 +19,8 @@
 		F12A2D502AF1149F00EBCCA8 /* String_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D4F2AF1149F00EBCCA8 /* String_Extension.swift */; };
 		F12A2D542AF1A07500EBCCA8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */; };
 		F12A2D572AF1A32800EBCCA8 /* Localized_Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */; };
+		F12A2D682AF242CA00EBCCA8 /* BlockListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D672AF242CA00EBCCA8 /* BlockListViewModelTests.swift */; };
+		F12A2D6B2AF2431500EBCCA8 /* MockPhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D6A2AF2431500EBCCA8 /* MockPhoneNumberManager.swift */; };
 		F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
@@ -73,6 +75,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F12A2D372AEFFABB00EBCCA8;
 			remoteInfo = MunchModel;
+		};
+		F12A2D602AF237E000EBCCA8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1DD6EC82AD2037800E04728 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1DD6ECF2AD2037800E04728;
+			remoteInfo = SpamMuncher;
 		};
 		F14A4CB12AD3BEF2002D46AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -134,6 +143,10 @@
 		F12A2D4F2AF1149F00EBCCA8 /* String_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_Extension.swift; sourceTree = "<group>"; };
 		F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized_Bundle.swift; sourceTree = "<group>"; };
+		F12A2D5C2AF237E000EBCCA8 /* SpamMuncherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpamMuncherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12A2D662AF242C900EBCCA8 /* SpamMuncherTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpamMuncherTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		F12A2D672AF242CA00EBCCA8 /* BlockListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewModelTests.swift; sourceTree = "<group>"; };
+		F12A2D6A2AF2431500EBCCA8 /* MockPhoneNumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhoneNumberManager.swift; sourceTree = "<group>"; };
 		F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopupViewModel.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
@@ -176,6 +189,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F12A2D352AEFFABB00EBCCA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F12A2D592AF237E000EBCCA8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -250,6 +270,32 @@
 				F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F12A2D5D2AF237E000EBCCA8 /* SpamMuncherTests */ = {
+			isa = PBXGroup;
+			children = (
+				F12A2D652AF2380600EBCCA8 /* Base */,
+				F12A2D692AF2430100EBCCA8 /* Mocks */,
+			);
+			path = SpamMuncherTests;
+			sourceTree = "<group>";
+		};
+		F12A2D652AF2380600EBCCA8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F12A2D672AF242CA00EBCCA8 /* BlockListViewModelTests.swift */,
+				F12A2D662AF242C900EBCCA8 /* SpamMuncherTests-Bridging-Header.h */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F12A2D692AF2430100EBCCA8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F12A2D6A2AF2431500EBCCA8 /* MockPhoneNumberManager.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		F1363B472AE3D1F5000EC28E /* Phone number popup */ = {
@@ -434,6 +480,7 @@
 				F14A4CAE2AD3BEF2002D46AE /* MunchUI */,
 				F12A2D282AEFE76500EBCCA8 /* CallMunchExtension */,
 				F12A2D392AEFFABB00EBCCA8 /* MunchModel */,
+				F12A2D5D2AF237E000EBCCA8 /* SpamMuncherTests */,
 				F1DD6ED12AD2037800E04728 /* Products */,
 				F12A2D482AEFFDC000EBCCA8 /* Frameworks */,
 			);
@@ -446,6 +493,7 @@
 				F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */,
 				F12A2D272AEFE76500EBCCA8 /* CallMunchExtension.appex */,
 				F12A2D382AEFFABB00EBCCA8 /* MunchModel.framework */,
+				F12A2D5C2AF237E000EBCCA8 /* SpamMuncherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -533,6 +581,24 @@
 			productReference = F12A2D382AEFFABB00EBCCA8 /* MunchModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		F12A2D5B2AF237E000EBCCA8 /* SpamMuncherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F12A2D622AF237E000EBCCA8 /* Build configuration list for PBXNativeTarget "SpamMuncherTests" */;
+			buildPhases = (
+				F12A2D582AF237E000EBCCA8 /* Sources */,
+				F12A2D592AF237E000EBCCA8 /* Frameworks */,
+				F12A2D5A2AF237E000EBCCA8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F12A2D612AF237E000EBCCA8 /* PBXTargetDependency */,
+			);
+			name = SpamMuncherTests;
+			productName = SpamMuncherTests;
+			productReference = F12A2D5C2AF237E000EBCCA8 /* SpamMuncherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F14A4CAC2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F14A4CB52AD3BEF2002D46AE /* Build configuration list for PBXNativeTarget "MunchUI" */;
@@ -590,6 +656,11 @@
 						CreatedOnToolsVersion = 15.0.1;
 						LastSwiftMigration = 1500;
 					};
+					F12A2D5B2AF237E000EBCCA8 = {
+						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
+						TestTargetID = F1DD6ECF2AD2037800E04728;
+					};
 					F14A4CAC2AD3BEF2002D46AE = {
 						CreatedOnToolsVersion = 14.3.1;
 						LastSwiftMigration = 1430;
@@ -617,6 +688,7 @@
 				F14A4CAC2AD3BEF2002D46AE /* MunchUI */,
 				F12A2D372AEFFABB00EBCCA8 /* MunchModel */,
 				F12A2D262AEFE76500EBCCA8 /* CallMunchExtension */,
+				F12A2D5B2AF237E000EBCCA8 /* SpamMuncherTests */,
 			);
 		};
 /* End PBXProject section */
@@ -630,6 +702,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F12A2D362AEFFABB00EBCCA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F12A2D5A2AF237E000EBCCA8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -671,6 +750,15 @@
 			files = (
 				F12A2D452AEFFB3100EBCCA8 /* PhoneNumber.swift in Sources */,
 				F12A2D472AEFFB5900EBCCA8 /* PhoneNumberType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F12A2D582AF237E000EBCCA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F12A2D682AF242CA00EBCCA8 /* BlockListViewModelTests.swift in Sources */,
+				F12A2D6B2AF2431500EBCCA8 /* MockPhoneNumberManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +820,11 @@
 			isa = PBXTargetDependency;
 			target = F12A2D372AEFFABB00EBCCA8 /* MunchModel */;
 			targetProxy = F12A2D4B2AEFFDC000EBCCA8 /* PBXContainerItemProxy */;
+		};
+		F12A2D612AF237E000EBCCA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1DD6ECF2AD2037800E04728 /* SpamMuncher */;
+			targetProxy = F12A2D602AF237E000EBCCA8 /* PBXContainerItemProxy */;
 		};
 		F14A4CB22AD3BEF2002D46AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -883,6 +976,56 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F12A2D632AF237E000EBCCA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JUPH6D63HP;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = luka.sarcevic.SpamMuncherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SpamMuncherTests/Base/SpamMuncherTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpamMuncher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SpamMuncher";
+			};
+			name = Debug;
+		};
+		F12A2D642AF237E000EBCCA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JUPH6D63HP;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = luka.sarcevic.SpamMuncherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SpamMuncherTests/Base/SpamMuncherTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpamMuncher.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SpamMuncher";
 			};
 			name = Release;
 		};
@@ -1160,6 +1303,15 @@
 			buildConfigurations = (
 				F12A2D412AEFFABB00EBCCA8 /* Debug */,
 				F12A2D422AEFFABB00EBCCA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F12A2D622AF237E000EBCCA8 /* Build configuration list for PBXNativeTarget "SpamMuncherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F12A2D632AF237E000EBCCA8 /* Debug */,
+				F12A2D642AF237E000EBCCA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

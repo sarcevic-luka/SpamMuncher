@@ -8,7 +8,7 @@
 import Foundation
 import CallKit
 
-public struct PhoneNumber: Identifiable, Codable {
+public struct PhoneNumber: Identifiable, Codable, Equatable {
     public var id: CXCallDirectoryPhoneNumber
     public var type: PhoneNumberType
     public var name: String?
@@ -17,5 +17,9 @@ public struct PhoneNumber: Identifiable, Codable {
         self.id = id
         self.type = type
         self.name = name
+    }
+    
+    public static func ==(lhs: PhoneNumber, rhs: PhoneNumber) -> Bool {
+        return lhs.id == rhs.id && lhs.type == rhs.type && lhs.name == rhs.name
     }
 }
