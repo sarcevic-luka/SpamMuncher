@@ -316,20 +316,6 @@
 			path = "Phone number popup";
 			sourceTree = "<group>";
 		};
-		F1363B982AE3DD8C000EC28E /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				F14FA1C62AEB0287007DE6B1 /* Components */,
-				F167ACD12AE557300045A325 /* App */,
-				F167ACF02AE5AF450045A325 /* Apple support pop-up */,
-				F1363B992AE3DD97000EC28E /* Block list */,
-				F167ACCF2AE556A30045A325 /* Contacts */,
-				F167ACD42AE557760045A325 /* Messages */,
-				F1363B472AE3D1F5000EC28E /* Phone number popup */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
 		F1363B992AE3DD97000EC28E /* Block list */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,12 +381,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F14FA1C62AEB0287007DE6B1 /* Components */ = {
+		F14FA1C62AEB0287007DE6B1 /* View components */ = {
 			isa = PBXGroup;
 			children = (
 				F14FA1C72AEB02A2007DE6B1 /* PhoneNumberField.swift */,
 			);
-			path = Components;
+			path = "View components";
 			sourceTree = "<group>";
 		};
 		F167ACC52AE545420045A325 /* Buttons */ = {
@@ -432,8 +418,8 @@
 		F167ACD12AE557300045A325 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */,
-				F167ACD72AE557A80045A325 /* MainView.swift */,
+				F1FD85052AF2BFDE00365D78 /* Navigation */,
+				F1FD85032AF2BF6C00365D78 /* Scenes */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -465,12 +451,12 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
-		F167ACF02AE5AF450045A325 /* Apple support pop-up */ = {
+		F167ACF02AE5AF450045A325 /* Apple support popup */ = {
 			isa = PBXGroup;
 			children = (
 				F167ACF12AE5AFB60045A325 /* AppleSupportPopupView.swift */,
 			);
-			path = "Apple support pop-up";
+			path = "Apple support popup";
 			sourceTree = "<group>";
 		};
 		F167AD312AE7155D0045A325 /* Mock */ = {
@@ -509,12 +495,10 @@
 		F1DD6ED22AD2037800E04728 /* SpamMuncher */ = {
 			isa = PBXGroup;
 			children = (
-				F12A2D4E2AF1148600EBCCA8 /* Extensions */,
-				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
-				F1363B982AE3DD8C000EC28E /* Base */,
-				F19982BE2AEC2C9B00104A24 /* Localizable.xcstrings */,
-				F1363B9B2AE43CE6000EC28E /* Phone number manager */,
+				F167ACD12AE557300045A325 /* App */,
+				F1FD85062AF2C01900365D78 /* Commoon */,
 				F1DD6ED92AD2037B00E04728 /* Preview Content */,
+				F1FD85082AF2C0AD00365D78 /* Resources */,
 				F11182D02AD87056000DBB4F /* SpamMuncher.entitlements */,
 			);
 			path = SpamMuncher;
@@ -526,6 +510,78 @@
 				F1DD6EDA2AD2037B00E04728 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F1FD85032AF2BF6C00365D78 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F1FD85042AF2BFC000365D78 /* Popups */,
+				F1363B992AE3DD97000EC28E /* Block list */,
+				F167ACCF2AE556A30045A325 /* Contacts */,
+				F167ACD42AE557760045A325 /* Messages */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F1FD85042AF2BFC000365D78 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				F167ACF02AE5AF450045A325 /* Apple support popup */,
+				F1363B472AE3D1F5000EC28E /* Phone number popup */,
+			);
+			path = Popups;
+			sourceTree = "<group>";
+		};
+		F1FD85052AF2BFDE00365D78 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F167ACD72AE557A80045A325 /* MainView.swift */,
+				F1DD6ED32AD2037800E04728 /* SpamMuncherApp.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F1FD85062AF2C01900365D78 /* Commoon */ = {
+			isa = PBXGroup;
+			children = (
+				F12A2D4E2AF1148600EBCCA8 /* Extensions */,
+				F1FD85072AF2C04F00365D78 /* Utilities */,
+				F14FA1C62AEB0287007DE6B1 /* View components */,
+			);
+			path = Commoon;
+			sourceTree = "<group>";
+		};
+		F1FD85072AF2C04F00365D78 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F1363B9B2AE43CE6000EC28E /* Phone number manager */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F1FD85082AF2C0AD00365D78 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1FD850A2AF2C0BB00365D78 /* Localization */,
+				F1FD85092AF2C0B300365D78 /* Assets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F1FD85092AF2C0B300365D78 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F1DD6ED72AD2037B00E04728 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F1FD850A2AF2C0BB00365D78 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				F19982BE2AEC2C9B00104A24 /* Localizable.xcstrings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
