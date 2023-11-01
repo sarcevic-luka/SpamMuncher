@@ -27,13 +27,20 @@ public final class PhoneNumberManager: ObservableObject, PhoneNumberManaging {
     
     public var blockedNumbers = CurrentValueSubject<[PhoneNumber], Never>([])
     public var suspiciousNumbers = CurrentValueSubject<[PhoneNumber], Never>([])
+    private let firstLaunchKey = "isFirstLaunch"
 
     var defaults: UserDefaults?
 
     init(defaults: UserDefaults? = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncherApp")) {
         self.defaults = defaults
-        self.blockedNumbers.value = (try? fetchNumbers(ofType: .blocked)) ?? []
-        self.suspiciousNumbers.value = (try? fetchNumbers(ofType: .suspicious)) ?? []
+        
+        if isFirstLaunch() {
+            addDefaultNumbers()
+            markFirstLaunchComplete()
+        } else {
+            self.blockedNumbers.value = (try? fetchNumbers(ofType: .blocked)) ?? []
+            self.suspiciousNumbers.value = (try? fetchNumbers(ofType: .suspicious)) ?? []
+        }
     }
 
     public func addNumber(_ number: PhoneNumber) {
@@ -103,5 +110,22 @@ private extension PhoneNumberManager {
                 print("Call Directory Extension reloaded successfully.")
             }
         }
+    }
+    
+    // First launch helpers
+    // wouldnt use those in real app like that
+    func isFirstLaunch() -> Bool {
+        return defaults?.bool(forKey: firstLaunchKey) == false
+    }
+
+    func markFirstLaunchComplete() {
+        defaults?.set(true, forKey: firstLaunchKey)
+    }
+    
+    func addDefaultNumbers() {
+        let defaultBlockedNumber = PhoneNumber(id: 2539501212, type: .blocked)
+        let defaultSuspiciousNumber = PhoneNumber(id: 4259501212, type: .suspicious)
+        addNumber(defaultBlockedNumber)
+        addNumber(defaultSuspiciousNumber)
     }
 }
