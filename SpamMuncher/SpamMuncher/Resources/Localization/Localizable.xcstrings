@@ -1,0 +1,202 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodati"
+          }
+        }
+      }
+    },
+    "All" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svi"
+          }
+        }
+      }
+    },
+    "Apple Support" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Potpora"
+          }
+        }
+      }
+    },
+    "Blocked" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blokirani"
+          }
+        }
+      }
+    },
+    "BlockList" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blok lista"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otkaži"
+          }
+        }
+      }
+    },
+    "Contacts" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakti"
+          }
+        }
+      }
+    },
+    "Default state" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadano stanje"
+          }
+        }
+      }
+    },
+    "Dismiss" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prekini"
+          }
+        }
+      }
+    },
+    "Enter Phone Number" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unesite broj mobitela"
+          }
+        }
+      }
+    },
+    "EnterValidNumberFormat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a number in valid format"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unesite broj u valjanom formatu"
+          }
+        }
+      }
+    },
+    "Messages" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poruke"
+          }
+        }
+      }
+    },
+    "Number Type" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vrsta broja"
+          }
+        }
+      }
+    },
+    "Phone number" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Broj mobitela"
+          }
+        }
+      }
+    },
+    "Suspicious" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sumnjivi"
+          }
+        }
+      }
+    },
+    "ValidNumberFormat" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valid number format"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ispravan format broja"
+          }
+        }
+      }
+    },
+    "Visit Apple Support" : {
+      "localizations" : {
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provjeri službeni dokumentaciju"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

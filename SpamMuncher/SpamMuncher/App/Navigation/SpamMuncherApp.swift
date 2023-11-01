@@ -11,7 +11,8 @@ import SwiftUI
 struct SpamMuncherApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .preferredColorScheme(.dark)
         }
     }
 }
