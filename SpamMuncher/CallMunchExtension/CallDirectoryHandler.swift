@@ -23,7 +23,8 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
 
     private func addAllBlockingPhoneNumbers(to context: CXCallDirectoryExtensionContext) {
         let blockedNumbers = fetchNumbers(ofType: .blocked)
-        for phoneNumber in blockedNumbers {
+        let sortedBlockedNumbers = blockedNumbers.sorted()
+        for phoneNumber in sortedBlockedNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
     }
@@ -42,7 +43,10 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
               let numbers = try? JSONDecoder().decode([PhoneNumber].self, from: data) else {
             return []
         }
-        return numbers.map { $0.id }
+        // Remove duplicates and sort in ascending order
+        let uniqueNumbers = Array(Set(numbers.map { $0.id })).sorted()
+
+        return uniqueNumbers
     }
 }
 
