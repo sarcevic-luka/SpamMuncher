@@ -12,15 +12,6 @@ import MunchModel
 class CallDirectoryHandler: CXCallDirectoryProvider {
     private let defaults = UserDefaults(suiteName: "group.luka.sarcevic.SpamMuncherApp")
         
-    private func fetchNumbers(ofType type: PhoneNumberType) -> [CXCallDirectoryPhoneNumber] {
-        guard let unwrappedDefaults = defaults,
-              let data = unwrappedDefaults.data(forKey: type.rawValue + "PhoneNumbers"),
-              let numbers = try? JSONDecoder().decode([PhoneNumber].self, from: data) else {
-            return []
-        }
-        return numbers.map { $0.id }
-    }
-
     override func beginRequest(with context: CXCallDirectoryExtensionContext) {
         context.delegate = self
         
@@ -43,6 +34,15 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         for (phoneNumber, label) in zip(suspiciousNumbers, labels) {
             context.addIdentificationEntry(withNextSequentialPhoneNumber: phoneNumber, label: label)
         }
+    }
+    
+    private func fetchNumbers(ofType type: PhoneNumberType) -> [CXCallDirectoryPhoneNumber] {
+        guard let unwrappedDefaults = defaults,
+              let data = unwrappedDefaults.data(forKey: type.rawValue + "PhoneNumbers"),
+              let numbers = try? JSONDecoder().decode([PhoneNumber].self, from: data) else {
+            return []
+        }
+        return numbers.map { $0.id }
     }
 }
 

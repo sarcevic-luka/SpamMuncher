@@ -12,7 +12,10 @@ public struct BackgroundOverlayView<Content: View>: View {
     @Binding public var isPresented: Bool
     public let content: Content
     
-    public init(isPresented: Binding<Bool>, @ViewBuilder content: () -> Content) {
+    public init(
+        isPresented: Binding<Bool>,
+        @ViewBuilder content: () -> Content
+    ) {
         _isPresented = isPresented
         self.content = content()
     }

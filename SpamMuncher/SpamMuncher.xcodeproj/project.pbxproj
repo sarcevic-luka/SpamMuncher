@@ -21,6 +21,8 @@
 		F12A2D572AF1A32800EBCCA8 /* Localized_Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D562AF1A32800EBCCA8 /* Localized_Bundle.swift */; };
 		F12A2D682AF242CA00EBCCA8 /* BlockListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D672AF242CA00EBCCA8 /* BlockListViewModelTests.swift */; };
 		F12A2D6B2AF2431500EBCCA8 /* MockPhoneNumberManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A2D6A2AF2431500EBCCA8 /* MockPhoneNumberManager.swift */; };
+		F12A2D6E2AF28E0E00EBCCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12A2D6D2AF28E0E00EBCCA8 /* Assets.xcassets */; };
+		F12A2D6F2AF2978800EBCCA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12A2D6D2AF28E0E00EBCCA8 /* Assets.xcassets */; };
 		F1363B492AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */; };
 		F14A4CB02AD3BEF2002D46AE /* MunchUI.h in Headers */ = {isa = PBXBuildFile; fileRef = F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F14A4CB32AD3BEF2002D46AE /* MunchUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */; };
@@ -147,6 +149,7 @@
 		F12A2D662AF242C900EBCCA8 /* SpamMuncherTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpamMuncherTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		F12A2D672AF242CA00EBCCA8 /* BlockListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewModelTests.swift; sourceTree = "<group>"; };
 		F12A2D6A2AF2431500EBCCA8 /* MockPhoneNumberManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhoneNumberManager.swift; sourceTree = "<group>"; };
+		F12A2D6D2AF28E0E00EBCCA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1363B482AE3D21E000EC28E /* PhoneNumberPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPopupViewModel.swift; sourceTree = "<group>"; };
 		F14A4CAD2AD3BEF2002D46AE /* MunchUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MunchUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MunchUI.h; sourceTree = "<group>"; };
@@ -298,6 +301,16 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		F12A2D6C2AF28DCB00EBCCA8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */,
+				F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */,
+				F12A2D6D2AF28E0E00EBCCA8 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F1363B472AE3D1F5000EC28E /* Phone number popup */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,11 +356,10 @@
 		F14A4CAE2AD3BEF2002D46AE /* MunchUI */ = {
 			isa = PBXGroup;
 			children = (
-				F12A2D552AF1A31700EBCCA8 /* Helpers */,
 				F14A4CF82AD3C1F9002D46AE /* Colors */,
 				F14A4CF32AD3C063002D46AE /* Components */,
-				F14A4CAF2AD3BEF2002D46AE /* MunchUI.h */,
-				F12A2D532AF1A07500EBCCA8 /* Localizable.xcstrings */,
+				F12A2D552AF1A31700EBCCA8 /* Helpers */,
+				F12A2D6C2AF28DCB00EBCCA8 /* Resources */,
 			);
 			path = MunchUI;
 			sourceTree = "<group>";
@@ -719,6 +731,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F12A2D6E2AF28E0E00EBCCA8 /* Assets.xcassets in Resources */,
 				F12A2D542AF1A07500EBCCA8 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,6 +742,7 @@
 			files = (
 				F1DD6EDB2AD2037B00E04728 /* Preview Assets.xcassets in Resources */,
 				F1DD6ED82AD2037B00E04728 /* Assets.xcassets in Resources */,
+				F12A2D6F2AF2978800EBCCA8 /* Assets.xcassets in Resources */,
 				F19982BF2AEC2C9B00104A24 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

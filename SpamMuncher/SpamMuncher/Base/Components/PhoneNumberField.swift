@@ -12,7 +12,10 @@ struct PhoneNumberField: View {
     let placeholder: String
     @State private var lastValidText: String = ""
     
-    init(_ placeholder: String, text: Binding<String>) {
+    init(
+        _ placeholder: String,
+        text: Binding<String>
+    ) {
         self.placeholder = placeholder
         self._text = text
     }
