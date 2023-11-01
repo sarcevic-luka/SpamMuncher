@@ -1,8 +1,6 @@
 # SpamMuncher
 ### Your Ultimate Spam Call Defender 🛡️
 
-Welcome to SpamMuncher, where we take your call privacy seriously, but not ourselves!
-
 ## Getting Started 🚀
 Before you dive in, make sure to check this quick setup guide after installing the app. It's crucial (trust us, you don't want to skip this!).
 
